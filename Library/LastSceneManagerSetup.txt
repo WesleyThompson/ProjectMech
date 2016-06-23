@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Scenes/_Scene0_wes.unity
+  isLoaded: 1
+  isActive: 1
