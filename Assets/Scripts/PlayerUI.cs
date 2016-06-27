@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Common;
+using Weapons;
 
 namespace Player
 {
@@ -9,21 +10,25 @@ namespace Player
     {
         public Image healthImg;
         public Image energyImg;
+        public Text currAmmoText;
+        public Text maxAmmoText;
 
-        protected float healthSpeed = 60;
+        private float uiSpeed = 20f;
+        
         protected float healthUI;
-
-        protected float energySpeed = 60;
-        protected float energyUI;
+        public float energyUI;
         public const float MAX_FILL_AMOUNT = .25f;
 
         private Health playerHealthScript;
         private Energy playerEnergyScript;
+        private Weapon weaponScript;
+        private float temp=0;
 
         void Awake()
         {
             playerHealthScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Health>();
             playerEnergyScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Energy>();
+            weaponScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Weapon>();
             healthUI = playerHealthScript.GetHealth();
             energyUI = playerEnergyScript.GetEnergy();
         }
@@ -39,7 +44,7 @@ namespace Player
         {
             if (playerHealthScript && healthUI != playerHealthScript.GetTargetHealth())
             {
-                float distCovered = Mathf.Log((Time.time - playerHealthScript.GetStartTimeHealth()) * healthSpeed, 1.525f);
+                float distCovered = Mathf.Log((Time.time - playerHealthScript.GetStartTimeHealth()) * uiSpeed, 1.525f);
                 float fracJourney = distCovered / Mathf.Abs(playerHealthScript.GetLastTargetHealth()- playerHealthScript.GetTargetHealth());
                 healthUI = Mathf.Lerp(playerHealthScript.GetLastTargetHealth(), playerHealthScript.GetTargetHealth(), fracJourney);
                 UpdateHealthBarImg();
@@ -50,10 +55,13 @@ namespace Player
         {
             if (playerEnergyScript && energyUI != playerEnergyScript.GetTargetEnergy())
             {
-                float distCovered = Mathf.Log((Time.time - playerEnergyScript.GetStartTimeEnergy()) * energySpeed, 1.525f);
-                float fracJourney = distCovered / Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
+                float baseVal = 10f;
+                float distCovered = Mathf.Log((Time.time - playerEnergyScript.GetStartTimeEnergy() + (1 / uiSpeed)) * uiSpeed, baseVal);
+                float fracJourney = distCovered / 1f;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
                 energyUI = Mathf.Lerp(playerEnergyScript.GetLastTargetEnergy(), playerEnergyScript.GetTargetEnergy(), fracJourney);
                 UpdateEnergyBarImg();
+                temp = distCovered;
+                print(Time.time - playerEnergyScript.GetStartTimeEnergy());
             }
         }
 
@@ -65,6 +73,12 @@ namespace Player
         public void UpdateEnergyBarImg()
         {
             energyImg.fillAmount = energyUI * MAX_FILL_AMOUNT / playerEnergyScript.GetMaxEnergy();
+        }
+
+        public void UpdateAmmo()
+        {
+            currAmmoText.text = weaponScript.GetCurrAmmo().ToString();
+            maxAmmoText.text = weaponScript.GetMaxAmmo().ToString();
         }
     }
 }

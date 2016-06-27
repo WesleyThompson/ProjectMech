@@ -49,7 +49,7 @@ namespace Common
 
             useEnergyBtn.onClick.AddListener(() =>
             {
-                playerEnergyScript.UsePlayerEnergy(10);
+                playerEnergyScript.UsePlayerEnergy(40);
             });
         }
 
