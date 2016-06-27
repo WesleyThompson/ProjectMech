@@ -13,16 +13,18 @@ namespace Player
         public Text currAmmoText;
         public Text maxAmmoText;
 
-        private float uiSpeed = 20f;
-        
+        private float uiSpeed = 10;
+        private float baseVal = 2f;
+        private float yCutOff = 10f;
+
         protected float healthUI;
         public float energyUI;
+        public float energyNormal;
         public const float MAX_FILL_AMOUNT = .25f;
 
         private Health playerHealthScript;
         private Energy playerEnergyScript;
         private Weapon weaponScript;
-        private float temp=0;
 
         void Awake()
         {
@@ -31,6 +33,7 @@ namespace Player
             weaponScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Weapon>();
             healthUI = playerHealthScript.GetHealth();
             energyUI = playerEnergyScript.GetEnergy();
+            energyNormal = energyUI;
         }
 
         void Update()
@@ -56,16 +59,15 @@ namespace Player
             if (playerEnergyScript && energyUI != playerEnergyScript.GetTargetEnergy())
             {
                 float totalTime = 1f;
-                float baseVal = 10f;
-                float yCutOff = 1f;
-                float xCutoff = Mathf.Pow(baseVal, yCutOff) - 1 / uiSpeed;
+                float xCutoff = (Mathf.Pow(baseVal, yCutOff) - 1 / uiSpeed)/ uiSpeed;
                 float elapsedTime = Time.time - playerEnergyScript.GetStartTimeEnergy();
                 float xVal = xCutoff * elapsedTime / totalTime;
-                float distCovered = Mathf.Log((xVal + (1 / uiSpeed)) * uiSpeed, baseVal);
-                float fracJourney = elapsedTime / 1f;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
+                float yVal = Mathf.Log((xVal + (1 / uiSpeed)) * uiSpeed, baseVal);
+                float normalizeYVal = yVal / yCutOff;
+                float fracJourney = normalizeYVal / totalTime;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
                 energyUI = Mathf.Lerp(playerEnergyScript.GetLastTargetEnergy(), playerEnergyScript.GetTargetEnergy(), fracJourney);
                 UpdateEnergyBarImg();
-                print(Time.time - playerEnergyScript.GetStartTimeEnergy());
+                //print(Time.time - playerEnergyScript.GetStartTimeEnergy());
             }
         }
 
