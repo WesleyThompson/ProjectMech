@@ -13,13 +13,13 @@ namespace Player
         public Text currAmmoText;
         public Text maxAmmoText;
 
-        private float uiSpeed = 10;
-        private float baseVal = 2f;
-        private float yCutOff = 10f;
+        private float uiSpeed = 1;
+        private float baseVal = 3f;
+        public float xCutOff = 70f;
+        public float totalTime = 3f;
 
         protected float healthUI;
         public float energyUI;
-        public float energyNormal;
         public const float MAX_FILL_AMOUNT = .25f;
 
         private Health playerHealthScript;
@@ -33,7 +33,6 @@ namespace Player
             weaponScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Weapon>();
             healthUI = playerHealthScript.GetHealth();
             energyUI = playerEnergyScript.GetEnergy();
-            energyNormal = energyUI;
         }
 
         void Update()
@@ -47,9 +46,7 @@ namespace Player
         {
             if (playerHealthScript && healthUI != playerHealthScript.GetTargetHealth())
             {
-                float distCovered = Mathf.Log((Time.time - playerHealthScript.GetStartTimeHealth()) * uiSpeed, 1.525f);
-                float fracJourney = distCovered / Mathf.Abs(playerHealthScript.GetLastTargetHealth()- playerHealthScript.GetTargetHealth());
-                healthUI = Mathf.Lerp(playerHealthScript.GetLastTargetHealth(), playerHealthScript.GetTargetHealth(), fracJourney);
+                healthUI = SmoothUIChange(playerHealthScript.GetStartTimeHealth(), playerHealthScript.GetLastTargetHealth(), playerHealthScript.GetTargetHealth());
                 UpdateHealthBarImg();
             }
         }
@@ -58,17 +55,31 @@ namespace Player
         {
             if (playerEnergyScript && energyUI != playerEnergyScript.GetTargetEnergy())
             {
-                float totalTime = 1f;
-                float xCutoff = (Mathf.Pow(baseVal, yCutOff) - 1 / uiSpeed)/ uiSpeed;
-                float elapsedTime = Time.time - playerEnergyScript.GetStartTimeEnergy();
-                float xVal = xCutoff * elapsedTime / totalTime;
-                float yVal = Mathf.Log((xVal + (1 / uiSpeed)) * uiSpeed, baseVal);
-                float normalizeYVal = yVal / yCutOff;
-                float fracJourney = normalizeYVal / totalTime;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
-                energyUI = Mathf.Lerp(playerEnergyScript.GetLastTargetEnergy(), playerEnergyScript.GetTargetEnergy(), fracJourney);
+                energyUI = SmoothUIChange(playerEnergyScript.GetStartTimeEnergy(), playerEnergyScript.GetLastTargetEnergy(), playerEnergyScript.GetTargetEnergy());
                 UpdateEnergyBarImg();
-                //print(Time.time - playerEnergyScript.GetStartTimeEnergy());
             }
+        }
+
+        private float GetSmoothLog(float xPos)
+        {
+            return Mathf.Log((xPos + (1 / uiSpeed)) * uiSpeed, baseVal);
+        }
+
+        private float SmoothUIChange(float startTime, float lastTarget, float target)
+        {
+            //Max Y
+            float yCutOff = GetSmoothLog(xCutOff);
+            float elapsedTime = Time.time - startTime;
+
+            //Converts the time percentage into the function x percentage
+            float xVal = xCutOff * elapsedTime / totalTime;
+
+            //Get the Y value of the function
+            float yVal = GetSmoothLog(xVal);
+            float normalizeYVal = yVal / yCutOff;
+            float fracJourney = normalizeYVal / 1;
+
+            return Mathf.Lerp(lastTarget, target, fracJourney);
         }
 
         public void UpdateHealthBarImg()

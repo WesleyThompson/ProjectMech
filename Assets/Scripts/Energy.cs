@@ -27,12 +27,10 @@ namespace Player
 
         public void UsePlayerEnergy(float energy)
         {
-            lastTargetEnergy = playerEnergy; //playerUIScript.energyUI;//
+            lastTargetEnergy = playerUIScript.energyUI;
             startTimeEnergy = Time.time;
-            print(lastTargetEnergy);
             SetPlayerEnergy(playerEnergy - energy);
             targetEnergy = playerEnergy;
-            //print(targetEnergy);
 
             if (playerEnergy <= 0)
             {
