@@ -55,12 +55,16 @@ namespace Player
         {
             if (playerEnergyScript && energyUI != playerEnergyScript.GetTargetEnergy())
             {
+                float totalTime = 1f;
                 float baseVal = 10f;
-                float distCovered = Mathf.Log((Time.time - playerEnergyScript.GetStartTimeEnergy() + (1 / uiSpeed)) * uiSpeed, baseVal);
-                float fracJourney = distCovered / 1f;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
+                float yCutOff = 1f;
+                float xCutoff = Mathf.Pow(baseVal, yCutOff) - 1 / uiSpeed;
+                float elapsedTime = Time.time - playerEnergyScript.GetStartTimeEnergy();
+                float xVal = xCutoff * elapsedTime / totalTime;
+                float distCovered = Mathf.Log((xVal + (1 / uiSpeed)) * uiSpeed, baseVal);
+                float fracJourney = elapsedTime / 1f;//Mathf.Abs(playerEnergyScript.GetLastTargetEnergy()- playerEnergyScript.GetTargetEnergy());
                 energyUI = Mathf.Lerp(playerEnergyScript.GetLastTargetEnergy(), playerEnergyScript.GetTargetEnergy(), fracJourney);
                 UpdateEnergyBarImg();
-                temp = distCovered;
                 print(Time.time - playerEnergyScript.GetStartTimeEnergy());
             }
         }
