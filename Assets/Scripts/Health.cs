@@ -17,7 +17,15 @@ namespace Player
 
         void Awake()
         {
-            playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
+            if (GameObject.Find(GlobalVariables.PlayerUI))
+            {
+                playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
+            }
+            else
+            {
+                playerUIScript = null;
+                print("No Player UI");
+            }
         }
 
         void Start()
@@ -43,7 +51,10 @@ namespace Player
         private void SetHealth(float h)
         {
             health = h;
-            playerUIScript.UpdateHealthBarImg();
+            if (playerUIScript != null)
+            {
+                playerUIScript.UpdateHealthBarImg();
+            }
         }
 
         private void Dead()

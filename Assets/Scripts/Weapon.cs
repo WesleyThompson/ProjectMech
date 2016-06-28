@@ -23,7 +23,7 @@ namespace Weapons
 
         protected bool CanShoot()
         {
-            return currAmmo > 0;
+            return currAmmo > 0 && !ManageGameState.isPaused;
         }
 
         protected void Shoot()

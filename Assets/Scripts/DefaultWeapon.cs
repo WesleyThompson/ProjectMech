@@ -13,14 +13,25 @@ namespace Weapons
 
         void Awake()
         {
-            playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
+            if (GameObject.Find(GlobalVariables.PlayerUI))
+            {
+                playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
+            }
+            else
+            {
+                playerUIScript = null;
+                print("No Player UI");
+            }
             damage = 10;
         }
 
         protected override void Init()
         {
             base.Init();
-            playerUIScript.UpdateAmmo();
+            if (playerUIScript != null)
+            {
+                playerUIScript.UpdateAmmo();
+            }
         }
 
         void Start()
@@ -33,7 +44,10 @@ namespace Weapons
             if(Input.GetMouseButtonDown(0) && CanShoot())
             {
                 Shoot();
-                playerUIScript.UpdateAmmo();
+                if (playerUIScript != null)
+                {
+                    playerUIScript.UpdateAmmo();
+                }
             }
         }
     }

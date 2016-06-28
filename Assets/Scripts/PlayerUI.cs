@@ -13,10 +13,10 @@ namespace Player
         public Text currAmmoText;
         public Text maxAmmoText;
 
-        private float uiSpeed = 1;
-        private float baseVal = 3f;
         public float xCutOff = 70f;
         public float totalTime = 3f;
+        private float uiSpeed = 1;
+        private float baseVal = 3f;
 
         protected float healthUI;
         public float energyUI;
