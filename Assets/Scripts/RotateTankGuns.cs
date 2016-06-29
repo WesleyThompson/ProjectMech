@@ -19,9 +19,9 @@ public class RotateTankGuns : MonoBehaviour {
 		// move turret with tank body
 		//transform.position = player.transform.position + offset;
 		//rotate turret
-		transform.Rotate (new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * speed);
+		transform.Rotate (new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * -speed);
 
 		//only need this if turret is NOT a child of player
-		transform.position = player.transform.position + offset;
+		//transform.position = player.transform.position + offset;
 	}
 }
