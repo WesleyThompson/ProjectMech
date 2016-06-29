@@ -7,7 +7,7 @@ public class RotateTurretWithMouse : MonoBehaviour {
 
 	private Vector3 offset;
 
-	private float speed = 50.0F;
+	private float speed = 75.0F;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +20,8 @@ public class RotateTurretWithMouse : MonoBehaviour {
 		//transform.position = player.transform.position + offset;
 		//rotate turret
 		transform.Rotate (new Vector3(0, 0, Input.GetAxis("Mouse X")) * Time.deltaTime * speed);
-		transform.position = player.transform.position + offset;
+
+		//only need this if turret is NOT a child of player
+		//transform.position = player.transform.position + offset;
 	}
 }
