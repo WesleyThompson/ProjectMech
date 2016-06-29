@@ -22,6 +22,6 @@ public class RotateTurretWithMouse : MonoBehaviour {
 		transform.Rotate (new Vector3(0, 0, Input.GetAxis("Mouse X")) * Time.deltaTime * speed);
 
 		//only need this if turret is NOT a child of player
-		//transform.position = player.transform.position + offset;
+		transform.position = player.transform.position + offset;
 	}
 }

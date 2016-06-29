@@ -1296,6 +1296,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 675090385}
+  - {fileID: 1231325760}
   - {fileID: 1480071052}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1308,7 +1309,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1480071052}
+    m_TransformParent: {fileID: 1127386733}
     m_Modifications:
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1316,7 +1317,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26999998
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1635,9 +1636,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 512296243}
-  - {fileID: 1231325760}
   m_Father: {fileID: 1127386733}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1480071053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,6 +1671,46 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1050076339}
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1545785052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1545785054}
+  - 114: {fileID: 1545785053}
+  m_Layer: 0
+  m_Name: tankGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1545785053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545785052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5f28614b6e1b74aa668af4b58aa21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1545785054
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545785052}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5000001, w: 0.49999994}
+  m_LocalPosition: {x: -4.1399994, y: -0, z: 5.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
+  m_Children: []
+  m_Father: {fileID: 1231325760}
+  m_RootOrder: 0
 --- !u!1 &1553607156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,7 +2033,7 @@ GameObject:
   - 81: {fileID: 1686607563}
   m_Layer: 8
   m_Name: MechCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2005,12 +2045,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686607560}
   m_LocalRotation: {x: -0.5000002, y: 0.49999988, z: 0.49999988, w: -0.5000002}
-  m_LocalPosition: {x: 9.8, y: -0, z: 7.500001}
+  m_LocalPosition: {x: 12.48, y: -0, z: 8.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: -90}
   m_Children: []
   m_Father: {fileID: 1231325760}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!81 &1686607563
 AudioListener:
   m_ObjectHideFlags: 0
