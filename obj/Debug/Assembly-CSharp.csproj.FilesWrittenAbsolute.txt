@@ -1,0 +1,17 @@
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Reflector/Documents/ProjectMech/obj/Debug/Assembly-CSharp.dll
+/Users/Reflector/Documents/ProjectMech/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/UnityEngine.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/UnityEditor.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Reflector/Documents/ProjectMech/Temp/bin/Debug/Mono.Cecil.Mdb.dll

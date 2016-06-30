@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c1bb22ff287bb0643a307fa6df316239
 folderAsset: yes
 timeCreated: 1466778325
+=======
+guid: 1623635aca117400a999017029597e90
+folderAsset: yes
+timeCreated: 1466779893
+>>>>>>> wes
 licenseType: Free
 DefaultImporter:
   userData: 
