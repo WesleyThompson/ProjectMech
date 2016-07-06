@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 namespace Enemy
 {
-    public class EnemyScan : MonoBehaviour
+    public class EnemyScan : GameBehavior
     {
-
         [Range(0, 90)]
         public float scanRange = 45;
         public float scanTime = 1f;
@@ -29,15 +29,19 @@ namespace Enemy
 
         void Update()
         {
+            //Should scan when enemy cannot see the target
             if (shouldScan)
             {
-                if (RoughlyEqual(topTransform.localEulerAngles.y, endRotation.y, 0.001f))
+                //If the angle is at the end of the cycle it will reverse
+                if (AngleRoughlyEqual(topTransform.localEulerAngles.y, endRotation.y, 0.001f))
                 {
-                    if (RoughlyEqual(topTransform.localEulerAngles.y, centerRotation.y, 0.001f))
+                    //If it is at the center it determines which way to go
+                    if (AngleRoughlyEqual(topTransform.localEulerAngles.y, centerRotation.y, 0.001f))
                     {
                         startRotation = topTransform.localEulerAngles;
                         endRotation = new Vector3(topTransform.localEulerAngles.x, centerRotation.y + scanRange * scanDirection, topTransform.localEulerAngles.z);
                     }
+                    //If it is at the ends it changes direction
                     else
                     {
                         scanDirection *= -1;
@@ -46,31 +50,10 @@ namespace Enemy
                     }
                     startTime = Time.time;
                 }
+                //Always lerping back and forth
                 float tRot = Mathf.LerpAngle(startRotation.y, endRotation.y, (Time.time - startTime) / scanTime);
                 topTransform.localEulerAngles = new Vector3(topTransform.localEulerAngles.x, tRot, topTransform.localEulerAngles.z);
             }
-        }
-
-        bool RoughlyEqual(float firstVal, float secondVal, float buffer)
-        {
-            while (firstVal >= 360)
-            {
-                firstVal -= 360;
-            }
-            while (firstVal < 0)
-            {
-                firstVal += 360;
-            }
-
-            while (secondVal >= 360)
-            {
-                secondVal -= 360;
-            }
-            while (secondVal < 0)
-            {
-                secondVal += 360;
-            }
-            return Mathf.Abs(firstVal - secondVal) < buffer;
         }
 
         public void StopScanning()

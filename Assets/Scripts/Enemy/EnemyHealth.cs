@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 namespace Enemy
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth : GameBehavior
     {
-
         public float maxHealth;
         private float currHealth;
 

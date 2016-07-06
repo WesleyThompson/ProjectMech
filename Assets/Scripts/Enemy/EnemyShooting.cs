@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 namespace Enemy
 {
-    public class EnemyShooting : MonoBehaviour
+    public class EnemyShooting : GameBehavior
     {
-
         public float fireRate = 1;
         public float damage = 1;
         private float lastTimeShot;

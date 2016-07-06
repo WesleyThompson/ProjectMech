@@ -59,5 +59,27 @@ namespace Common
             }
             trigger.triggers.Add(entry);
         }
+
+        public bool AngleRoughlyEqual(float firstVal, float secondVal, float buffer)
+        {
+            while (firstVal >= 360)
+            {
+                firstVal -= 360;
+            }
+            while (firstVal < 0)
+            {
+                firstVal += 360;
+            }
+
+            while (secondVal >= 360)
+            {
+                secondVal -= 360;
+            }
+            while (secondVal < 0)
+            {
+                secondVal += 360;
+            }
+            return Mathf.Abs(firstVal - secondVal) < buffer;
+        }
     }
 }
