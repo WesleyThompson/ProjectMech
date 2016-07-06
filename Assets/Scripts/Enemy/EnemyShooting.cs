@@ -20,7 +20,7 @@ public class EnemyShooting : MonoBehaviour {
 	    if(objBeingShotAt != null && canShoot && Time.time - lastTimeShot > fireRate)
         {
             lastTimeShot = Time.time;
-            print("Take damage");
+            print("Dealt damage to target");
             //TODO: Player Take damage
         }
 	}
