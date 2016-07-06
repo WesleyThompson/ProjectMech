@@ -11,7 +11,6 @@ public class RotateTurretWithMouse : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Screen.lockCursor = true;
 		offset = transform.position - player.transform.position;
 	}
 

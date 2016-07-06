@@ -495,7 +495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 293b06f65e1e95146b8adaa491d1d868, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 293b06f65e1e95146b8adaa491d1d868, type: 3}
       propertyPath: m_LocalScale.x
@@ -843,6 +843,96 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730327092}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &739307952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 739307953}
+  - 33: {fileID: 739307957}
+  - 65: {fileID: 739307956}
+  - 23: {fileID: 739307955}
+  - 114: {fileID: 739307954}
+  m_Layer: 0
+  m_Name: targetLocator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &739307953
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739307952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.67, y: 0.58, z: 4.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1084101429}
+  m_RootOrder: 2
+--- !u!114 &739307954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739307952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5f28614b6e1b74aa668af4b58aa21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankGunA: {fileID: 1545785052}
+  tankGunB: {fileID: 1340648754}
+--- !u!23 &739307955
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739307952}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &739307956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739307952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &739307957
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739307952}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &758931110 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 293b06f65e1e95146b8adaa491d1d868, type: 3}
@@ -871,6 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  tankTurret: {fileID: 0}
 --- !u!65 &758931117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1251,8 +1342,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
   m_Children:
   - {fileID: 675090385}
+  - {fileID: 1686607561}
+  - {fileID: 739307953}
   m_Father: {fileID: 1231325760}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1084101430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1480071051}
+  crosshairImage: {fileID: 2800000, guid: ca5ce0c960a0ccf458abf241f8859a25, type: 3}
 --- !u!1001 &1116893766
 Prefab:
   m_ObjectHideFlags: 0
@@ -1341,7 +1435,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1231325760}
   - {fileID: 1480071052}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1354,7 +1447,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1127386733}
+    m_TransformParent: {fileID: 1480071052}
     m_Modifications:
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1362,7 +1455,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15
+      value: -0.26999998
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1403,6 +1496,10 @@ Prefab:
     - target: {fileID: 400000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
+      propertyPath: m_Name
+      value: tankTurret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fc961f3620b44ad2a464ecee03fcc65, type: 3}
@@ -1521,9 +1618,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1340648755}
-  - 114: {fileID: 1340648756}
   m_Layer: 0
-  m_Name: tankGun (1)
+  m_Name: tankGunB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1536,23 +1632,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1340648754}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5000001, w: 0.49999994}
-  m_LocalPosition: {x: -5.08, y: -3.917001, z: 5.2100005}
+  m_LocalPosition: {x: -5.08, y: -3.917001, z: 5.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
   m_Children: []
   m_Father: {fileID: 675090385}
   m_RootOrder: 0
---- !u!114 &1340648756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1340648754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5f28614b6e1b74aa668af4b58aa21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1354558681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,9 +1805,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1231325760}
   - {fileID: 512296243}
   m_Father: {fileID: 1127386733}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1480071053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1735,6 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  tankTurret: {fileID: 0}
 --- !u!54 &1480071054
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1764,25 +1851,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1545785054}
-  - 114: {fileID: 1545785053}
   m_Layer: 0
-  m_Name: tankGun
+  m_Name: tankGunA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1545785053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1545785052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5f28614b6e1b74aa668af4b58aa21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1545785054
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,7 +1865,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545785052}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5000001, w: 0.49999994}
-  m_LocalPosition: {x: -5.079998, y: 3.824999, z: 5.208998}
+  m_LocalPosition: {x: -5.17, y: 3.82, z: 5.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
   m_Children: []
@@ -2129,13 +2204,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686607560}
-  m_LocalRotation: {x: -0.5000002, y: 0.49999988, z: 0.49999988, w: -0.5000002}
-  m_LocalPosition: {x: 12.48, y: -0, z: 8.86}
+  m_LocalRotation: {x: 0, y: -0.00000035762787, z: -0.00000011920929, w: -1}
+  m_LocalPosition: {x: 2.6699944, y: 4.1900043, z: -12.830004}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
   m_Children: []
-  m_Father: {fileID: 1231325760}
-  m_RootOrder: 0
+  m_Father: {fileID: 1084101429}
+  m_RootOrder: 1
 --- !u!81 &1686607563
 AudioListener:
   m_ObjectHideFlags: 0
