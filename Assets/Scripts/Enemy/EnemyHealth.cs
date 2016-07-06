@@ -1,27 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHealth : MonoBehaviour {
-
-    public float maxHealth;
-    private float currHealth;
-
-	void Awake()
+namespace Enemy
+{
+    public class EnemyHealth : MonoBehaviour
     {
-        currHealth = maxHealth;
-    }
-	
-    public void TakeDamage(float dmg)
-    {
-        currHealth -= dmg;
-        if(currHealth <= 0)
+
+        public float maxHealth;
+        private float currHealth;
+
+        void Awake()
         {
-            Death();
+            currHealth = maxHealth;
         }
-    }
 
-    private void Death()
-    {
-        //TODO: Kill This
+        public void TakeDamage(float dmg)
+        {
+            currHealth -= dmg;
+            if (currHealth <= 0)
+            {
+                Death();
+            }
+        }
+
+        private void Death()
+        {
+            //TODO: Kill This
+        }
     }
 }

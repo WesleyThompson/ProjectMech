@@ -27,13 +27,11 @@ namespace Common
 
         private Health playerHealthScript;
         private Energy playerEnergyScript;
-        private bool isPaused;
 
         void Start()
         {
             playerHealthScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Health>();
             playerEnergyScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Energy>();
-            isPaused = false;
             SetIsUIFocusedEvent();
 
             newGameBtn.onClick.AddListener(() =>
