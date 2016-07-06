@@ -9,6 +9,8 @@ public class RotateTankGuns : MonoBehaviour {
 
 	private float speed = 75.0F;
 
+	public Texture2D crosshairImage;
+
 	// Use this for initialization
 	void Start () {
 		offset = transform.position - player.transform.position;
@@ -23,5 +25,11 @@ public class RotateTankGuns : MonoBehaviour {
 
 		//only need this if turret is NOT a child of player
 		//transform.position = player.transform.position + offset;
+	}
+	void OnGUI()
+	{
+		float xMin = (Screen.width / 2) - (crosshairImage.width / 2);
+		float yMin = (Screen.height / 2) - (crosshairImage.height / 2);
+		GUI.DrawTexture (new Rect (xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
 	}
 }

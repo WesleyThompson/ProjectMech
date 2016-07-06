@@ -11,11 +11,14 @@ public class RotateTurretWithMouse : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Screen.lockCursor = true;
 		offset = transform.position - player.transform.position;
 	}
 
 	// LateUpdate is called once per frame
 	void LateUpdate () {
+
+
 		// move turret with tank body
 		//transform.position = player.transform.position + offset;
 		//rotate turret

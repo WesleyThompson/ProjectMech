@@ -14,10 +14,11 @@ public class ProjectileShooter : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			GameObject projectile = Instantiate (prefab) as GameObject;
-			projectile.transform.position = transform.position + Camera.main.transform.forward;
-			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
 			Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector (transform.forward);
-			rb.velocity = Camera.main.transform.forward * 80;
+			projectile.transform.position = transform.position + localForward;
+			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+
+			rb.velocity = transform.forward * 80;
 		}
 	}
 }
