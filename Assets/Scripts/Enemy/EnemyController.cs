@@ -21,7 +21,7 @@ namespace Enemy
         private float startRotation;
         private float endRotation;
         private float startTime;
-        private float scanTime = .7f;
+        private float scanTime;
         private float lastSeenBuffer = 2.5f;
 
         RaycastHit lHit;
@@ -47,6 +47,8 @@ namespace Enemy
         Vector3 topToPlayerLocal;
         Vector3 enemyTopToPlayer;
         float lastTimeSeenPlayer;
+        float focusProgress;
+        float focusSpeed = 50;
 
         void Start()
         {
@@ -98,11 +100,28 @@ namespace Enemy
 
                         startTime = Time.time;
                         firstTimeFocused = false;
+                        focusProgress = 0;
                     }
                     //Runs smoothing
                     else
                     {
-                        float tRot = Mathf.LerpAngle(startRotation, endRotation, (Time.time - startTime) / scanTime);
+                        float simpleStartRot = GetSimplifiedAngle(startRotation);
+                        float simpleEndRot = GetSimplifiedAngle(endRotation);
+
+                        //Fixes problem when comparing for example 2 and 355 by making distance 7 instead of 333
+                        if(simpleStartRot >= 180)
+                        {
+                            simpleStartRot = 360 - simpleStartRot;
+                        }
+                        if (simpleEndRot >= 180)
+                        {
+                            simpleEndRot = 360 - simpleEndRot;
+                        }
+
+                        //Keeps same speed as the scanner
+                        float dist = Mathf.Abs(simpleStartRot - endRotation);
+                        scanTime = dist * enemyScanScript.GetTimePerScanDegree();
+                        float tRot = Mathf.LerpAngle(startRotation, endRotation, (Time.time - startTime)/scanTime);
                         topTransform.localEulerAngles = new Vector3(topTransform.localEulerAngles.x, tRot, topTransform.localEulerAngles.z);
                         if (AngleRoughlyEqual(tRot, endRotation, 0.01f))
                         {

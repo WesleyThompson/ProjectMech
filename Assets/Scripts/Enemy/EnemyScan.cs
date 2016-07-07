@@ -70,5 +70,10 @@ namespace Enemy
         {
             return shouldScan;
         }
+
+        public float GetTimePerScanDegree()
+        {
+            return scanTime / scanRange;
+        }
     }
 }
