@@ -26,7 +26,7 @@ public class ProjectileShooter : MonoBehaviour {
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, 10000F))
 			{
-				Debug.DrawRay (ray.origin, hit.point, Color.green, rayDebugTime);
+				Debug.DrawRay (ray.origin, ray.direction * 40, Color.green, rayDebugTime);
 
 				GameObject projectile = Instantiate (prefab, tankGunA.transform.position, Quaternion.identity) as GameObject;
 				GameObject projectile2 = Instantiate (prefab, tankGunB.transform.position, Quaternion.identity) as GameObject;
