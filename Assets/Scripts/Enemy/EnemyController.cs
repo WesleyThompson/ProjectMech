@@ -85,7 +85,7 @@ namespace Enemy
                 if (topIsFocused)
                 {
                     topTransform.LookAt(moveTarget.transform);
-                    enemyShootingScript.SetShoot(true, moveTarget);
+                    enemyShootingScript.SetShoot(true, moveTarget, enemyToPlayer);
                     lastTimeSeenPlayer = Time.time;
                 }
                 //Play animation to aim on target
@@ -145,7 +145,7 @@ namespace Enemy
             {
                 agent.SetDestination(moveTarget.transform.position);
                 enemyScanScript.StartScanning();
-                enemyShootingScript.SetShoot(false, null);
+                enemyShootingScript.SetShoot(false, null, Vector3.zero);
                 firstTimeFocused = true;
                 topIsFocused = false;
             }
