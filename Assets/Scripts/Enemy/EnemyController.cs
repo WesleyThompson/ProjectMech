@@ -47,7 +47,6 @@ namespace Enemy
         Vector3 topToPlayerLocal;
         Vector3 enemyTopToPlayer;
         float lastTimeSeenPlayer;
-        float focusProgress;
         float focusSpeed = 50;
 
         void Start()
@@ -85,7 +84,7 @@ namespace Enemy
                 if (topIsFocused)
                 {
                     topTransform.LookAt(moveTarget.transform);
-                    enemyShootingScript.SetShoot(true, moveTarget, enemyToPlayer);
+                    enemyShootingScript.SetShoot(true, moveTarget);
                     lastTimeSeenPlayer = Time.time;
                 }
                 //Play animation to aim on target
@@ -100,7 +99,6 @@ namespace Enemy
 
                         startTime = Time.time;
                         firstTimeFocused = false;
-                        focusProgress = 0;
                     }
                     //Runs smoothing
                     else
@@ -145,7 +143,7 @@ namespace Enemy
             {
                 agent.SetDestination(moveTarget.transform.position);
                 enemyScanScript.StartScanning();
-                enemyShootingScript.SetShoot(false, null, Vector3.zero);
+                enemyShootingScript.SetShoot(false, null);
                 firstTimeFocused = true;
                 topIsFocused = false;
             }
