@@ -16,22 +16,13 @@ namespace Enemy
         private Vector3 hitBox;
         private Vector3 shotPos;
         private Vector3 shotDir;
-        private float maxX = 3;
-        private float maxY = 4;
 
-        private float minX = 2;
-        private float minY = 3;
-
-        private float distanceScale = .2f;
+        private float startingSize = 1.4f;
+        private float endingSize = 4;
         private float minDistance = 30;
         private float maxDistance = 100;
-        private float startingSize = 10;
-        private float endingSize = 20;
         private float sizeScale;
-        private float distanceOffset = -10;
-
-        private float distanceXProportionScale = .5f;
-        private float distanceYProportionScale = 1;
+        private float distanceOffset;
 
         private float currX;
         private float currY;
@@ -45,23 +36,25 @@ namespace Enemy
         private float offsetX;
         private float offsetZ;
         private Transform topTransform;
+
+        private const float DISTANCE_X_PROPORTION_SCALE = 1;
+        private const float DISTANCE_Y_PROPORTION_SCALE = 2;
+
         void Awake()
         {
             topTransform = transform.FindChild("Top");
             lastTimeShot = Time.time - fireRate;
-            debugOffsetX = maxX;
-            debugOffsetZ = 0;
-            currX = minX;
-            currY = minY;
         }
 
         void Update()
         {
             if (target != null)
             {
+                //Hitbox centered at target
                 hitBox = target.transform.position;
                 distanceToTarget = Vector3.Distance(topTransform.position, target.transform.position);
-                print(distanceToTarget);
+                
+                //Creates lower and upper bounds of distance
                 if(distanceToTarget < minDistance)
                 {
                     distanceToTarget = minDistance;
@@ -70,20 +63,24 @@ namespace Enemy
                     distanceToTarget = maxDistance;
                 }
 
-                currX = GetProportionalDistance(distanceToTarget, distanceXProportionScale);
-                currY = GetProportionalDistance(distanceToTarget, distanceYProportionScale);
-                print(currX);
+                //Using a linear function it gets the size of the hitbox based on distance in 2D
+                currX = GetProportionalDistance(distanceToTarget, DISTANCE_X_PROPORTION_SCALE);
+                currY = GetProportionalDistance(distanceToTarget, DISTANCE_Y_PROPORTION_SCALE);
+
+                //Pick a random number inside box in 2D
                 randomXShot = Random.Range(-currX, currX);
                 randomYShot = Random.Range(-currY, currY);
 
-                debugOffsetX = currX * Mathf.Cos(topTransform.eulerAngles.y * Mathf.Deg2Rad);
-                debugOffsetZ = currX * Mathf.Sin(topTransform.eulerAngles.y * Mathf.Deg2Rad);
-
+                //Converts 2D values into 3D
                 offsetX = randomXShot * Mathf.Cos(topTransform.eulerAngles.y * Mathf.Deg2Rad);
                 offsetZ = -randomXShot * Mathf.Sin(topTransform.eulerAngles.y * Mathf.Deg2Rad);
 
+                //Creates visual representation of 3D hitbox
                 if (shouldDebug)
                 {
+                    debugOffsetX = currX * Mathf.Cos(topTransform.eulerAngles.y * Mathf.Deg2Rad);
+                    debugOffsetZ = currX * Mathf.Sin(topTransform.eulerAngles.y * Mathf.Deg2Rad);
+
                     //Top
                     Debug.DrawLine(new Vector3(hitBox.x - debugOffsetX, hitBox.y + currY, hitBox.z + debugOffsetZ), new Vector3(hitBox.x + debugOffsetX, hitBox.y + currY, hitBox.z - debugOffsetZ), Color.red);
                     //Right
@@ -109,8 +106,7 @@ namespace Enemy
 
         float GetProportionalDistance(float distToTarg, float propScale)
         {
-            distToTarg += distanceOffset;
-            distToTarg = distanceScale * distToTarg * propScale;
+            distToTarg = (sizeScale * distToTarg + distanceOffset) * propScale;
             return distToTarg;
         }
 
@@ -127,6 +123,8 @@ namespace Enemy
         {
             canShoot = shoot;
             target = obj;
+            sizeScale = (endingSize - startingSize) / (maxDistance - minDistance);
+            distanceOffset = startingSize - sizeScale * minDistance;
         }
     }
 }

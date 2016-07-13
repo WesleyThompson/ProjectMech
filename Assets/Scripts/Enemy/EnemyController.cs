@@ -47,7 +47,6 @@ namespace Enemy
         Vector3 topToPlayerLocal;
         Vector3 enemyTopToPlayer;
         float lastTimeSeenPlayer;
-        float focusSpeed = 50;
 
         void Start()
         {
