@@ -2,26 +2,33 @@
 using System.Collections;
 
 public class RotateTankGuns : MonoBehaviour {
-
-	public GameObject player;
-
-	private Vector3 offset;
-
-	private float speed = 75.0F;
-
+	
+	public float mouseSensitivity = 1.0F;
 	public Texture2D crosshairImage;
 
-	// Use this for initialization
-	void Start () {
-		offset = transform.position - player.transform.position;
-	}
+	float currAngle = 0.0F;
+	private float maxAngle = 50.0F;
+	private float minAngle = -3.0F;
 
-	// LateUpdate is called once per frame
-	void LateUpdate () {
+	void Update () {
 		// move turret with tank body
 		//transform.position = player.transform.position + offset;
 		//rotate turret
-		transform.Rotate (new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * -speed);
+		print(Input.GetAxis("Mouse Y"));
+		/*
+		float rot = transform.rotation;
+		Quaternion eulerRot = new Quaternion.Euler (rot.x, rot.y, rot.z);
+		print (transform.rotation);
+		*/
+		float rotDegrees = Input.GetAxis ("Mouse Y");
+
+		print (currAngle);
+		if ((currAngle >= maxAngle && rotDegrees > 0) || (currAngle <= minAngle && rotDegrees < 0)) {
+			rotDegrees = 0;
+		} else {
+			currAngle += rotDegrees;
+		}
+		transform.Rotate(rotDegrees * -mouseSensitivity, 0, 0);
 
 		//only need this if turret is NOT a child of player
 		//transform.position = player.transform.position + offset;

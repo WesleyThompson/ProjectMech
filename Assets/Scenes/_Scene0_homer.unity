@@ -160,6 +160,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11493388, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: mouseSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433032, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 471418, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 471418, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.67
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
   m_IsPrefabParent: 0
