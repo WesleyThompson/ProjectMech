@@ -60,14 +60,14 @@ namespace Enemy
             topIsFocused = false;
             firstTimeFocused = true;
             lastTimeSeenPlayer = Time.time - lastSeenBuffer;
+            print("---------------------" + moveTarget.transform.position);
         }
         
         void Update()
         {
             UpdateRaycast();
-
             //If can see entire target or target hasn't broken sight
-            if (didHitL && didHitR && lHit.transform.parent.name == "PlayerTemp" && rHit.transform.parent.name == "PlayerTemp" || keepShooting)
+            if (didHitL && didHitR && lHit.transform.name == GlobalVariables.PlayerName && rHit.transform.name == GlobalVariables.PlayerName || keepShooting)
             {
                 //If can see player stop scanning and this
                 enemyScanScript.StopScanning();
@@ -128,7 +128,7 @@ namespace Enemy
                 }
                 
                 //After the target is completely visible then hides, but is still visible, this keeps the focus on the target
-                if (didHitC && cHit.transform.parent.name != "PlayerTemp")
+                if (didHitC && cHit.transform.name != GlobalVariables.PlayerName)
                 {
                     keepShooting = false;
                 }
@@ -155,6 +155,7 @@ namespace Enemy
             enemyDirectionR = enemyPositionR - moveTarget.transform.position;
             enemyDirectionC = topTransform.rotation * Vector3.forward * 20;
             enemyTopToPlayer = new Vector3(topTransform.position.x, topTransform.position.y, topTransform.position.z) - moveTarget.transform.position;
+            enemyPositionC = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
             enemyToPlayer = enemyPositionC - moveTarget.transform.position;
 
             //Define offset of raycast so that they come off tangent from this to the target
@@ -165,7 +166,6 @@ namespace Enemy
             //Define left and right position
             enemyPositionL = new Vector3(transform.position.x - xOffset, transform.position.y + height, transform.position.z + zOffset);
             enemyPositionR = new Vector3(transform.position.x + xOffset, transform.position.y + height, transform.position.z - zOffset);
-            enemyPositionC = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
 
             //Makes sure direction is going the correct way
             enemyDirectionL *= -1;

@@ -17,8 +17,8 @@ namespace Enemy
         private Vector3 shotPos;
         private Vector3 shotDir;
 
-        private float startingSize = 1.4f;
-        private float endingSize = 4;
+        private float startingSize = 4f;
+        private float endingSize = 6;
         private float minDistance = 30;
         private float maxDistance = 100;
         private float sizeScale;
@@ -37,8 +37,8 @@ namespace Enemy
         private float offsetZ;
         private Transform topTransform;
 
-        private const float DISTANCE_X_PROPORTION_SCALE = 1;
-        private const float DISTANCE_Y_PROPORTION_SCALE = 2;
+        private const float DISTANCE_X_PROPORTION_SCALE = 2;
+        private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
         void Awake()
         {
