@@ -14,14 +14,15 @@ namespace Enemy
         private EnemyShooting enemyShootingScript;
 
         private float headTurnStartTime;
-        private Transform topTransform;
+        public Transform topTransform;
         private bool keepShooting;
         private bool topIsFocused;
         private bool firstTimeFocused;
         private float startRotation;
         private float endRotation;
         private float startTime;
-        private float scanTime;
+        private float scanTime = 1f;
+        private float currScanTime;
         private float lastSeenBuffer = 2.5f;
 
         RaycastHit lHit;
@@ -55,12 +56,10 @@ namespace Enemy
             enemyShootingScript = GetComponent<EnemyShooting>();
             width = 6.5f;
             height = 5;
-            topTransform = transform.FindChild("Top");
             keepShooting = false;
             topIsFocused = false;
             firstTimeFocused = true;
             lastTimeSeenPlayer = Time.time - lastSeenBuffer;
-            print("---------------------" + moveTarget.transform.position);
         }
         
         void Update()
@@ -70,7 +69,10 @@ namespace Enemy
             if (didHitL && didHitR && lHit.transform.name == GlobalVariables.PlayerName && rHit.transform.name == GlobalVariables.PlayerName || keepShooting)
             {
                 //If can see player stop scanning and this
-                enemyScanScript.StopScanning();
+                if (enemyScanScript)
+                {
+                    enemyScanScript.StopScanning();
+                }
                 agent.SetDestination(transform.position);
 
                 //If target moves and are reacquired in less that last buffer then aim immediately
@@ -117,8 +119,14 @@ namespace Enemy
 
                         //Keeps same speed as the scanner
                         float dist = Mathf.Abs(simpleStartRot - endRotation);
-                        scanTime = dist * enemyScanScript.GetTimePerScanDegree();
-                        float tRot = Mathf.LerpAngle(startRotation, endRotation, (Time.time - startTime)/scanTime);
+                        if (enemyScanScript)
+                        {
+                            currScanTime = dist * enemyScanScript.GetTimePerScanDegree();
+                        } else
+                        {
+                            currScanTime = scanTime;
+                        }
+                        float tRot = Mathf.LerpAngle(startRotation, endRotation, (Time.time - startTime)/currScanTime);
                         topTransform.localEulerAngles = new Vector3(topTransform.localEulerAngles.x, tRot, topTransform.localEulerAngles.z);
                         if (AngleRoughlyEqual(tRot, endRotation, 0.01f))
                         {
@@ -140,8 +148,11 @@ namespace Enemy
             //If the target is not visible
             else
             {
+                if (enemyScanScript)
+                {
+                    enemyScanScript.StartScanning();
+                }
                 agent.SetDestination(moveTarget.transform.position);
-                enemyScanScript.StartScanning();
                 enemyShootingScript.SetShoot(false, null);
                 firstTimeFocused = true;
                 topIsFocused = false;

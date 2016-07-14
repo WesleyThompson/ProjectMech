@@ -7,11 +7,11 @@ namespace Common
     {
         public static bool isPaused;
         public GameObject inGameMenu;
-        private static ManageUIClicks manageUIClicksScript;
+        private static InGameUI inGameUIScript;
 
         void Awake()
         {
-            manageUIClicksScript = GameObject.Find(GlobalVariables.World).GetComponent<ManageUIClicks>();
+            inGameUIScript = GameObject.Find(GlobalVariables.World).GetComponent<InGameUI>();
             isPaused = inGameMenu.activeSelf;
         }
 
@@ -26,7 +26,7 @@ namespace Common
             {
                 Time.timeScale = 1;
             }
-            manageUIClicksScript.inGameMenuPanel.SetActive(isPaused);
+            inGameUIScript.inGameMenuPanel.SetActive(isPaused);
         }
     }
 }

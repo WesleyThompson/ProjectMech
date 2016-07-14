@@ -35,14 +35,13 @@ namespace Enemy
         private float debugOffsetZ;
         private float offsetX;
         private float offsetZ;
-        private Transform topTransform;
+        public Transform topTransform;
 
         private const float DISTANCE_X_PROPORTION_SCALE = 2;
         private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
         void Awake()
         {
-            topTransform = transform.FindChild("Top");
             lastTimeShot = Time.time - fireRate;
         }
 

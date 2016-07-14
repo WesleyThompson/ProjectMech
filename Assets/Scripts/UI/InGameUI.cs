@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using Player;
 
 namespace Common
 {
-    public class ManageUIClicks : GameBehavior
+    public class InGameUI : MonoBehaviour
     {
-        [Header("Main Menu")]
-        public Button newGameBtn;
-        public Button continueGameBtn;
-        public Button optionsBtn;
+        [Header("Player")]
         public Button takeDamageBtn;
         public Button useEnergyBtn;
 
@@ -25,32 +23,16 @@ namespace Common
 
         public GameObject panel;
 
+
         private Health playerHealthScript;
         private Energy playerEnergyScript;
 
+        // Use this for initialization
         void Start()
         {
+
             playerHealthScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Health>();
             playerEnergyScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Energy>();
-            SetIsUIFocusedEvent();
-
-            newGameBtn.onClick.AddListener(() =>
-            {
-                //Function call to start game
-                print("TODO: Add functionality to start game.");
-            });
-
-            continueGameBtn.onClick.AddListener(() =>
-            {
-                //Function call to continue
-                print("TODO: Add functionality to continue.");
-            });
-
-            optionsBtn.onClick.AddListener(() =>
-            {
-                //Function call to options
-                print("TODO: Add functionality to options.");
-            });
 
             takeDamageBtn.onClick.AddListener(() =>
             {
@@ -97,18 +79,10 @@ namespace Common
 
         void Update()
         {
-            if(Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Cancel"))
             {
                 ManageGameState.TogglePause();
             }
-        }
-
-        
-
-        private void SetIsUIFocusedEvent()
-        {
-            //This is an example of how to call Focusable
-            //Focusable(panel);
         }
     }
 }

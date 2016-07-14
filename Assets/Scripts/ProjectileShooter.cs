@@ -15,8 +15,8 @@ public class ProjectileShooter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Screen.lockCursor = true;
-		Cursor.visible = true;
+		//Screen.lockCursor = true;
+		//Cursor.visible = true;
 		prefab = Resources.Load ("projectile") as GameObject;
 	}
 	

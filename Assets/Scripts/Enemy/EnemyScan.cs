@@ -14,12 +14,11 @@ namespace Enemy
         private Vector3 startRotation;
         private Vector3 endRotation;
         private float startTime;
-        private Transform topTransform;
+        public Transform topTransform;
         private bool shouldScan;
 
         void Awake()
         {
-            topTransform = transform.FindChild("Top");
             centerRotation = topTransform.localEulerAngles;
             topTransform.localEulerAngles = new Vector3(topTransform.localEulerAngles.x, centerRotation.y, topTransform.localEulerAngles.z);
             endRotation = startRotation = topTransform.localEulerAngles;
