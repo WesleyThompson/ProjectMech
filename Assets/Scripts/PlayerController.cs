@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed;
 
-	private float rotationSpeed = 1.5F;
+	public float rotationSpeed = 25F;
 
 	private Rigidbody rb;
 
@@ -18,38 +18,24 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector (transform.forward);
+		Vector3 localForward = transform.forward;
 		if (Input.GetKey (KeyCode.W))
 		{
-			// no acceleration, moves regardless of surfaces (can go through walls)
-			//transform.Translate (localForward * speed);
-
-			//moves with regards to surfaces (can't go through walls)
-			//rb.AddForce(localForward * speed);
-
-			// moves with regards to surfaces with respect to local, rather than global axis
-			rb.AddRelativeForce (localForward * speed);
+			rb.AddForce (localForward * speed);
 		}
 		if (Input.GetKey (KeyCode.A))
 		{
-			transform.Rotate (new Vector3(0, -1, 0 * Time.deltaTime * rotationSpeed));
-
+			transform.Rotate (0, -1  * Time.deltaTime * rotationSpeed, 0);
+			tankTurret.transform.Rotate (0, 0, 1 * Time.deltaTime * rotationSpeed);
 		} 
 		if (Input.GetKey (KeyCode.D)) 
 		{
-			transform.Rotate (new Vector3(0, 1, 0 * Time.deltaTime * rotationSpeed));
+			transform.Rotate (0, 1 * Time.deltaTime * rotationSpeed, 0);
+			tankTurret.transform.Rotate (0, 0, -1 * Time.deltaTime * rotationSpeed);
 		}
 		if (Input.GetKey (KeyCode.S))
 		{
-			rb.AddRelativeForce (localForward * -speed);
-		}
-	}
-	void OnTriggerEnter(Collider other)
-	{
-		//Destroy (other.gameObject);
-		if (other.gameObject.CompareTag ("Pick Up")) 
-		{
-			other.gameObject.SetActive (false);
+			rb.AddForce (localForward * -speed);
 		}
 	}
 }

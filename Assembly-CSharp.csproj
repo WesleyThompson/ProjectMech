@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2EE4CAB4-A28B-07D9-6EE5-0216439E048A}</ProjectGuid>
+    <ProjectGuid>{589EFD08-11AB-8977-7F68-77FC5F6E4AF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,7 +63,6 @@
      <Compile Include="Assets\Scripts\GlobalVariables.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\ManageGameState.cs" />
-     <Compile Include="Assets\Scripts\ManageUIClicks.cs" />
      <Compile Include="Assets\Scripts\ObjectPooling.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
@@ -73,6 +72,8 @@
      <Compile Include="Assets\Scripts\RotateTurretWithMouse.cs" />
      <Compile Include="Assets\Scripts\SearchObjectPool.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\UI\InGameUI.cs" />
+     <Compile Include="Assets\Scripts\UI\ManageUIClicks.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\drop.cs" />
      <Compile Include="Assets\Scripts\moveTo.cs" />
@@ -107,21 +108,21 @@
  <HintPath>G:/Games/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderCore-Unity5">
- <HintPath>H:/Homer/Documents/UnityProjects/Master_ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>H:/Homer/Documents/UnityProjects/Master_ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="KDTree">
- <HintPath>H:/Homer/Documents/UnityProjects/Master_ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
  </Reference>
  <Reference Include="Triangle">
- <HintPath>H:/Homer/Documents/UnityProjects/Master_ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{AC4D324A-28B5-311C-C1FF-A7F3B596347E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{50F8AF3C-2B07-B166-FB7B-7708B308FE0A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
