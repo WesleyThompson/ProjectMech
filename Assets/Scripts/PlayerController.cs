@@ -30,16 +30,16 @@ public class PlayerController : MonoBehaviour {
 			// moves with regards to surfaces with respect to local, rather than global axis
 			rb.AddRelativeForce (localForward * speed);
 		}
-		else if (Input.GetKey (KeyCode.A))
+		if (Input.GetKey (KeyCode.A))
 		{
 			transform.Rotate (new Vector3(0, -1, 0 * Time.deltaTime * rotationSpeed));
 
 		} 
-		else if (Input.GetKey (KeyCode.D)) 
+		if (Input.GetKey (KeyCode.D)) 
 		{
 			transform.Rotate (new Vector3(0, 1, 0 * Time.deltaTime * rotationSpeed));
 		}
-		else if (Input.GetKey (KeyCode.S))
+		if (Input.GetKey (KeyCode.S))
 		{
 			rb.AddRelativeForce (localForward * -speed);
 		}

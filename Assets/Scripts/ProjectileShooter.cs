@@ -6,8 +6,9 @@ public class ProjectileShooter : MonoBehaviour {
 	public GameObject tankGunB;
 
 	GameObject prefab;
-	private float projectileSpeed = 10F;
+	public float projectileSpeed;
 	private float rayDebugTime = 5F;
+	private float maxRayDistance = 1000000F;
 
 	public float timeBetweenShots = 1.0F;
 	private bool fromGunA = true;
@@ -17,7 +18,7 @@ public class ProjectileShooter : MonoBehaviour {
 	void Start () {
 		Screen.lockCursor = true;
 		Cursor.visible = true;
-		prefab = Resources.Load ("projectile") as GameObject;
+		prefab = Resources.Load ("projectileWithSmoke") as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -28,19 +29,22 @@ public class ProjectileShooter : MonoBehaviour {
 				ray.origin = transform.position;
 				ray.direction = transform.forward;
 				RaycastHit hit;
-				if (Physics.Raycast (ray, out hit, 10000F)) {
-					Debug.DrawRay (ray.origin, ray.direction * 40, Color.green, rayDebugTime);
 
-					GameObject projectile;
-					if (fromGunA) {
-						projectile = Instantiate (prefab, tankGunA.transform.position, Quaternion.identity) as GameObject;
-					} else {
-						projectile = Instantiate (prefab, tankGunB.transform.position, Quaternion.identity) as GameObject;
-					}
+
+				if (Physics.Raycast (ray, out hit, maxRayDistance)) {
+					Debug.DrawRay (ray.origin, ray.direction * maxRayDistance, Color.green, rayDebugTime);
+
+
+					GameObject gun = (fromGunA ? tankGunA : tankGunB);
+
+					GameObject projectile = Instantiate (prefab) as GameObject;
+					projectile.transform.position = gun.transform.position + gun.transform.forward;
+					projectile.transform.LookAt (hit.point);
+
 					Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+					rb.velocity = projectile.transform.forward * projectileSpeed;
+					Debug.DrawRay (gun.transform.position, gun.transform.forward * maxRayDistance, Color.red, rayDebugTime);
 
-
-					rb.velocity = projectile.transform.TransformDirection (hit.point * projectileSpeed);
 					print ("hit");
 				} else
 					print ("nothing");
