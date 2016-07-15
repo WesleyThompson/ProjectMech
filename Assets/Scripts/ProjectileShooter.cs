@@ -16,10 +16,10 @@ public class ProjectileShooter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Screen.lockCursor = true;
-		Cursor.visible = true;
-		prefab = Resources.Load ("projectileWithSmoke") as GameObject;
-	}
+        //Screen.lockCursor = true;
+        //Cursor.visible = true;
+        prefab = Resources.Load("projectileWithSmoke") as GameObject;
+    }
 	
 	// Update is called once per frame
 	void Update () {
