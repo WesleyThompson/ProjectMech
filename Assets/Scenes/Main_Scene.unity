@@ -1387,7 +1387,7 @@ CharacterController:
   m_GameObject: {fileID: 705927308}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -1417,7 +1417,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.68
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1442,6 +1442,10 @@ Prefab:
     - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
