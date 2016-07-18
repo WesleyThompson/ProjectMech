@@ -14,7 +14,6 @@ public class RotateTankGuns : MonoBehaviour {
 		// move turret with tank body
 		//transform.position = player.transform.position + offset;
 		//rotate turret
-		print(Input.GetAxis("Mouse Y"));
 		/*
 		float rot = transform.rotation;
 		Quaternion eulerRot = new Quaternion.Euler (rot.x, rot.y, rot.z);
@@ -22,7 +21,6 @@ public class RotateTankGuns : MonoBehaviour {
 		*/
 		float rotDegrees = Input.GetAxis ("Mouse Y");
 
-		print (currAngle);
 		if ((currAngle >= maxAngle && rotDegrees > 0) || (currAngle <= minAngle && rotDegrees < 0)) {
 			rotDegrees = 0;
 		} else {

@@ -14,21 +14,9 @@ namespace Player
 
         private PlayerUI playerUIScript;
 
-        void Awake()
-        {
-            if (GameObject.Find(GlobalVariables.PlayerUI))
-            {
-                playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
-            } else
-            {
-                playerUIScript = null;
-                print("No Player UI");
-            }
-        }
-
         void Start()
         {
-            SetPlayerEnergy(maxPlayerEnergy);
+            playerEnergy = maxPlayerEnergy;
             lastTargetEnergy = targetEnergy = playerEnergy;
         }
 
@@ -52,10 +40,6 @@ namespace Player
         private void SetPlayerEnergy(float e)
         {
             playerEnergy = e;
-            if (playerUIScript != null)
-            {
-                playerUIScript.UpdateEnergyBarImg();
-            }
         }
 
         public float GetEnergy()

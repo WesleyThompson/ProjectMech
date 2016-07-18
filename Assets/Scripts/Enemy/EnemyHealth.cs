@@ -25,6 +25,8 @@ namespace Enemy
 
         private void Death()
         {
+            print("Death");
+            SearchObjectPool.GetObject(transform.name).ReturnObject(gameObject);
             //TODO: Kill This
         }
     }

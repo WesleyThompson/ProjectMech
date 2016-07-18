@@ -15,22 +15,9 @@ namespace Player
         private float targetHealth;
         private float startTimeHealth;
 
-        void Awake()
-        {
-            if (GameObject.Find(GlobalVariables.PlayerUI))
-            {
-                playerUIScript = GameObject.Find(GlobalVariables.PlayerUI).GetComponent<PlayerUI>();
-            }
-            else
-            {
-                playerUIScript = null;
-                print("No Player UI");
-            }
-        }
-
         void Start()
         {
-            SetHealth(60);
+            health = 60;
             lastTargetHealth = targetHealth = health;
         }
         
@@ -51,10 +38,6 @@ namespace Player
         private void SetHealth(float h)
         {
             health = h;
-            if (playerUIScript != null)
-            {
-                playerUIScript.UpdateHealthBarImg();
-            }
         }
 
         private void Dead()

@@ -48,12 +48,12 @@ namespace Common
 
             xMarkBtn.onClick.AddListener(() =>
             {
-                ManageGameState.TogglePause();
+                ManageGameState.SetInGamePanel(false);
             });
 
             resumePlayerBtn.onClick.AddListener(() =>
             {
-                ManageGameState.TogglePause();
+                ManageGameState.SetInGamePanel(false);
             });
 
             restartPlayerBtn.onClick.AddListener(() =>
@@ -73,7 +73,7 @@ namespace Common
 
             exitPlayerBtn.onClick.AddListener(() =>
             {
-                ManageGameState.TogglePause();
+                ManageGameState.SetInGamePanel(false);
             });
         }
 
@@ -81,7 +81,7 @@ namespace Common
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                ManageGameState.TogglePause();
+                ManageGameState.SetInGamePanel(!ManageGameState.isPaused);
             }
         }
     }

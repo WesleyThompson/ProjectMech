@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Enemy;
 
 public class ProjectileShooter : MonoBehaviour {
 	public GameObject tankGunA;
@@ -33,7 +34,10 @@ public class ProjectileShooter : MonoBehaviour {
 
 				if (Physics.Raycast (ray, out hit, maxRayDistance)) {
 					Debug.DrawRay (ray.origin, ray.direction * maxRayDistance, Color.green, rayDebugTime);
-
+                    if(hit.transform.tag == GlobalVariables.EnemyTag)
+                    {
+                        hit.transform.GetComponent<EnemyHealth>().TakeDamage(10);
+                    }
 
 					GameObject gun = (fromGunA ? tankGunA : tankGunB);
 

@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &110052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 434572}
-  m_Layer: 0
-  m_Name: NavMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &112302
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,9 +45,11 @@ GameObject:
   - 195: {fileID: 19575654}
   - 114: {fileID: 11466470}
   - 114: {fileID: 11452536}
+  - 114: {fileID: 11408414}
+  - 65: {fileID: 6511758}
   m_Layer: 0
   m_Name: Enemy_Shooter_Wes
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,23 +83,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 434572}
   - {fileID: 492300}
   - {fileID: 455232}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &434572
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8164192, y: 3.81, z: 0.5229997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 424386}
   m_RootOrder: 0
 --- !u!4 &455232
 Transform:
@@ -127,7 +100,7 @@ Transform:
   m_Children:
   - {fileID: 498252}
   m_Father: {fileID: 424386}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &492300
 Transform:
   m_ObjectHideFlags: 1
@@ -140,7 +113,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -90, y: 135, z: 0}
   m_Children: []
   m_Father: {fileID: 424386}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &498252
 Transform:
   m_ObjectHideFlags: 1
@@ -220,6 +193,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112302}
   m_Mesh: {fileID: 4300000, guid: 4ef9b44234c2bc441ae343f3e1b8029d, type: 3}
+--- !u!65 &6511758
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11, y: 10, z: 11}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!95 &9509316
 Animator:
   serializedVersion: 3
@@ -254,6 +239,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11408414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0c2e008a3198d408dbde25deb71aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
 --- !u!114 &11452536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +266,7 @@ MonoBehaviour:
   fireRate: 1
   damage: 1
   possibleBulletLocationRadius: 1
+  topTransform: {fileID: 455232}
 --- !u!114 &11466470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanRange: 45
   scanTime: 1
+  topTransform: {fileID: 455232}
 --- !u!114 &11466582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTarget: {fileID: 0}
+  topTransform: {fileID: 455232}
 --- !u!195 &19575654
 NavMeshAgent:
   m_ObjectHideFlags: 1

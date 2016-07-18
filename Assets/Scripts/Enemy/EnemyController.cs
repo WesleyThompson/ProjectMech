@@ -49,9 +49,14 @@ namespace Enemy
         Vector3 enemyTopToPlayer;
         float lastTimeSeenPlayer;
 
+        void Awake()
+        {
+        }
+
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();//transform.FindChild("NavMesh").
+            moveTarget = GameObject.FindWithTag(GlobalVariables.PlayerTag);
             enemyScanScript = GetComponent<EnemyScan>();
             enemyShootingScript = GetComponent<EnemyShooting>();
             width = 6.5f;

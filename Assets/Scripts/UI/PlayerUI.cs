@@ -33,6 +33,8 @@ namespace Player
             weaponScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Weapon>();
             healthUI = playerHealthScript.GetHealth();
             energyUI = playerEnergyScript.GetEnergy();
+            UpdateHealthBarImg();
+            UpdateEnergyBarImg();
         }
 
         void Update()

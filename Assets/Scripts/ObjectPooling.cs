@@ -11,26 +11,28 @@ namespace Common
         public string objectName;
 
         [Range(1, 10000000)]
-        public int numberOfPooledObjects;
+        public int numberOfPooledObjects = 10;
 
         [Range(1, 10000000)]
-        public int regenerateMoreObjs;
+        public int regenerateMoreObjs = 5;
 
         public Vector3 spawnLocation = new Vector3(0, -100, 0);
         private Stack<GameObject> collectionOfObjs;
         private GameObject poolGroup;
 
-        void Start()
+        void Awake()
         {
             collectionOfObjs = new Stack<GameObject>();
             poolGroup = new GameObject();
             poolGroup.name = objectName + " Pool";
+            poolGroup.transform.parent = transform;
             GenerateCollection(numberOfPooledObjects);
         }
 
         public void ReturnObject(GameObject returnObj)
         {
             returnObj.transform.position = spawnLocation;
+            returnObj.SetActive(false);
             collectionOfObjs.Push(returnObj);
         }
 
@@ -64,7 +66,6 @@ namespace Common
         private void GenerateCollection(int length)
         {
             GameObject objectRef;
-            print(length);
             for (int i = 0; i < length; i++)
             {
                 objectRef = Instantiate(poolObject, Vector3.zero, Quaternion.identity) as GameObject;
