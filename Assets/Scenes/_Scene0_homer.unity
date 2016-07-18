@@ -160,6 +160,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 11433032, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 471418, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 471418, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493388, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
+      propertyPath: crosshairImage
+      value: 
+      objectReference: {fileID: 2800000, guid: 5dd80123ef1654684bc856ec038f5d53, type: 3}
+>>>>>>> UI
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850d50b0d511446fb9b7ba067d965287, type: 2}
   m_IsPrefabParent: 0
