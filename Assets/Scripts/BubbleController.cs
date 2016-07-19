@@ -25,6 +25,7 @@ public class BubbleController : MonoBehaviour {
 	}
 
 	void Update () {
+		
 		if (Input.GetKeyUp (KeyCode.Alpha1)) {
 			ActivateBubble (0);
 		} else if (Input.GetKeyUp (KeyCode.Alpha2)) {
@@ -32,15 +33,9 @@ public class BubbleController : MonoBehaviour {
 		} else if (Input.GetKeyUp (KeyCode.Alpha3)) {
 			ActivateBubble (2);
 		}
-
-		if (activated) {
-			ExpandBubble ();
-		} else {
-			ShrinkBubble ();
-		}
 	}
 
-	void ActivateBubble(int type){
+	public void ActivateBubble(int type) {
 		activated = true;
 		bubbleType = type;
 		//Reset bubble to 0
@@ -60,16 +55,15 @@ public class BubbleController : MonoBehaviour {
 		}
 	}
 
-	void ExpandBubble(){
-		Debug.Log ("Expand");
-		float newScale = Mathf.Lerp (startScale, endScale, Time.deltaTime / scaleSpeed);
-		transform.localScale = new Vector3 (newScale, newScale, newScale);
+	public void DeactivateBubble() {
+		activated = false;
 	}
 
-	void ShrinkBubble(){
-		Debug.Log ("Shrink");
-		//Same as expand but in reverse
-		float newScale = Mathf.Lerp (endScale, startScale, Time.deltaTime / scaleSpeed);
-		transform.localScale = new Vector3 (newScale, newScale, newScale);
+	void BubbleChooser(int type) {
+		if (activated) {
+			
+		} else {
+			ActivateBubble(type)
+		}
 	}
 }
