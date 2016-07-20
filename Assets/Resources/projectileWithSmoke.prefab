@@ -26,10 +26,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 430148}
   - 33: {fileID: 3390786}
-  - 135: {fileID: 13502824}
   - 23: {fileID: 2344386}
-  - 54: {fileID: 5407182}
   - 114: {fileID: 11418626}
+  - 54: {fileID: 5466578}
+  - 135: {fileID: 13504152}
   m_Layer: 0
   m_Name: projectileWithSmoke
   m_TagString: Untagged
@@ -97,7 +97,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195542}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5407182
+--- !u!54 &5466578
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -111,7 +111,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &11418626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 142832, guid: f1a9bf6ca3a3ae0408ad45d6e26c4985, type: 2}
---- !u!135 &13502824
+  smokePrefab: {fileID: 179454}
+--- !u!135 &13504152
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -225,7 +226,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 75
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -234,14 +235,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -354,7 +350,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 10
+      scalar: 7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -522,7 +518,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 700
+      scalar: 1500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -746,8 +742,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 7325
+        atime2: 7903
         atime3: 0
         atime4: 0
         atime5: 0
@@ -948,7 +944,7 @@ ParticleSystem:
     inWorldSpace: 0
   InheritVelocityModule:
     enabled: 0
-    m_Mode: 0
+    m_Mode: 1
     m_Curve:
       scalar: 1
       maxCurve:
@@ -966,7 +962,7 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -983,7 +979,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      minMaxState: 0
+      minMaxState: 1
   ForceModule:
     enabled: 0
     x:
@@ -1204,7 +1200,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     magnitude:
-      scalar: 26.6
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -3,22 +3,24 @@ using System.Collections;
 
 public class Explode : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public GameObject explosionPrefab;
+	public GameObject smokePrefab;
+	private ParticleSystem smoke;
+	private Vector3 origin = new Vector3(0, 0, 0);
 
+	void Start()
+	{
+		smoke = smokePrefab.GetComponent<ParticleSystem> ();
+	}
+
+	// need to change this to use Alex's pooling stuff
 	void OnCollisionEnter(Collision col)
 	{
-		var explosion = Instantiate (explosionPrefab, transform.position, Quaternion.identity);
-		Destroy (this);
-		Destroy (explosion, 2);
+		print ("collision");
+
+		Destroy (Instantiate (explosionPrefab, transform.position, Quaternion.identity), 2);
+		smoke.Stop ();
+
+		Destroy (gameObject, 2);
 	}
 }
