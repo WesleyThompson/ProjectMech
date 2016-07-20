@@ -12,6 +12,7 @@ public class Spawning : MonoBehaviour {
             temp = SearchObjectPool.GetObject("Turret_Shooter").GetNextObject();
             temp.transform.position = child.transform.position;
             temp.transform.rotation = child.transform.rotation;
+            temp.GetComponent<NavMeshAgent>().enabled = true;
         }
 	}
 	

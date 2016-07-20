@@ -39,7 +39,7 @@ namespace Common
         public GameObject GetNextObject()
         {
             GameObject nextObj;
-            if (collectionOfObjs.Peek() != null)
+            if (collectionOfObjs.Count != 0)
             {
                 nextObj = collectionOfObjs.Pop();
                 nextObj.SetActive(true);
@@ -50,7 +50,7 @@ namespace Common
                 GenerateCollection(regenerateMoreObjs);
             }
 
-            if (collectionOfObjs.Peek() != null)
+            if (collectionOfObjs.Count != 0)
             {
                 nextObj = collectionOfObjs.Pop();
                 nextObj.SetActive(true);

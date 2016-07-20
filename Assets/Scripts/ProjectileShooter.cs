@@ -48,10 +48,7 @@ public class ProjectileShooter : MonoBehaviour {
 					Rigidbody rb = projectile.GetComponent<Rigidbody> ();
 					rb.velocity = projectile.transform.forward * projectileSpeed;
 					Debug.DrawRay (gun.transform.position, gun.transform.forward * maxRayDistance, Color.red, rayDebugTime);
-
-					print ("hit");
 				} else
-					print ("nothing");
 				/*
 			projectile.transform.position = transform.position + localForward;
 			Rigidbody rb = projectile.GetComponent<Rigidbody> ();

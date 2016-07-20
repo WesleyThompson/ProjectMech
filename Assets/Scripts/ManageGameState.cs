@@ -23,7 +23,6 @@ namespace Common
             if (isPaused)
             {
                 Time.timeScale = 0;
-                print(player.transform.FindChild("tankTurret").FindChild("GunJoint").GetComponent<RotateTankGuns>());
                 player.transform.FindChild("tankTurret").FindChild("GunJoint").GetComponent<RotateTankGuns>().enabled = false;
             }
             else

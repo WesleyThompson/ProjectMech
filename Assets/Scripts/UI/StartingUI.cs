@@ -4,14 +4,19 @@ using Common;
 
 public class StartingUI : MonoBehaviour {
     public GameObject player;
-    public GameObject playerUI;
+    public GameObject countdownUI;
 	// Use this for initialization
-	void Start ()
+
+    void Awake()
     {
         GameObject p = Instantiate(player, new Vector3(0, 3.3f, 0), Quaternion.identity) as GameObject;
         p.transform.eulerAngles = new Vector3(0, 90, 0);
         p.name = GlobalVariables.PlayerName;
-	}
+    }
+
+	void Start ()
+    {
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -19,8 +24,8 @@ public class StartingUI : MonoBehaviour {
 	    if(Input.anyKeyDown)
         {
             //Start Countdown
-            playerUI.gameObject.SetActive(true);
-            ManageGameState.SetPause(false);
+            countdownUI.SetActive(true);
+            countdownUI.GetComponent<CountDown>().StartCountDown();
             gameObject.SetActive(false);
         }
 	}

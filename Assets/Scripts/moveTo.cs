@@ -3,7 +3,6 @@ using System.Collections;
 public class moveTo : MonoBehaviour
 {
 	public int health;
-	public Vector3 pointB;
 	public float rSpeed;
 	public GameObject waypoint;
 	public int atDropzone = 0;
@@ -53,7 +52,7 @@ public class moveTo : MonoBehaviour
 					}
 				}
 			}
-			health--;
+			//health--;
 		}
 		else 
 		{
