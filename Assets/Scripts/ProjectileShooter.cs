@@ -4,6 +4,7 @@ using System.Collections;
 public class ProjectileShooter : MonoBehaviour {
 	public GameObject tankGunA;
 	public GameObject tankGunB;
+	private GameObject gun;
 
 	GameObject prefab;
 	public float projectileSpeed;
@@ -14,6 +15,7 @@ public class ProjectileShooter : MonoBehaviour {
 	private bool fromGunA = true;
 	private bool canShoot = true;
 
+	public GameObject muzzleFlashPrefab;
 	public Renderer muzzleFlash;
 	public Light muzzleLight;
 
@@ -39,7 +41,7 @@ public class ProjectileShooter : MonoBehaviour {
 					Debug.DrawRay (ray.origin, ray.direction * maxRayDistance, Color.green, rayDebugTime);
 
 
-					GameObject gun = (fromGunA ? tankGunA : tankGunB);
+					gun = (fromGunA ? tankGunA : tankGunB);
 
 					GameObject projectile = Instantiate (prefab) as GameObject;
 					projectile.transform.position = gun.transform.position + gun.transform.forward;
@@ -65,6 +67,7 @@ public class ProjectileShooter : MonoBehaviour {
 		canShoot = true;
 	}
 	IEnumerator MuzzleFlash() {
+		muzzleFlashPrefab.transform.position = gun.transform.position;
 		muzzleFlash.enabled = true;
 		muzzleLight.enabled = true;
 		yield return new WaitForSeconds (0.02F);
