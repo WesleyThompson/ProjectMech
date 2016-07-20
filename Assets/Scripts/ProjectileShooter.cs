@@ -14,14 +14,18 @@ public class ProjectileShooter : MonoBehaviour {
 	private bool fromGunA = true;
 	private bool canShoot = true;
 
-	// Use this for initialization
+	public Renderer muzzleFlash;
+	public Light muzzleLight;
+
 	void Start () {
-        //Screen.lockCursor = true;
-        //Cursor.visible = true;
+        Screen.lockCursor = true;
+        Cursor.visible = true;
         prefab = Resources.Load("projectileWithSmoke") as GameObject;
+
+		muzzleFlash.enabled = false;
+		muzzleLight.enabled = false;
     }
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (canShoot) {
 			if (Input.GetMouseButton (0)) {
@@ -45,15 +49,10 @@ public class ProjectileShooter : MonoBehaviour {
 					rb.velocity = projectile.transform.forward * projectileSpeed;
 					Debug.DrawRay (gun.transform.position, gun.transform.forward * maxRayDistance, Color.red, rayDebugTime);
 
-					print ("hit");
+					print ("raycast: hit");
 				} else
-					print ("nothing");
-				/*
-			projectile.transform.position = transform.position + localForward;
-			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+					print ("raycast: nothing");
 
-			rb.velocity = transform.forward * 80;
-			*/
 				fromGunA = !fromGunA;
 				StartCoroutine (chamberShot ());
 			}
@@ -61,7 +60,15 @@ public class ProjectileShooter : MonoBehaviour {
 	}
 	IEnumerator chamberShot() {
 		canShoot = false;
+		StartCoroutine(MuzzleFlash ());
 		yield return new WaitForSeconds (timeBetweenShots);
 		canShoot = true;
+	}
+	IEnumerator MuzzleFlash() {
+		muzzleFlash.enabled = true;
+		muzzleLight.enabled = true;
+		yield return new WaitForSeconds (0.02F);
+		muzzleFlash.enabled = false;
+		muzzleFlash.enabled = false;
 	}
 }

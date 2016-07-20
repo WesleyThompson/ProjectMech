@@ -440,7 +440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22469610, guid: 8ad3ec3b066dc46419edf336eacf743b, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22469610, guid: 8ad3ec3b066dc46419edf336eacf743b, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -610,6 +610,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ae196495bdd384c66acc7dae672a1af8, type: 2}
+    - target: {fileID: 5451666, guid: adce48a3f8ab64b0b9ff2b78dae45c30, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adce48a3f8ab64b0b9ff2b78dae45c30, type: 2}
   m_IsPrefabParent: 0
@@ -808,7 +812,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424386, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11466582, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
       propertyPath: moveTarget
@@ -1255,23 +1259,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 140110, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
   m_PrefabInternal: {fileID: 717598592}
---- !u!143 &705927314
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 705927308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &709685142 stripped
 Transform:
   m_PrefabParentObject: {fileID: 419492, guid: adce48a3f8ab64b0b9ff2b78dae45c30, type: 2}
@@ -1318,18 +1305,6 @@ Prefab:
     - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 401562, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 11496744, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
-      propertyPath: rotationSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 11496744, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
-      propertyPath: speed
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
@@ -2405,7 +2380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22489688, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22489688, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -3316,7 +3291,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844124476}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 0.9520284, g: 1, b: 0.9191176, a: 1}
@@ -3355,7 +3330,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 62.484997, y: 20.0057, z: 33.9137}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
 --- !u!1001 &1850117756
 Prefab:
   m_ObjectHideFlags: 0
@@ -3603,6 +3578,18 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: baaea5be44a9d4844ae6d989d776d59c, type: 3}
+--- !u!64 &1950570313
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950570306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: baaea5be44a9d4844ae6d989d776d59c, type: 3}
 --- !u!4 &1957684890 stripped
 Transform:
@@ -3927,7 +3914,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 72156226aab814a08af19597b8db9300, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 72156226aab814a08af19597b8db9300, type: 3}
       propertyPath: m_Materials.Array.data[0]
