@@ -18,10 +18,10 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		Vector3 localForward = transform.forward;
+		Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector (transform.forward);
 		if (Input.GetKey (KeyCode.W))
 		{
-			rb.AddForce (localForward * speed);
+			transform.Translate (localForward * speed);
 		}
 		if (Input.GetKey (KeyCode.A))
 		{
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (Input.GetKey (KeyCode.S))
 		{
-			rb.AddForce (localForward * -speed);
+			transform.Translate (localForward * -speed);
 		}
 	}
 }
