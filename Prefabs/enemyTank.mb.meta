@@ -1,0 +1,93 @@
+fileFormatVersion: 2
+guid: 44fa56478cf9dbb4fa5426a11d87ce7c
+timeCreated: 1468004042
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: enemyBasicTank
+    100002: //RootNode
+    100004: tankCannon:Cannon
+    100006: tankCannon:place3dTexture7
+    100008: tankCannon:place3dTexture8
+    100010: tankCannon:Turret
+    400000: enemyBasicTank
+    400002: //RootNode
+    400004: tankCannon:Cannon
+    400006: tankCannon:place3dTexture7
+    400008: tankCannon:place3dTexture8
+    400010: tankCannon:Turret
+    2300000: enemyBasicTank
+    2300002: tankCannon:Cannon
+    2300004: tankCannon:Turret
+    3300000: enemyBasicTank
+    3300002: tankCannon:Cannon
+    3300004: tankCannon:Turret
+    4300000: enemyBasicTank
+    4300002: tankCannon:Turret
+    4300004: tankCannon:Cannon
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
