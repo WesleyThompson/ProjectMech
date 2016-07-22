@@ -50,9 +50,9 @@
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
      <Compile Include="Assets\Scripts\BubbleController.cs" />
+     <Compile Include="Assets\Scripts\DebrisController.cs" />
      <Compile Include="Assets\Scripts\DefaultWeapon.cs" />
      <Compile Include="Assets\Scripts\DestructableObject.cs" />
-     <Compile Include="Assets\Scripts\DisappearingObject.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyScan.cs" />
