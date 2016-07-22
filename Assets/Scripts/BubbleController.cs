@@ -63,7 +63,7 @@ public class BubbleController : MonoBehaviour {
 		if (activated) {
 			
 		} else {
-			ActivateBubble(type)
+			ActivateBubble (type);
 		}
 	}
 }
