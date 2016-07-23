@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Destructor
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - LightingAndCamera
-  - 
-  - 
+  - Buildings
+  - Debris
   - 
   - 
   - 

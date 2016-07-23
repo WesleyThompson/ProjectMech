@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2344690}
   - 95: {fileID: 9544746}
   - 64: {fileID: 6424666}
+  - 114: {fileID: 11461202}
   m_Layer: 0
   m_Name: generic_building (1)
   m_TagString: Untagged
@@ -46,6 +47,7 @@ GameObject:
   - 23: {fileID: 2317396}
   - 95: {fileID: 9524030}
   - 64: {fileID: 6472288}
+  - 114: {fileID: 11487110}
   m_Layer: 0
   m_Name: generic_building (3)
   m_TagString: Untagged
@@ -65,6 +67,7 @@ GameObject:
   - 23: {fileID: 2397676}
   - 95: {fileID: 9553678}
   - 64: {fileID: 6480078}
+  - 114: {fileID: 11465746}
   m_Layer: 0
   m_Name: generic_building (2)
   m_TagString: Untagged
@@ -313,6 +316,57 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11461202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5685841792a4bc4bec9f67f4588e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructorTag: Bullet
+  debris: {fileID: 114814, guid: b18e7390be5784747993ac8905fc25e4, type: 2}
+  destroyedMaterial: {fileID: 2100000, guid: 2e7310c1e91ec4576933b0d8bd5aaef2, type: 2}
+  explosionForce: 1
+  explosionRadius: 30
+  upwardsModifier: 10
+--- !u!114 &11465746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5685841792a4bc4bec9f67f4588e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructorTag: Bullet
+  debris: {fileID: 114814, guid: b18e7390be5784747993ac8905fc25e4, type: 2}
+  destroyedMaterial: {fileID: 2100000, guid: 2e7310c1e91ec4576933b0d8bd5aaef2, type: 2}
+  explosionForce: 1
+  explosionRadius: 30
+  upwardsModifier: 10
+--- !u!114 &11487110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5685841792a4bc4bec9f67f4588e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructorTag: Bullet
+  debris: {fileID: 114814, guid: b18e7390be5784747993ac8905fc25e4, type: 2}
+  destroyedMaterial: {fileID: 2100000, guid: 2e7310c1e91ec4576933b0d8bd5aaef2, type: 2}
+  explosionForce: 1
+  explosionRadius: 30
+  upwardsModifier: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

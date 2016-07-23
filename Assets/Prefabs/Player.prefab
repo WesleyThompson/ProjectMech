@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c08a8ac5ed32ca49b5121d3c4b83840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 0.22
   rotationSpeed: 30
   tankTurret: {fileID: 119870}
 --- !u!114 &11499130
