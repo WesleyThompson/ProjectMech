@@ -68,10 +68,11 @@ public class ProjectileShooter : MonoBehaviour {
 	}
 	IEnumerator MuzzleFlash() {
 		muzzleFlashPrefab.transform.position = gun.transform.position;
+		muzzleFlashPrefab.transform.Rotate (new Vector3(0, 0, 10));
 		muzzleFlash.enabled = true;
 		muzzleLight.enabled = true;
-		yield return new WaitForSeconds (0.02F);
+		yield return new WaitForSeconds (.02F);
 		muzzleFlash.enabled = false;
-		muzzleFlash.enabled = false;
+		muzzleLight.enabled = false;
 	}
 }
