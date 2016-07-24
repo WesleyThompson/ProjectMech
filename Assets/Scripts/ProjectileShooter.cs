@@ -18,6 +18,9 @@ public class ProjectileShooter : MonoBehaviour {
 	public GameObject muzzleFlashPrefab;
 	public Renderer muzzleFlash;
 	public Light muzzleLight;
+	private float muzzleFlashTime = 0.02F;
+
+	private AudioSource shotSound;
 
 	void Start () {
         Screen.lockCursor = true;
@@ -26,6 +29,8 @@ public class ProjectileShooter : MonoBehaviour {
 
 		muzzleFlash.enabled = false;
 		muzzleLight.enabled = false;
+
+		shotSound = GetComponent<AudioSource> ();
     }
 
 	void Update () {
@@ -51,18 +56,16 @@ public class ProjectileShooter : MonoBehaviour {
 					rb.velocity = projectile.transform.forward * projectileSpeed;
 					Debug.DrawRay (gun.transform.position, gun.transform.forward * maxRayDistance, Color.red, rayDebugTime);
 
-					print ("raycast: hit");
-				} else
-					print ("raycast: nothing");
-
-				fromGunA = !fromGunA;
-				StartCoroutine (chamberShot ());
+					fromGunA = !fromGunA;
+					StartCoroutine (chamberShot ());
+				}
 			}
 		}
 	}
 	IEnumerator chamberShot() {
 		canShoot = false;
-		StartCoroutine(MuzzleFlash ());
+		StartCoroutine (MuzzleFlash ());
+		ShotSound ();
 		yield return new WaitForSeconds (timeBetweenShots);
 		canShoot = true;
 	}
@@ -71,8 +74,11 @@ public class ProjectileShooter : MonoBehaviour {
 		muzzleFlashPrefab.transform.Rotate (new Vector3(0, 0, 10));
 		muzzleFlash.enabled = true;
 		muzzleLight.enabled = true;
-		yield return new WaitForSeconds (.02F);
+		yield return new WaitForSeconds (muzzleFlashTime);
 		muzzleFlash.enabled = false;
 		muzzleLight.enabled = false;
+	}
+	void ShotSound() {
+		shotSound.Play ();
 	}
 }
