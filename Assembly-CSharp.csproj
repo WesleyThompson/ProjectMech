@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyHealth.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
      <Compile Include="Assets\Scripts\Energy.cs" />
      <Compile Include="Assets\Scripts\Explode.cs" />
+     <Compile Include="Assets\Scripts\ExplosionDamage.cs" />
      <Compile Include="Assets\Scripts\FrontLeftEngine.cs" />
      <Compile Include="Assets\Scripts\GameBehavior.cs" />
      <Compile Include="Assets\Scripts\GlobalVariables.cs" />

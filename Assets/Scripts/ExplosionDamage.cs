@@ -4,6 +4,8 @@ using System.Collections;
 public class ExplosionDamage : MonoBehaviour {
 
 	public float radius;
+	public float maxDamage;
+
 	private bool didOnce = false;
 	private ArrayList parents = new ArrayList();
 	void FixedUpdate () {
@@ -13,7 +15,15 @@ public class ExplosionDamage : MonoBehaviour {
 				GameObject parent = col.transform.root.gameObject;
 				if (!parents.Contains (parent)) {
 					parents.Add (parent);
-					print (parent.name + " was hit at a distance of: " + Vector3.Distance (transform.position, col.transform.position) + " from the explosion.");
+					EnemyHealth script = parent.GetComponent<EnemyHealth> ();
+
+					float distanceFromExplosionOrigin = Vector3.Distance (transform.position, col.transform.position);
+					print (parent.name + " was hit at a distance of: " + distanceFromExplosionOrigin + " from the explosion.");
+
+					if (distanceFromExplosionOrigin >= maxDamage)
+						distanceFromExplosionOrigin = maxDamage - 5;
+
+					script.takeDamage (maxDamage - distanceFromExplosionOrigin);
 				}
 			}
 			didOnce = true;
