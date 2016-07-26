@@ -7,14 +7,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float rotationSpeed = 25F;
 
-	private Rigidbody rb;
-
 	public GameObject tankTurret;
-
-	void Update()
-	{
-		rb = GetComponent<Rigidbody>();
-	}
 
 	void FixedUpdate()
 	{

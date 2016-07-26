@@ -9,10 +9,12 @@ public class Explode : MonoBehaviour {
 	private Vector3 origin = new Vector3(0, 0, 0);
 	//private AudioSource explosionSound;
 
+	private Rigidbody rb;
 	void Start()
 	{
 		smoke = smokePrefab.GetComponent<ParticleSystem> ();
 		//explosionSound = GetComponent<AudioSource> ();
+		rb = GetComponent<Rigidbody>();
 	}
 
 	// need to change this to use Alex's pooling stuff
@@ -22,6 +24,7 @@ public class Explode : MonoBehaviour {
 		//explosionSound.Play ();
 		smoke.Stop ();
 
-		Destroy (gameObject, 2);
+		rb.isKinematic = true;
+		transform.position = origin;
 	}
 }
