@@ -23,7 +23,7 @@ public class ExplosionDamage : MonoBehaviour {
 					if (distanceFromExplosionOrigin >= maxDamage)
 						distanceFromExplosionOrigin = maxDamage - 5;
 
-					script.takeDamage (maxDamage - distanceFromExplosionOrigin);
+					script.TakeDamage (maxDamage - distanceFromExplosionOrigin);
 				}
 			}
 			didOnce = true;
