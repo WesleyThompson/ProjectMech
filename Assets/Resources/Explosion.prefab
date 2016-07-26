@@ -11,6 +11,7 @@ GameObject:
   - 198: {fileID: 19814608}
   - 199: {fileID: 19906558}
   - 82: {fileID: 8249806}
+  - 114: {fileID: 11484766}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -50,7 +51,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10000
+  MaxDistance: 9001
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -60,18 +61,33 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 1.0055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+    - time: 0.050896384
+      value: 0.31416354
+      inSlope: -1.4489889
+      outSlope: -1.4489889
+      tangentMode: 0
+    - time: 0.1331861
+      value: 0.06617136
+      inSlope: -0.82379884
+      outSlope: -0.82379884
+      tangentMode: 0
+    - time: 0.6128507
+      value: 0.019353494
+      inSlope: -0.05632639
+      outSlope: -0.05632639
+      tangentMode: 0
     - time: 1
-      value: 0
+      value: 0.0055555557
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -105,6 +121,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11484766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3416baa2c482343a59fdea6ea19e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
 --- !u!198 &19814608
 ParticleSystem:
   m_ObjectHideFlags: 1
