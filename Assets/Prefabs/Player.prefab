@@ -116,6 +116,7 @@ GameObject:
   - 4: {fileID: 474658}
   - 33: {fileID: 3319154}
   - 114: {fileID: 11473534}
+  - 82: {fileID: 8249970}
   m_Layer: 0
   m_Name: targetLocator
   m_TagString: Untagged
@@ -132,6 +133,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452734}
   - 114: {fileID: 11499130}
+  - 81: {fileID: 8142800}
   m_Layer: 0
   m_Name: GunJoint
   m_TagString: Untagged
@@ -166,7 +168,6 @@ GameObject:
   - 20: {fileID: 2078336}
   - 124: {fileID: 12425076}
   - 92: {fileID: 9277882}
-  - 81: {fileID: 8163682}
   m_Layer: 8
   m_Name: MechCamera
   m_TagString: MainCamera
@@ -295,9 +296,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191826}
-  m_LocalRotation: {x: 0, y: 0, z: 0.000000014901161, w: 1}
-  m_LocalPosition: {x: 0.32, y: -0.07, z: -0.05}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 0.03472819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -0.07, z: -0.05}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 472014}
@@ -556,13 +557,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.129461, y: 5.473133, z: 2.8992884}
   m_Center: {x: -0.7550425, y: -0.008927432, z: 5.4062004}
---- !u!81 &8163682
+--- !u!81 &8142800
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186694}
+  m_GameObject: {fileID: 165234}
   m_Enabled: 1
+--- !u!82 &8249970
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154972}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7be1989ab0be9e0459ee72db11ef94c7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &9277882
 Behaviour:
   m_ObjectHideFlags: 1
@@ -697,8 +772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c08a8ac5ed32ca49b5121d3c4b83840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.22
-  rotationSpeed: 30
+  speed: 0.23
+  rotationSpeed: 40
   tankTurret: {fileID: 119870}
 --- !u!114 &11499130
 MonoBehaviour:
