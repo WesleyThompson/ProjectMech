@@ -44,6 +44,12 @@ namespace Enemy
 		public float bulletSpeed;
 		public float chamberTime;
 		private bool isChambered = true;
+		private AudioSource shootingSound;
+
+		void Start()
+		{
+			shootingSound = GetComponent<AudioSource> ();
+		}
 
         void Awake()
         {
@@ -126,14 +132,6 @@ namespace Enemy
             }
         }
 
-		IEnumerator chamberShot() {
-			isChambered = false;
-			//StartCoroutine (MuzzleFlash ());
-			//ShotSound ();
-			yield return new WaitForSeconds (chamberTime);
-			isChambered = true;
-		}
-
         public void SetShoot(bool shoot, GameObject obj)
         {
             canShoot = shoot;
@@ -151,6 +149,20 @@ namespace Enemy
 			rb.velocity = projectile.transform.forward * bulletSpeed;
 			Debug.DrawRay (shotPos, shotDir * 10000F, Color.yellow, 5F);
 			print ("pew pew pew");
+			StartCoroutine (chamberShot());
+		}
+
+		IEnumerator chamberShot() {
+			isChambered = false;
+			//StartCoroutine (MuzzleFlash ());
+			shootSound();
+			yield return new WaitForSeconds (chamberTime);
+			isChambered = true;
+		}
+
+		void shootSound() {
+			shootingSound.Play ();
+			print ("sound");
 		}
     }
 }
