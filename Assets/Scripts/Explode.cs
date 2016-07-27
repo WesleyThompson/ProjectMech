@@ -6,7 +6,7 @@ public class Explode : MonoBehaviour {
 	public GameObject explosionPrefab;
 	public GameObject smokePrefab;
 	private ParticleSystem smoke;
-	private Vector3 origin = new Vector3(0, 0, 0);
+	private Vector3 underMap = new Vector3(0, -200, 0);
 	//private AudioSource explosionSound;
 
 	private Rigidbody rb;
@@ -25,6 +25,6 @@ public class Explode : MonoBehaviour {
 		smoke.Stop ();
 
 		rb.isKinematic = true;
-		transform.position = origin;
+		transform.position = underMap;
 	}
 }
