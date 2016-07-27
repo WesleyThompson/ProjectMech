@@ -40,7 +40,7 @@ namespace Enemy
         private const float DISTANCE_X_PROPORTION_SCALE = 2;
         private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
-		public GameObject bullet;
+		private ObjectPooling poolScript;
 		public float bulletSpeed;
 		public float chamberTime;
 		private bool isChambered = true;
@@ -49,6 +49,7 @@ namespace Enemy
 		void Start()
 		{
 			shootingSound = GetComponent<AudioSource> ();
+			poolScript = GameObject.Find ("BulletPooler").GetComponent<ObjectPooling> ();
 		}
 
         void Awake()
@@ -141,7 +142,7 @@ namespace Enemy
         }
 
 		public void shoot() {
-			GameObject projectile = Instantiate (bullet) as GameObject;
+			GameObject projectile = poolScript.GetNextObject ();
 			projectile.transform.position = shotPos;
 			projectile.transform.LookAt(shotDir);
 
