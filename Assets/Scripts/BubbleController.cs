@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Player;
+using Explosion;
 
 public class BubbleController : MonoBehaviour {
 
@@ -10,9 +11,13 @@ public class BubbleController : MonoBehaviour {
 
     public float speedBoost;
 
+	public GameObject explosionPrefab;
+	private ExplosionDamage expScript;
+
     private Energy playerEnergy;
     private PlayerController playControl;
     private Renderer bubbleRenderer;
+	private Collider col;
     private AudioSource audioSrc;
     private float currentSpeed;
     public bool key1Toggled;
@@ -30,6 +35,11 @@ public class BubbleController : MonoBehaviour {
         //Start bubble invisible
         ShrinkBubble();
         key1Toggled = key2Toggled = key3Toggled = false;
+
+		col = GetComponent<Collider> ();
+		col.enabled = false;
+
+		expScript = explosionPrefab.GetComponent<ExplosionDamage> ();
     }
 
     void Update() {
@@ -42,11 +52,11 @@ public class BubbleController : MonoBehaviour {
             CheckKeys();
             if (key1Toggled)
             {
-
+				col.enabled = true;
             }
             else
             {
-
+				col.enabled = false;
             }
             if (key2Toggled)
             {
@@ -58,10 +68,18 @@ public class BubbleController : MonoBehaviour {
             }
             if (key3Toggled)
             {
-
+				expScript.maxDamage = expScript.maxDamage * 2;
             }
+			else 
+			{
+				expScript.maxDamage = expScript.maxDamage / 2;
+			}
         }
     }
+
+	void OnCollisionEnter(Collision collision){
+		//Remove energy
+	}
 
     private void ExpandBubble(Material bubbleMaterial) {
         transform.localScale = new Vector3(9f, 9f, 9f);

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Bullet
+  - Fire
+  - Destructor
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - Buildings
   - Debris
   - Enemy
-  - 
-  - 
+  - Shield
+  - EnemyBullets
   - 
   - 
   - 

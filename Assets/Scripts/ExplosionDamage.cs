@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Explosion{
 public class ExplosionDamage : MonoBehaviour {
 
 	public float radius;
@@ -29,4 +30,5 @@ public class ExplosionDamage : MonoBehaviour {
 			didOnce = true;
 		}
 	}
+}
 }
