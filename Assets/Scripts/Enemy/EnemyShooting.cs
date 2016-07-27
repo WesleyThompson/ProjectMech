@@ -40,6 +40,11 @@ namespace Enemy
         private const float DISTANCE_X_PROPORTION_SCALE = 2;
         private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
+		public GameObject bullet;
+		public float bulletSpeed;
+		public float chamberTime;
+		private bool isChambered = true;
+
         void Awake()
         {
             lastTimeShot = Time.time - fireRate;
@@ -99,6 +104,9 @@ namespace Enemy
                     Debug.DrawRay(shotPos, shotDir, Color.cyan, 1);
 
                     //TODO: Call shoot function
+					if (isChambered) {
+						shoot ();
+					}
                 }
             }
         }
@@ -118,6 +126,14 @@ namespace Enemy
             }
         }
 
+		IEnumerator chamberShot() {
+			isChambered = false;
+			//StartCoroutine (MuzzleFlash ());
+			//ShotSound ();
+			yield return new WaitForSeconds (chamberTime);
+			isChambered = true;
+		}
+
         public void SetShoot(bool shoot, GameObject obj)
         {
             canShoot = shoot;
@@ -125,5 +141,16 @@ namespace Enemy
             sizeScale = (endingSize - startingSize) / (maxDistance - minDistance);
             distanceOffset = startingSize - sizeScale * minDistance;
         }
+
+		public void shoot() {
+			GameObject projectile = Instantiate (bullet) as GameObject;
+			projectile.transform.position = shotPos;
+			projectile.transform.LookAt(shotDir);
+
+			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
+			rb.velocity = projectile.transform.forward * bulletSpeed;
+			Debug.DrawRay (shotPos, shotDir * 10000F, Color.yellow, 5F);
+			print ("pew pew pew");
+		}
     }
 }

@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.3, y: 0, z: -89.3}
+  m_LocalPosition: {x: 44.6, y: 0.010979133, z: 36.593204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -341,6 +341,7 @@ MonoBehaviour:
   damage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 455232}
+  bullet: {fileID: 0}
 --- !u!114 &11466470
 MonoBehaviour:
   m_ObjectHideFlags: 1
