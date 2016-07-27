@@ -1,69 +1,121 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Player;
 
 public class BubbleController : MonoBehaviour {
-	//
-	public bool activated;
-	public int bubbleType;
-	public Material shieldMaterial;
-	public Material speedMaterial;
-	public Material damageMaterial;
 
-	//time in seconds
-	public float scaleSpeed;
-	private float startScale;
-	private float endScale;
+    public Material shieldMaterial;
+    public Material speedMaterial;
+    public Material damageMaterial;
 
-	void Start () {
-		//Start bubble at 0
-		transform.localScale = new Vector3(0f,0f,0f);
-		startScale = 0f;
-		endScale = 10f;
-		scaleSpeed = 1f;
+    public float speedBoost;
 
-		activated = false;
-	}
+    private Energy playerEnergy;
+    private PlayerController playControl;
+    private Renderer bubbleRenderer;
+    private AudioSource audioSrc;
+    private float currentSpeed;
+    public bool key1Toggled;
+    public bool key2Toggled;
+    public bool key3Toggled;
 
-	void Update () {
-		
-		if (Input.GetKeyUp (KeyCode.Alpha1)) {
-			ActivateBubble (0);
-		} else if (Input.GetKeyUp (KeyCode.Alpha2)) {
-			ActivateBubble (1);
-		} else if (Input.GetKeyUp (KeyCode.Alpha3)) {
-			ActivateBubble (2);
-		}
-	}
+    void Start() {
+        //Get our player's energy script
+        playerEnergy = GetComponentInParent<Energy>();
+        playControl = GetComponentInParent<PlayerController>();
+        currentSpeed = playControl.speed;
+        bubbleRenderer = GetComponent<Renderer>();
 
-	public void ActivateBubble(int type) {
-		activated = true;
-		bubbleType = type;
-		//Reset bubble to 0
-		transform.localScale.Set (0, 0, 0);
+        audioSrc = GetComponent<AudioSource>();
+        //Start bubble invisible
+        ShrinkBubble();
+        key1Toggled = key2Toggled = key3Toggled = false;
+    }
 
-		//Setting the material aka the color
-		switch (type) {
-		case 0:
-			GetComponent<Renderer> ().material = shieldMaterial;
-			break;
-		case 1:
-			GetComponent<Renderer> ().material = speedMaterial;
-			break;
-		case 2:
-			GetComponent<Renderer> ().material = damageMaterial;
-			break;
-		}
-	}
+    void Update() {
+        if (playerEnergy.GetEnergy() == 0f)
+        {
+            ShrinkBubble();
+        }
+        else
+        {
+            CheckKeys();
+            if (key1Toggled)
+            {
 
-	public void DeactivateBubble() {
-		activated = false;
-	}
+            }
+            else
+            {
 
-	void BubbleChooser(int type) {
-		if (activated) {
-			
-		} else {
-			ActivateBubble (type);
-		}
-	}
+            }
+            if (key2Toggled)
+            {
+                playControl.speed = speedBoost;
+            }
+            else
+            {
+                playControl.speed = currentSpeed;
+            }
+            if (key3Toggled)
+            {
+
+            }
+        }
+    }
+
+    private void ExpandBubble(Material bubbleMaterial) {
+        transform.localScale = new Vector3(9f, 9f, 9f);
+        bubbleRenderer.material = bubbleMaterial;
+        audioSrc.Play();
+    }
+
+    private void ShrinkBubble() {
+        transform.localScale = new Vector3(0f, 0f, 0f);
+        audioSrc.Stop();
+    }
+
+    private void CheckKeys() {
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            if (key1Toggled)
+            {
+                ShrinkBubble();
+                key1Toggled = false;
+            }
+            else
+            {
+                ExpandBubble(shieldMaterial);
+                key1Toggled = true;
+                key2Toggled = key3Toggled = false;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            if (key2Toggled)
+            {
+                ShrinkBubble();
+                key2Toggled = false;
+            }
+            else
+            {
+                ExpandBubble(speedMaterial);
+                key2Toggled = true;
+                key1Toggled = key3Toggled = false;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            if (key3Toggled)
+            {
+                ShrinkBubble();
+                key3Toggled = false;
+            }
+            else
+            {
+                ExpandBubble(damageMaterial);
+                key3Toggled = true;
+                key2Toggled = key1Toggled = false;
+            }
+        }
+    }
 }
