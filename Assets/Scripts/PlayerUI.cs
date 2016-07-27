@@ -10,8 +10,6 @@ namespace Player
     {
         public Image healthImg;
         public Image energyImg;
-        public Text currAmmoText;
-        public Text maxAmmoText;
 
         public float xCutOff = 70f;
         public float totalTime = 3f;
@@ -92,10 +90,5 @@ namespace Player
             energyImg.fillAmount = energyUI * MAX_FILL_AMOUNT / playerEnergyScript.GetMaxEnergy();
         }
 
-        public void UpdateAmmo()
-        {
-            currAmmoText.text = weaponScript.GetCurrAmmo().ToString();
-            maxAmmoText.text = weaponScript.GetMaxAmmo().ToString();
-        }
     }
 }

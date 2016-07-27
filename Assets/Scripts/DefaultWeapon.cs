@@ -28,10 +28,6 @@ namespace Weapons
         protected override void Init()
         {
             base.Init();
-            if (playerUIScript != null)
-            {
-                playerUIScript.UpdateAmmo();
-            }
         }
 
         void Start()
@@ -44,10 +40,6 @@ namespace Weapons
             if(Input.GetMouseButtonDown(0) && CanShoot())
             {
                 Shoot();
-                if (playerUIScript != null)
-                {
-                    playerUIScript.UpdateAmmo();
-                }
             }
         }
     }

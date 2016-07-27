@@ -166,7 +166,7 @@ MonoBehaviour:
   shieldMaterial: {fileID: 2100000, guid: 91d90880048c14b54aaaccdcb566a435, type: 2}
   speedMaterial: {fileID: 2100000, guid: 60633f4a9beb7447485d6c96fc582118, type: 2}
   damageMaterial: {fileID: 2100000, guid: 33af06619eb584f77afd5351aa9c664c, type: 2}
-  speedBoost: 0.75
+  speedBoost: 1
   key1Toggled: 0
   key2Toggled: 0
   key3Toggled: 0
