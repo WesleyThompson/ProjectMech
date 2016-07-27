@@ -292,6 +292,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11469416, guid: 8ad3ec3b066dc46419edf336eacf743b, type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ad3ec3b066dc46419edf336eacf743b, type: 2}
   m_IsPrefabParent: 0
@@ -310,7 +314,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 48094a53b29aadd4496ff09333fe51a9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.234
+  m_Volume: 0.114
   m_Pitch: 0.93
   Loop: 0
   Mute: 0
@@ -479,22 +483,6 @@ Prefab:
       propertyPath: moveTarget
       value: 
       objectReference: {fileID: 705927308}
-    - target: {fileID: 8267690, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267690, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267690, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
-      propertyPath: Priority
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267690, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
-      propertyPath: MaxDistance
-      value: 3000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d60595d9253f83e48828f59b880e02ec, type: 2}
   m_IsPrefabParent: 0
