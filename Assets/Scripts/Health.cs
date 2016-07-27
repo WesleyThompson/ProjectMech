@@ -15,6 +15,8 @@ namespace Player
         private float targetHealth;
         private float startTimeHealth;
 
+		private AudioSource bulletHitSound;
+
         void Awake()
         {
             if (GameObject.Find(GlobalVariables.PlayerUI))
@@ -32,14 +34,20 @@ namespace Player
         {
             SetHealth(60);
             lastTargetHealth = targetHealth = health;
+
+			bulletHitSound = GetComponent<AudioSource> ();
         }
         
-        public void TakeDamage(float damage)
+        public void TakeDamage(string type, float damage)
         {
             startTimeHealth = Time.time;
             lastTargetHealth = health;
             SetHealth(health - damage);
             targetHealth = health;
+
+			if (type == "bullet") {
+				bulletHitSound.Play ();
+			}
 
             if(health <= 0)
             {
@@ -47,6 +55,20 @@ namespace Player
                 Dead();
             }
         }
+
+		public void TakeDamage(float damage)
+		{
+			startTimeHealth = Time.time;
+			lastTargetHealth = health;
+			SetHealth(health - damage);
+			targetHealth = health;
+
+			if(health <= 0)
+			{
+				health = 0;
+				Dead();
+			}
+		}
 
         private void SetHealth(float h)
         {

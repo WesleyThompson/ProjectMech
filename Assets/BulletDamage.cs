@@ -22,7 +22,7 @@ namespace Player
 			GameObject rootObjectOfCollision = col.transform.root.gameObject;
 			if (rootObjectOfCollision.CompareTag ("Player")) {
 				Health script = rootObjectOfCollision.GetComponent<Health> ();
-				script.TakeDamage (damage);
+				script.TakeDamage ("bullet", damage);
 			}
 		}
 	}
