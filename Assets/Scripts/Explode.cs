@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 public class Explode : MonoBehaviour {
 
 	public GameObject explosionPrefab;
 	public GameObject smokePrefab;
 	private ParticleSystem smoke;
-	private Vector3 underMap = new Vector3(0, -200, 0);
+	private ObjectPooling poolScript;
 	//private AudioSource explosionSound;
 
 	private Rigidbody rb;
@@ -15,6 +16,7 @@ public class Explode : MonoBehaviour {
 		smoke = smokePrefab.GetComponent<ParticleSystem> ();
 		//explosionSound = GetComponent<AudioSource> ();
 		rb = GetComponent<Rigidbody>();
+		poolScript = GameObject.Find ("TankShellPooler").GetComponent<ObjectPooling> ();
 	}
 
 	// need to change this to use Alex's pooling stuff
@@ -24,7 +26,10 @@ public class Explode : MonoBehaviour {
 		//explosionSound.Play ();
 		smoke.Stop ();
 
+		/*
 		rb.isKinematic = true;
 		transform.position = underMap;
+		*/
+		poolScript.ReturnObject (gameObject); // return to object pooler
 	}
 }

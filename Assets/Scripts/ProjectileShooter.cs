@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 public class ProjectileShooter : MonoBehaviour {
 	public GameObject tankGunA;
@@ -22,10 +23,12 @@ public class ProjectileShooter : MonoBehaviour {
 
 	private AudioSource shotSound;
 
+	private ObjectPooling poolScript;
+
 	void Start () {
         Screen.lockCursor = true;
         Cursor.visible = true;
-        prefab = Resources.Load("projectileWithSmoke") as GameObject;
+		poolScript = GameObject.Find ("TankShellPooler").GetComponent<ObjectPooling> ();
 
 		muzzleFlash.enabled = false;
 		muzzleLight.enabled = false;
@@ -48,7 +51,7 @@ public class ProjectileShooter : MonoBehaviour {
 
 					gun = (fromGunA ? tankGunA : tankGunB);
 
-					GameObject projectile = Instantiate (prefab) as GameObject;
+					GameObject projectile = poolScript.GetNextObject ();
 					projectile.transform.position = gun.transform.position + gun.transform.forward;
 					projectile.transform.LookAt (hit.point);
 

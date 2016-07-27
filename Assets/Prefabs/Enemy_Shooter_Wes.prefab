@@ -416,7 +416,6 @@ MonoBehaviour:
   damage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 455232}
-  bullet: {fileID: 111640, guid: f6d852c70d895ec4dacbfa408364001a, type: 2}
   bulletSpeed: 600
   chamberTime: 0.5
 --- !u!114 &11466470
