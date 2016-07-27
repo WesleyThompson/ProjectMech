@@ -6,6 +6,7 @@ public class releaseTheDrones : MonoBehaviour {
 	public moveTo dropship;
 	public float altitude;
 	private int timeToFly = 0;
+	public droneDeath death;
 	// Use this for initialization
 
 	// Update is called once per frame
@@ -15,8 +16,13 @@ public class releaseTheDrones : MonoBehaviour {
 			transform.parent = null;
 			timeToFly = 1;
 		}
-		if (timeToFly == 1) {
+		if (timeToFly == 1 && death.getHealth() > 0) 
+		{
 			fly ();
+		}
+		else if(death.getHealth() <= 0)
+		{
+			timeToFly = 0;
 		}
 	}
 
