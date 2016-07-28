@@ -40,17 +40,10 @@ namespace Enemy
         private const float DISTANCE_X_PROPORTION_SCALE = 2;
         private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
-		private ObjectPooling poolScript;
+		public GameObject bullet;
 		public float bulletSpeed;
 		public float chamberTime;
 		private bool isChambered = true;
-		private AudioSource shootingSound;
-
-		void Start()
-		{
-			shootingSound = GetComponent<AudioSource> ();
-			poolScript = GameObject.Find ("BulletPooler").GetComponent<ObjectPooling> ();
-		}
 
         void Awake()
         {
@@ -133,6 +126,14 @@ namespace Enemy
             }
         }
 
+		IEnumerator chamberShot() {
+			isChambered = false;
+			//StartCoroutine (MuzzleFlash ());
+			//ShotSound ();
+			yield return new WaitForSeconds (chamberTime);
+			isChambered = true;
+		}
+
         public void SetShoot(bool shoot, GameObject obj)
         {
             canShoot = shoot;
@@ -142,7 +143,7 @@ namespace Enemy
         }
 
 		public void shoot() {
-			GameObject projectile = poolScript.GetNextObject ();
+			GameObject projectile = Instantiate (bullet) as GameObject;
 			projectile.transform.position = shotPos;
 			projectile.transform.LookAt(shotDir);
 
@@ -150,20 +151,6 @@ namespace Enemy
 			rb.velocity = projectile.transform.forward * bulletSpeed;
 			Debug.DrawRay (shotPos, shotDir * 10000F, Color.yellow, 5F);
 			print ("pew pew pew");
-			StartCoroutine (chamberShot());
-		}
-
-		IEnumerator chamberShot() {
-			isChambered = false;
-			//StartCoroutine (MuzzleFlash ());
-			shootSound();
-			yield return new WaitForSeconds (chamberTime);
-			isChambered = true;
-		}
-
-		void shootSound() {
-			shootingSound.Play ();
-			print ("sound");
 		}
     }
 }
