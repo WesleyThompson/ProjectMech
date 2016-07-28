@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
      <Compile Include="Assets\Scripts\Energy.cs" />
      <Compile Include="Assets\Scripts\Explode.cs" />
+     <Compile Include="Assets\Scripts\ExplosionController.cs" />
      <Compile Include="Assets\Scripts\ExplosionDamage.cs" />
      <Compile Include="Assets\Scripts\FrontLeftEngine.cs" />
      <Compile Include="Assets\Scripts\GameBehavior.cs" />
@@ -80,9 +81,14 @@
      <Compile Include="Assets\Scripts\UI\InGameUI.cs" />
      <Compile Include="Assets\Scripts\UI\ManageUIClicks.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
+     <Compile Include="Assets\Scripts\droneDeath.cs" />
      <Compile Include="Assets\Scripts\drop.cs" />
+     <Compile Include="Assets\Scripts\exploder.cs" />
+     <Compile Include="Assets\Scripts\frontRightEngine.cs" />
      <Compile Include="Assets\Scripts\moveTo.cs" />
+     <Compile Include="Assets\Scripts\rearEngines.cs" />
      <Compile Include="Assets\Scripts\releaseTheDrones.cs" />
+     <Compile Include="Assets\Scripts\tankDeath.cs" />
      <None Include="Assets\Materials\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
@@ -105,22 +111,22 @@
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\ProCore\ProBuilder\About\Credits.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderCore-Unity5">
- <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ <HintPath>C:/Users/spiderz31/Desktop/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ <HintPath>C:/Users/spiderz31/Desktop/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="KDTree">
- <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
+ <HintPath>C:/Users/spiderz31/Desktop/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
  </Reference>
  <Reference Include="Triangle">
- <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
+ <HintPath>C:/Users/spiderz31/Desktop/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

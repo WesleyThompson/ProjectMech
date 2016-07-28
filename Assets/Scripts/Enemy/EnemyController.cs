@@ -6,12 +6,14 @@ namespace Enemy
 {
     public class EnemyController : GameBehavior
     {
+		private GameObject player;
         private NavMeshAgent agent;
         public GameObject moveTarget;
+		private Rigidbody target;
         private float width;
         private float height;
         private EnemyScan enemyScanScript;
-        private EnemyShooting enemyShootingScript;
+		private EnemyShooting enemyShootingScript;
 
         private float headTurnStartTime;
         public Transform topTransform;
@@ -51,6 +53,8 @@ namespace Enemy
 
         void Start()
         {
+			player = GameObject.FindGameObjectWithTag ("Player");
+			moveTarget = player;
             agent = GetComponent<NavMeshAgent>();//transform.FindChild("NavMesh").
             enemyScanScript = GetComponent<EnemyScan>();
             enemyShootingScript = GetComponent<EnemyShooting>();
@@ -60,104 +64,107 @@ namespace Enemy
             topIsFocused = false;
             firstTimeFocused = true;
             lastTimeSeenPlayer = Time.time - lastSeenBuffer;
+			target = moveTarget.GetComponent<Rigidbody>();
         }
         
         void Update()
         {
             UpdateRaycast();
-            //If can see entire target or target hasn't broken sight
-            if (didHitL && didHitR && lHit.transform.name == GlobalVariables.PlayerName && rHit.transform.name == GlobalVariables.PlayerName || keepShooting)
-            {
-                //If can see player stop scanning and this
-                if (enemyScanScript)
-                {
-                    enemyScanScript.StopScanning();
-                }
-                agent.SetDestination(transform.position);
+				
 
-                //If target moves and are reacquired in less that last buffer then aim immediately
-                if (Time.time - lastTimeSeenPlayer < lastSeenBuffer)
-                {
-                    topIsFocused = true;
-                }
+				int distanceToTarget = (int)Vector3.Distance (transform.position, moveTarget.transform.position);
+				agent.avoidancePriority = distanceToTarget;
+				
+				//If can see entire target or target hasn't broken sight
+				if (didHitL && didHitR && lHit.transform.name == GlobalVariables.PlayerName && rHit.transform.name == GlobalVariables.PlayerName || keepShooting) {
+					//If can see player stop scanning and this
+					if (enemyScanScript) {
+						enemyScanScript.StopScanning ();
+					}
 
-                //If the top is lined up with the target
-                if (topIsFocused)
-                {
-                    topTransform.LookAt(moveTarget.transform);
-                    enemyShootingScript.SetShoot(true, moveTarget);
-                    lastTimeSeenPlayer = Time.time;
-                }
+					agent.SetDestination (transform.position);
+					agent.avoidancePriority = distanceToTarget;
+
+					//If target moves and are reacquired in less that last buffer then aim immediately
+					if (Time.time - lastTimeSeenPlayer < lastSeenBuffer) {
+						topIsFocused = true;
+					}
+
+					//If the top is lined up with the target
+					if (topIsFocused) {
+						topTransform.LookAt (moveTarget.transform);
+						enemyShootingScript.SetShoot (true, moveTarget);
+						lastTimeSeenPlayer = Time.time;
+					}
                 //Play animation to aim on target
-                else
-                {
-                    //First time this is trying to focus on target
-                    if (firstTimeFocused)
-                    {
-                        startRotation = topTransform.localEulerAngles.y;
-                        topToPlayerLocal = transform.InverseTransformDirection(enemyTopToPlayer);
-                        endRotation = Mathf.Atan(topToPlayerLocal.x / topToPlayerLocal.z) * Mathf.Rad2Deg;
+                else {
+						//First time this is trying to focus on target
+						if (firstTimeFocused) {
+							startRotation = topTransform.localEulerAngles.y;
+							topToPlayerLocal = transform.InverseTransformDirection (enemyTopToPlayer);
+							endRotation = Mathf.Atan (topToPlayerLocal.x / topToPlayerLocal.z) * Mathf.Rad2Deg;
 
-                        startTime = Time.time;
-                        firstTimeFocused = false;
-                    }
+							startTime = Time.time;
+							firstTimeFocused = false;
+						}
                     //Runs smoothing
-                    else
-                    {
-                        float simpleStartRot = GetSimplifiedAngle(startRotation);
-                        float simpleEndRot = GetSimplifiedAngle(endRotation);
+                    else {
+							float simpleStartRot = GetSimplifiedAngle (startRotation);
+							float simpleEndRot = GetSimplifiedAngle (endRotation);
 
-                        //Fixes problem when comparing for example 2 and 355 by making distance 7 instead of 333
-                        if(simpleStartRot >= 180)
-                        {
-                            simpleStartRot = 360 - simpleStartRot;
-                        }
-                        if (simpleEndRot >= 180)
-                        {
-                            simpleEndRot = 360 - simpleEndRot;
-                        }
+							//Fixes problem when comparing for example 2 and 355 by making distance 7 instead of 333
+							if (simpleStartRot >= 180) {
+								simpleStartRot = 360 - simpleStartRot;
+							}
+							if (simpleEndRot >= 180) {
+								simpleEndRot = 360 - simpleEndRot;
+							}
 
-                        //Keeps same speed as the scanner
-                        float dist = Mathf.Abs(simpleStartRot - endRotation);
-                        if (enemyScanScript)
-                        {
-                            currScanTime = dist * enemyScanScript.GetTimePerScanDegree();
-                        } else
-                        {
-                            currScanTime = scanTime;
-                        }
-                        float tRot = Mathf.LerpAngle(startRotation, endRotation, (Time.time - startTime)/currScanTime);
-                        topTransform.localEulerAngles = new Vector3(topTransform.localEulerAngles.x, tRot, topTransform.localEulerAngles.z);
-                        if (AngleRoughlyEqual(tRot, endRotation, 0.01f))
-                        {
-                            topIsFocused = true;
-                        }
-                    }
-                }
+							//Keeps same speed as the scanner
+							float dist = Mathf.Abs (simpleStartRot - endRotation);
+							if (enemyScanScript) {
+								currScanTime = dist * enemyScanScript.GetTimePerScanDegree ();
+							} else {
+								currScanTime = scanTime;
+							}
+							float tRot = Mathf.LerpAngle (startRotation, endRotation, (Time.time - startTime) / currScanTime);
+							topTransform.localEulerAngles = new Vector3 (topTransform.localEulerAngles.x, tRot, topTransform.localEulerAngles.z);
+							if (AngleRoughlyEqual (tRot, endRotation, 0.01f)) {
+								topIsFocused = true;
+							}
+						}
+					}
                 
-                //After the target is completely visible then hides, but is still visible, this keeps the focus on the target
-                if (didHitC && cHit.transform.name != GlobalVariables.PlayerName)
-                {
-                    keepShooting = false;
-                }
-                else
-                {
-                    keepShooting = true;
-                }
-            }
+					//After the target is completely visible then hides, but is still visible, this keeps the focus on the target
+					if (didHitC && cHit.transform.name != GlobalVariables.PlayerName) {
+						keepShooting = false;
+					} else {
+						keepShooting = true;
+					}
+				}
             //If the target is not visible
-            else
-            {
-                if (enemyScanScript)
-                {
-                    enemyScanScript.StartScanning();
-                }
-                agent.SetDestination(moveTarget.transform.position);
-                enemyShootingScript.SetShoot(false, null);
-                firstTimeFocused = true;
-                topIsFocused = false;
-            }
+            else {
+					if (enemyScanScript) {
+						enemyScanScript.StartScanning ();
+					}
+					agent.avoidancePriority = 99;
+					agent.SetDestination (moveTarget.transform.position);
+					enemyShootingScript.SetShoot (false, null);
+					firstTimeFocused = true;
+					topIsFocused = false;
+				}
+
         }
+
+
+		void OnCollisionEnter(Collision otherObject)
+		{
+			if (otherObject.gameObject.tag == "enemy") 
+			{
+				Debug.Log ("bump");
+			}
+		
+		}
 
         void UpdateRaycast()
         {

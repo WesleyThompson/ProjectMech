@@ -2,32 +2,52 @@
 using System.Collections;
 public class moveTo : MonoBehaviour
 {
+	private int maxHealth = 500;
 	public int health;
-	public Vector3 pointB;
 	public float rSpeed;
+	private GameObject curDest;
 	public GameObject waypoint;
+	public GameObject exitPoint;
 	public int atDropzone = 0;
 	private float isFacing = 0;
 	private float timeDead = 0;
 	private float timeAtDrop = 0;
+	private Component[] child;
+	private GameObject[] dropzone;
+	private GameObject[] exit;
+	public bool readyToGo = false;
+
+	void Start()
+	{
+		dropzone = GameObject.FindGameObjectsWithTag ("dropzone");
+		waypoint = calcDropzone ();
+		exit = GameObject.FindGameObjectsWithTag ("exit");
+		exitPoint = calcExit ();
+		child = GetComponentsInChildren<ParticleSystem> ();
+		health = maxHealth;
+		curDest = waypoint;
+	}
 
 
 	void Update(){
 		if (health > 0) 
 		{
-			if (Vector3.Dot (transform.forward, (waypoint.transform.position - transform.position).normalized) > .99f && atDropzone == 0)
+			if (Vector3.Dot (transform.forward, (curDest.transform.position - transform.position).normalized) > .99f && atDropzone == 0)
 			{
-				float step = 30 * Time.deltaTime;
-				transform.position = Vector3.MoveTowards (transform.position, waypoint.transform.position, step);
-				if (transform.position == waypoint.transform.position) 
+				float step = 75 * Time.deltaTime;
+				transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
+				if (transform.position == curDest.transform.position) 
 				{
+					if (readyToGo) {
+						Debug.Log ("readyToLeave");
+					}
 					atDropzone = 1;
 					//Debug.Log ("im here");
 				}
 			}
 			else if(atDropzone ==0) {
 
-				Vector3 targetDir = waypoint.transform.position - transform.position;
+				Vector3 targetDir = curDest.transform.position - transform.position;
 				float step = rSpeed * Time.deltaTime;
 				Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
 				Debug.DrawRay (transform.position, newDir, Color.red);
@@ -38,27 +58,55 @@ public class moveTo : MonoBehaviour
 			{
 				if (timeAtDrop < 5) {
 					float step = 10 * Time.deltaTime;
-					transform.position = Vector3.MoveTowards (transform.position, (waypoint.transform.position + (new Vector3 (0f, -30f, 0f))), step);
+					transform.position = Vector3.MoveTowards (transform.position, (curDest.transform.position + (new Vector3 (0f, -30f, 0f))), step);
 					timeAtDrop += Time.deltaTime;
 				}
 				else 
 				{
-					
+
 					float step = 10 * Time.deltaTime;
-					transform.position = Vector3.MoveTowards (transform.position, waypoint.transform.position, step);
-					if (transform.position == waypoint.transform.position) 
+					transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
+					if (transform.position == curDest.transform.position) 
 					{
 						atDropzone = 0;
-						waypoint = GameObject.FindGameObjectWithTag ("exit");
+						curDest = exitPoint;
+						readyToGo = true;
+							
 					}
 				}
 			}
-			health--;
+
 		}
 		else 
 		{
 			if (timeDead > 4) {
+				foreach(ParticleSystem cParts in child){
+					var em = cParts.emission;
+					if (em.enabled == true) {
+						em.enabled = false;
+						cParts.Stop ();
+					}
+					else {
+						em.enabled = true;
+						cParts.Play ();
+					}
+
+					//part of the animation where the drone disappears
+					if (timeDead > 1) {
+						transform.position = new Vector3 (0f, 100f, 0f);
+						reset ();
+					}
+					else 
+					{
+						timeDead += Time.deltaTime;
+					}
+
+
+				}
+
+
 				transform.position = new Vector3 (0f, -50f, 0f);
+				reset ();
 			}
 			else 
 			{
@@ -66,11 +114,58 @@ public class moveTo : MonoBehaviour
 				timeDead += Time.deltaTime;
 			}
 		}
-			
+
 	}
 
-	public float getTimeAtDrop(){
-		
+	public void reset()
+	{
+		atDropzone = 0;
+		curDest = waypoint;
+		health = maxHealth;
+	}
+
+	public float getTimeAtDrop()
+	{
+
 		return timeAtDrop;
+	}
+
+	private GameObject calcDropzone()
+	{
+		float distance = 1000000;
+		float curDistance = 0;
+		GameObject curTarget = dropzone[0];
+
+		foreach (GameObject drop in dropzone)
+		{
+			curDistance = Vector3.Distance (transform.position, drop.transform.position);
+			if (curDistance < distance)
+			{
+				curTarget = drop;
+				distance = curDistance;
+			}
+		}
+
+		return curTarget;
+	}
+		
+	private GameObject calcExit()
+	{
+		float distance = 1000000;
+		float curDistance = 0;
+		GameObject curTarget = exit[0];
+
+		foreach (GameObject leave in exit)
+		{
+			Debug.Log ("fjkejwwqofjekwqo");
+			curDistance = Vector3.Distance (transform.position, leave.transform.position);
+			if (curDistance < distance)
+			{
+				curTarget = leave;
+				distance = curDistance;
+			}
+		}
+
+		return curTarget;
 	}
 }
