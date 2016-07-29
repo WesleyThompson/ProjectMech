@@ -2,11 +2,9 @@
 using System.Collections;
 
 
-public class drop : MonoBehaviour {
+public class mechDrop : MonoBehaviour {
 	private NavMeshAgent agent;
 	public moveTo dropShip;
-	public Rigidbody rb;
-	public tankDeath death;
 	public MonoBehaviour[] scripts;
 	private GameObject player;
 	public moveTo pScripts;
@@ -22,10 +20,9 @@ public class drop : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (dropShip.getTimeAtDrop () > 4 && death.getHealth() > 0)
+		if (dropShip.getTimeAtDrop () > 4)
 		{
 			transform.parent = null;
-			rb.useGravity = true;
 			foreach (MonoBehaviour script in scripts) {
 				if (!script.enabled)
 				{
@@ -36,12 +33,7 @@ public class drop : MonoBehaviour {
 			agent.enabled = true;
 			agent.SetDestination (player.transform.position);
 		}
-		else if(death.getHealth()<=0)
-		{
-			rb.useGravity = false;
-			agent.enabled = false;
-		}
-
+	
 	}
 
 }

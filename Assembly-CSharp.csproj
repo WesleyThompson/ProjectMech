@@ -83,8 +83,10 @@
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\droneDeath.cs" />
      <Compile Include="Assets\Scripts\drop.cs" />
+     <Compile Include="Assets\Scripts\dropshipMaker.cs" />
      <Compile Include="Assets\Scripts\exploder.cs" />
      <Compile Include="Assets\Scripts\frontRightEngine.cs" />
+     <Compile Include="Assets\Scripts\mechDrop.cs" />
      <Compile Include="Assets\Scripts\moveTo.cs" />
      <Compile Include="Assets\Scripts\rearEngines.cs" />
      <Compile Include="Assets\Scripts\releaseTheDrones.cs" />
