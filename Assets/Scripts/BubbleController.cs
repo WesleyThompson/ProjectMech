@@ -51,41 +51,34 @@ public class BubbleController : MonoBehaviour {
     }
 
     void Update() {
-		if (playerEnergy.GetEnergy() == 0f && gameObject.transform.localScale != new Vector3(0f,0f,0f))
-        {
-            ShrinkBubble();
-        }
-
-		CheckKeys ();
-        if (key1Toggled)
-        {
-			col.enabled = true;
-        }
-        else
-		{
-			col.enabled = false;
-        }
-        if (key2Toggled)
-        {
-            playControl.speed = speedBoost;
-        }
-        else
-        {
-			playControl.speed = originalSpeed;
-        }
-        if (key3Toggled) 
-        {
-			expScript.maxDamage = originalDmg * dmgMultiplier;
-        }
-		else
-		{
-			expScript.maxDamage = originalDmg;
-		}
-
-		if (key1Toggled || key2Toggled || key3Toggled) {
-			if (Time.time >= energyLastUsed + 1) {
-				playerEnergy.UsePlayerEnergy (1);
+		if (playerEnergy.GetEnergy () != 0f) {
+			CheckKeys ();
+			if (key1Toggled) {
+				col.enabled = true;
+			} else {
+				col.enabled = false;
 			}
+			if (key2Toggled) {
+				playControl.speed = speedBoost;
+			} else {
+				playControl.speed = originalSpeed;
+			}
+			if (key3Toggled) {
+				expScript.maxDamage = originalDmg * dmgMultiplier;
+			} else {
+				expScript.maxDamage = originalDmg;
+			}
+
+			if (key1Toggled || key2Toggled || key3Toggled) {
+				if (Time.time >= energyLastUsed + 1) {
+					playerEnergy.UsePlayerEnergy (0.01f);
+				}
+			}
+		} else {
+			ShrinkBubble ();
+			expScript.maxDamage = originalDmg;
+			playControl.speed = originalSpeed;
+			col.enabled = false;
 		}
     }
 

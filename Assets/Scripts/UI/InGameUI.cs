@@ -34,16 +34,6 @@ namespace Common
             playerHealthScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Health>();
             playerEnergyScript = GameObject.Find(GlobalVariables.PlayerName).GetComponent<Energy>();
 
-            takeDamageBtn.onClick.AddListener(() =>
-            {
-                playerHealthScript.TakeDamage(10);
-            });
-
-            useEnergyBtn.onClick.AddListener(() =>
-            {
-                playerEnergyScript.UsePlayerEnergy(30);
-            });
-
             //Player Pause UI
 
             xMarkBtn.onClick.AddListener(() =>
