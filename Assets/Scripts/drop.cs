@@ -9,11 +9,9 @@ public class drop : MonoBehaviour {
 	public tankDeath death;
 	public MonoBehaviour[] scripts;
 	private GameObject player;
-	public moveTo pScripts;
 
 	void Start()
 	{
-		dropShip = GetComponentInParent<moveTo>();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		agent = GetComponent<NavMeshAgent>();
 		scripts = GetComponents<MonoBehaviour> ();
@@ -43,5 +41,4 @@ public class drop : MonoBehaviour {
 		}
 	
 	}
-
 }

@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class tankDeath : MonoBehaviour {
-	public bool inPlay = false;
 	private int maxHealth = 200;
 	public int health;
 	private float timeDead = 0;
