@@ -10,6 +10,7 @@ public class BubbleController : MonoBehaviour {
     public Material damageMaterial;
 
     public float speedBoost;
+	public float dmgMultiplier;
 
 	public GameObject explosionPrefab;
 	private ExplosionDamage expScript;
@@ -19,17 +20,33 @@ public class BubbleController : MonoBehaviour {
     private Renderer bubbleRenderer;
 	private Collider col;
     private AudioSource audioSrc;
-    private float currentSpeed;
-    public bool key1Toggled;
+    private float originalSpeed;
+	private float energyLastUsed;
+
+	//Tank renderers;
+	public Renderer tankBodyRenderer;
+	public Renderer tankGunRenderer;
+	public Renderer tankTurretRenderer;
+
+	//Materials for switching in and out of invisibility
+	public Material tankBodyMat;
+	public Material tankGunMat;
+	public Material tankTurretMat;
+	public Material invisTankBodyMat;
+	public Material invisTankGunMat;
+	public Material invisTankTurretMat;
+
+	public float originalDmg;
+    
+	public bool key1Toggled;
     public bool key2Toggled;
     public bool key3Toggled;
 
-	private float baseMaxDamage;
     void Start() {
         //Get our player's energy script
         playerEnergy = GetComponentInParent<Energy>();
         playControl = GetComponentInParent<PlayerController>();
-        currentSpeed = playControl.speed;
+        originalSpeed = playControl.speed;
         bubbleRenderer = GetComponent<Renderer>();
 
         audioSrc = GetComponent<AudioSource>();
@@ -41,61 +58,52 @@ public class BubbleController : MonoBehaviour {
 		col.enabled = false;
 
 		expScript = explosionPrefab.GetComponent<ExplosionDamage> ();
-		baseMaxDamage = expScript.maxDamage;
+		originalDmg = expScript.maxDamage;
+		//Set an initial time for the last used energy
+		energyLastUsed = Time.time;
+
     }
 
     void Update() {
-        if (playerEnergy.GetEnergy() == 0f)
-        {
-            ShrinkBubble();
-        }
-        else
-        {
-            CheckKeys();
-            if (key1Toggled)
-            {
+		if (playerEnergy.GetEnergy () != 0f) {
+			CheckKeys ();
+			if (key1Toggled) {
 				col.enabled = true;
-            }
-            else
-            {
+				tankBodyRenderer.material = invisTankBodyMat;
+				tankGunRenderer.material = invisTankGunMat;
+				tankTurretRenderer.material = invisTankTurretMat;
+			} else {
 				col.enabled = false;
-            }
-            if (key2Toggled)
-            {
-                playControl.speed = speedBoost;
-            }
-            else
-            {
-                playControl.speed = currentSpeed;
-            }
-            if (key3Toggled) // this logic yields infinite damage if they are able to press the 3 key before maxDamage goes to 0
-            {
-				expScript.maxDamage = expScript.maxDamage * 2;
-            }
-			else // this logic yields 0 damage if player doesn't press 3 key at start
-			{
-				/*delete this -> */print ("WesleyScript: I am going to divide a public variable every frame when I don't need to.\nWesley.getRekt() returned true");
-
-				if (expScript.maxDamage == 0)
-					print ("WesleyScript: lim (dam / 2) as dam -> 0 = 0");
-
-				expScript.maxDamage = expScript.maxDamage / 2;
-
-				/*end delete this*/
-
-
-				/*uncomment this beaut
-				expScript.maxDamage = baseMaxDamage;
-				 * 
-				 * 
-				 */
+				tankBodyRenderer.material = tankBodyMat;
+				tankGunRenderer.material = tankGunMat;
+				tankTurretRenderer.material = tankTurretMat;
 			}
-        }
-    }
+			if (key2Toggled) {
+				playControl.speed = speedBoost;
+			} else {
+				playControl.speed = originalSpeed;
+			}
+			if (key3Toggled) {
+				expScript.maxDamage = originalDmg * dmgMultiplier;
+			} else {
+				expScript.maxDamage = originalDmg;
+			}
 
-	void OnCollisionEnter(Collision collision){
-		//Remove energy
-	}
+			if (key1Toggled || key2Toggled || key3Toggled) {
+				if (Time.time >= energyLastUsed + 1) {
+					playerEnergy.UsePlayerEnergy (0.01f);
+				}
+			}
+		} else {
+			ShrinkBubble ();
+			expScript.maxDamage = originalDmg;
+			playControl.speed = originalSpeed;
+			col.enabled = false;
+			tankBodyRenderer.material = tankBodyMat;
+			tankGunRenderer.material = tankGunMat;
+			tankTurretRenderer.material = tankTurretMat;
+		}
+    }
 
     private void ExpandBubble(Material bubbleMaterial) {
         transform.localScale = new Vector3(9f, 9f, 9f);

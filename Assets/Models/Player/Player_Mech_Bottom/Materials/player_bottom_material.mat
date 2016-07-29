@@ -127,6 +127,14 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _BumpAmt
+        second: 64
+      data:
+        first:
+          name: _TintAmt
+        second: 0
     m_Colors:
       data:
         first:

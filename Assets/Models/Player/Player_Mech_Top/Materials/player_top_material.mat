@@ -93,6 +93,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0.495
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -125,8 +129,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0.495
+          name: _BumpAmt
+        second: 10
+      data:
+        first:
+          name: _TintAmt
+        second: 0.1
     m_Colors:
       data:
         first:
