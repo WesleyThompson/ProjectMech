@@ -137,8 +137,9 @@ GameObject:
   - 114: {fileID: 11434944}
   - 82: {fileID: 8217024}
   - 114: {fileID: 11474692}
-  - 64: {fileID: 6490388}
   - 54: {fileID: 5490116}
+  - 135: {fileID: 13505068}
+  - 114: {fileID: 11467612}
   m_Layer: 12
   m_Name: effect_orb
   m_TagString: Untagged
@@ -613,22 +614,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6490388
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 1d86d4f1828f44a3bb071605a5b4ba19, type: 3}
 --- !u!65 &6540648
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -819,7 +808,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 48094a53b29aadd4496ff09333fe51a9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.114
+  m_Volume: 0.07
   m_Pitch: 0.93
   Loop: 0
   Mute: 0
@@ -974,6 +963,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+--- !u!114 &11467612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c874775dc6224747a70fbcc3a30ffac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BlurShader: {fileID: 4800000, guid: 599a6706848d54f169df9e37fcb67574, type: 3}
 --- !u!114 &11471774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,6 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4442527555ee58d488088d5a373475df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!114 &11473534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1018,7 +1020,9 @@ MonoBehaviour:
   speedMaterial: {fileID: 2100000, guid: 60633f4a9beb7447485d6c96fc582118, type: 2}
   damageMaterial: {fileID: 2100000, guid: 33af06619eb584f77afd5351aa9c664c, type: 2}
   speedBoost: 1
+  dmgMultiplier: 10
   explosionPrefab: {fileID: 142832, guid: 52f98986b052f4845b07cb10875fc90a, type: 2}
+  originalDmg: 10
   key1Toggled: 0
   key2Toggled: 0
   key3Toggled: 0
@@ -1056,6 +1060,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186694}
   m_Enabled: 1
+--- !u!135 &13505068
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1677325
+  m_Center: {x: 0, y: -8.881784e-16, z: 0.000000011175871}
 --- !u!143 &14389962
 CharacterController:
   m_ObjectHideFlags: 1
