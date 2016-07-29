@@ -9,11 +9,9 @@ public class releaseTheDrones : MonoBehaviour {
 	public droneDeath death;
 	public MonoBehaviour[] scripts;
 	private AudioSource deathExp;
-	public moveTo pScripts;
 	// Use this for initialization
 	void Start()
 	{
-		dropship = GetComponentInParent<moveTo>();
 		agent = GetComponent<NavMeshAgent>();
 		scripts = GetComponents<MonoBehaviour> ();
 		deathExp = GetComponent<AudioSource> ();
@@ -31,7 +29,12 @@ public class releaseTheDrones : MonoBehaviour {
 
 
 		}
-		if(death.getHealth() <= 0)
+		if (timeToFly == 1 && death.getHealth() > 0) 
+		{
+			fly ();
+
+		}
+		else if(death.getHealth() <= 0)
 		{
 			timeToFly = 0;
 
@@ -40,4 +43,15 @@ public class releaseTheDrones : MonoBehaviour {
 	}
 
 
+	void fly(){
+		if (transform.position.y != altitude) {
+			float step = 50 * Time.deltaTime;
+			transform.position = Vector3.MoveTowards (transform.position, (new Vector3 (transform.position.x, altitude, transform.position.y)), step);
+		}
+		else 
+		{
+		}
+	
+	
+	}
 }

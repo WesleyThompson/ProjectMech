@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public float health;
+
 	private Renderer[] allRenders;
 	private Color originalColor;
 	void Start() {

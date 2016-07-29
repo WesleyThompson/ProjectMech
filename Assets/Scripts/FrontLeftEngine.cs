@@ -26,12 +26,12 @@ public class FrontLeftEngine : MonoBehaviour
 
 
 			if (dropship.transform.position.x != prevPosition.x || dropship.transform.position.z != prevPosition.z) {
-				//Debug.Log ("goin forward");
+				Debug.Log ("goin forward");
 				forward ();
 			}
 			else
 			{
-				//Debug.Log ("settin idle");
+				Debug.Log ("settin idle");
 				idle ();
 			}
 		}
