@@ -1022,6 +1022,15 @@ MonoBehaviour:
   speedBoost: 1
   dmgMultiplier: 10
   explosionPrefab: {fileID: 142832, guid: 52f98986b052f4845b07cb10875fc90a, type: 2}
+  tankBodyRenderer: {fileID: 2379826}
+  tankGunRenderer: {fileID: 2390164}
+  tankTurretRenderer: {fileID: 2333078}
+  tankBodyMat: {fileID: 2100000, guid: 3884c6335ab9a47088de044db21463ba, type: 2}
+  tankGunMat: {fileID: 2100000, guid: 2e339d7822ab64cb9aebf4deb89cfbb6, type: 2}
+  tankTurretMat: {fileID: 2100000, guid: 645993536502048bd8652a3e283c4f9e, type: 2}
+  invisTankBodyMat: {fileID: 2100000, guid: 7a1327deeac324ad4b959412dfa9e89b, type: 2}
+  invisTankGunMat: {fileID: 2100000, guid: 9a7f8c519c41a4f64abaeeed658f7b46, type: 2}
+  invisTankTurretMat: {fileID: 2100000, guid: 6002d5e8b51e1429fa5c9cec0ad59c6e, type: 2}
   originalDmg: 10
   key1Toggled: 0
   key2Toggled: 0

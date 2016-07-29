@@ -40,6 +40,7 @@ namespace Player
             }
 
             startTimeEnergy = Time.time;
+			lastTargetEnergy = playerEnergy;
             SetPlayerEnergy(playerEnergy - energy);
             targetEnergy = playerEnergy;
 

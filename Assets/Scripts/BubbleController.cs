@@ -23,6 +23,19 @@ public class BubbleController : MonoBehaviour {
     private float originalSpeed;
 	private float energyLastUsed;
 
+	//Tank renderers;
+	public Renderer tankBodyRenderer;
+	public Renderer tankGunRenderer;
+	public Renderer tankTurretRenderer;
+
+	//Materials for switching in and out of invisibility
+	public Material tankBodyMat;
+	public Material tankGunMat;
+	public Material tankTurretMat;
+	public Material invisTankBodyMat;
+	public Material invisTankGunMat;
+	public Material invisTankTurretMat;
+
 	public float originalDmg;
     
 	public bool key1Toggled;
@@ -48,6 +61,7 @@ public class BubbleController : MonoBehaviour {
 		originalDmg = expScript.maxDamage;
 		//Set an initial time for the last used energy
 		energyLastUsed = Time.time;
+
     }
 
     void Update() {
@@ -55,8 +69,14 @@ public class BubbleController : MonoBehaviour {
 			CheckKeys ();
 			if (key1Toggled) {
 				col.enabled = true;
+				tankBodyRenderer.material = invisTankBodyMat;
+				tankGunRenderer.material = invisTankGunMat;
+				tankTurretRenderer.material = invisTankTurretMat;
 			} else {
 				col.enabled = false;
+				tankBodyRenderer.material = tankBodyMat;
+				tankGunRenderer.material = tankGunMat;
+				tankTurretRenderer.material = tankTurretMat;
 			}
 			if (key2Toggled) {
 				playControl.speed = speedBoost;
@@ -79,6 +99,9 @@ public class BubbleController : MonoBehaviour {
 			expScript.maxDamage = originalDmg;
 			playControl.speed = originalSpeed;
 			col.enabled = false;
+			tankBodyRenderer.material = tankBodyMat;
+			tankGunRenderer.material = tankGunMat;
+			tankTurretRenderer.material = tankTurretMat;
 		}
     }
 
