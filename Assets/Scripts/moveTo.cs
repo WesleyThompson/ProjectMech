@@ -2,7 +2,6 @@
 using System.Collections;
 public class moveTo : MonoBehaviour
 {
-	private int maxHealth = 500;
 	public int health;
 	public float rSpeed;
 	private GameObject curDest;
@@ -12,19 +11,9 @@ public class moveTo : MonoBehaviour
 	private float isFacing = 0;
 	private float timeDead = 0;
 	private float timeAtDrop = 0;
-	private Component[] child;
-	private GameObject[] dropzone;
-	private GameObject[] exit;
-	public bool readyToGo = false;
 
 	void Start()
 	{
-		dropzone = GameObject.FindGameObjectsWithTag ("dropzone");
-		waypoint = calcDropzone ();
-		exit = GameObject.FindGameObjectsWithTag ("exit");
-		exitPoint = calcExit ();
-		child = GetComponentsInChildren<ParticleSystem> ();
-		health = maxHealth;
 		curDest = waypoint;
 	}
 
@@ -34,13 +23,10 @@ public class moveTo : MonoBehaviour
 		{
 			if (Vector3.Dot (transform.forward, (curDest.transform.position - transform.position).normalized) > .99f && atDropzone == 0)
 			{
-				float step = 75 * Time.deltaTime;
+				float step = 30 * Time.deltaTime;
 				transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
 				if (transform.position == curDest.transform.position) 
 				{
-					if (readyToGo) {
-						Debug.Log ("readyToLeave");
-					}
 					atDropzone = 1;
 					//Debug.Log ("im here");
 				}
@@ -63,15 +49,14 @@ public class moveTo : MonoBehaviour
 				}
 				else 
 				{
-
+					
 					float step = 10 * Time.deltaTime;
 					transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
 					if (transform.position == curDest.transform.position) 
 					{
 						atDropzone = 0;
-						curDest = exitPoint;
-						readyToGo = true;
-							
+						curDest = exitPoint
+							;
 					}
 				}
 			}
@@ -80,31 +65,6 @@ public class moveTo : MonoBehaviour
 		else 
 		{
 			if (timeDead > 4) {
-				foreach(ParticleSystem cParts in child){
-					var em = cParts.emission;
-					if (em.enabled == true) {
-						em.enabled = false;
-						cParts.Stop ();
-					}
-					else {
-						em.enabled = true;
-						cParts.Play ();
-					}
-
-					//part of the animation where the drone disappears
-					if (timeDead > 1) {
-						transform.position = new Vector3 (0f, 100f, 0f);
-						reset ();
-					}
-					else 
-					{
-						timeDead += Time.deltaTime;
-					}
-
-
-				}
-
-
 				transform.position = new Vector3 (0f, -50f, 0f);
 				reset ();
 			}
@@ -114,58 +74,18 @@ public class moveTo : MonoBehaviour
 				timeDead += Time.deltaTime;
 			}
 		}
-
+			
 	}
 
 	public void reset()
 	{
 		atDropzone = 0;
 		curDest = waypoint;
-		health = maxHealth;
+		health = 150;
 	}
 
-	public float getTimeAtDrop()
-	{
-
-		return timeAtDrop;
-	}
-
-	private GameObject calcDropzone()
-	{
-		float distance = 1000000;
-		float curDistance = 0;
-		GameObject curTarget = dropzone[0];
-
-		foreach (GameObject drop in dropzone)
-		{
-			curDistance = Vector3.Distance (transform.position, drop.transform.position);
-			if (curDistance < distance)
-			{
-				curTarget = drop;
-				distance = curDistance;
-			}
-		}
-
-		return curTarget;
-	}
+	public float getTimeAtDrop(){
 		
-	private GameObject calcExit()
-	{
-		float distance = 1000000;
-		float curDistance = 0;
-		GameObject curTarget = exit[0];
-
-		foreach (GameObject leave in exit)
-		{
-			Debug.Log ("fjkejwwqofjekwqo");
-			curDistance = Vector3.Distance (transform.position, leave.transform.position);
-			if (curDistance < distance)
-			{
-				curTarget = leave;
-				distance = curDistance;
-			}
-		}
-
-		return curTarget;
+		return timeAtDrop;
 	}
 }
