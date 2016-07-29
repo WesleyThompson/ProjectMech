@@ -3,6 +3,7 @@ using System.Collections;
 
 public class droneDeath : MonoBehaviour {
 
+	public bool inPlay = false;
 	private int maxHealth = 100;
 	public int health;
 	public GameObject explosion;

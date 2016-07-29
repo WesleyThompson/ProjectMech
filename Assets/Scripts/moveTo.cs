@@ -2,7 +2,9 @@
 using System.Collections;
 public class moveTo : MonoBehaviour
 {
-	private int maxHealth = 500;
+	//public GameObject spawnPoint;
+	//public Vector3 waitPoint;
+	private int maxHealth = 1000;
 	public int health;
 	public float rSpeed;
 	private GameObject curDest;
@@ -16,30 +18,30 @@ public class moveTo : MonoBehaviour
 	private GameObject[] dropzone;
 	private GameObject[] exit;
 	public bool readyToGo = false;
+	//public float respawnTime = 10;
+	public bool startRespawn = false;
+	//private Quaternion startRotation;
 
 	void Start()
 	{
-		dropzone = GameObject.FindGameObjectsWithTag ("dropzone");
-		waypoint = calcDropzone ();
-		exit = GameObject.FindGameObjectsWithTag ("exit");
-		exitPoint = calcExit ();
-		child = GetComponentsInChildren<ParticleSystem> ();
-		health = maxHealth;
-		curDest = waypoint;
+		//startRotation = transform.rotation;
+		setUpDropship ();
 	}
 
 
 	void Update(){
 		if (health > 0) 
 		{
-			if (Vector3.Dot (transform.forward, (curDest.transform.position - transform.position).normalized) > .99f && atDropzone == 0)
+			if (Vector3.Dot (transform.forward, (curDest.transform.position - transform.position).normalized) > .999f && atDropzone == 0)
 			{
+				Debug.Log ("moving forward");
 				float step = 75 * Time.deltaTime;
 				transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
 				if (transform.position == curDest.transform.position) 
 				{
 					if (readyToGo) {
-						Debug.Log ("readyToLeave");
+						//transform.position = new Vector3 (0f, -150f, 0f);
+						startRespawn = true;
 					}
 					atDropzone = 1;
 					//Debug.Log ("im here");
@@ -93,7 +95,7 @@ public class moveTo : MonoBehaviour
 
 					//part of the animation where the drone disappears
 					if (timeDead > 1) {
-						transform.position = new Vector3 (0f, 100f, 0f);
+						//transform.position = waitPoint;
 						reset ();
 					}
 					else 
@@ -105,7 +107,7 @@ public class moveTo : MonoBehaviour
 				}
 
 
-				transform.position = new Vector3 (0f, -50f, 0f);
+				//transform.position = waitPoint;
 				reset ();
 			}
 			else 
@@ -114,6 +116,19 @@ public class moveTo : MonoBehaviour
 				timeDead += Time.deltaTime;
 			}
 		}
+
+		/*if (startRespawn)
+		{
+			transform.position = waitPoint;
+			respawnTime -= Time.deltaTime;
+			transform.rotation = startRotation;
+			if (respawnTime <= 0)
+			{
+				setUpDropship ();
+				readyToSpawn ();
+			}
+		}
+		*/
 
 	}
 
@@ -157,7 +172,7 @@ public class moveTo : MonoBehaviour
 
 		foreach (GameObject leave in exit)
 		{
-			Debug.Log ("fjkejwwqofjekwqo");
+			//Debug.Log ("fjkejwwqofjekwqo");
 			curDistance = Vector3.Distance (transform.position, leave.transform.position);
 			if (curDistance < distance)
 			{
@@ -167,5 +182,27 @@ public class moveTo : MonoBehaviour
 		}
 
 		return curTarget;
+	}
+
+	public void setUpDropship()
+	{
+		//dropzone = GameObject.FindGameObjectsWithTag ("dropzone");
+		//waypoint = calcDropzone ();
+		//exit = GameObject.FindGameObjectsWithTag ("exit");
+		//exitPoint = calcExit ();
+		child = GetComponentsInChildren<ParticleSystem> ();
+		health = maxHealth;
+		curDest = waypoint;
+		//transform.position = spawnPoint.transform.position;
+		//respawnTime = 10;
+		atDropzone = 0;
+		timeAtDrop = 0;
+		readyToGo = false;
+		startRespawn = false;
+	}
+
+	public void readyToSpawn()
+	{
+		startRespawn = false;
 	}
 }
