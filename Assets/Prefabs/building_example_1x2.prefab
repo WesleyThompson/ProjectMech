@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3307754}
   - 23: {fileID: 2331586}
   - 95: {fileID: 9556518}
-  - 64: {fileID: 6464262}
   - 114: {fileID: 11404088}
+  - 65: {fileID: 6503162}
   m_Layer: 9
   m_Name: building_example
   m_TagString: Untagged
@@ -28,7 +28,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492278}
-  - 64: {fileID: 6403958}
   m_Layer: 9
   m_Name: building_example_1x2
   m_TagString: Untagged
@@ -47,8 +46,8 @@ GameObject:
   - 33: {fileID: 3390266}
   - 23: {fileID: 2332614}
   - 95: {fileID: 9559834}
-  - 64: {fileID: 6453338}
   - 114: {fileID: 11460394}
+  - 65: {fileID: 6554360}
   m_Layer: 9
   m_Name: building_example (1)
   m_TagString: Untagged
@@ -163,32 +162,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142026}
   m_Mesh: {fileID: 4300002, guid: e0e4cd4433f83440da74657c52447977, type: 3}
---- !u!64 &6403958
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
---- !u!64 &6453338
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300002, guid: e0e4cd4433f83440da74657c52447977, type: 3}
---- !u!64 &6464262
-MeshCollider:
+--- !u!65 &6503162
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -197,8 +172,20 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300002, guid: e0e4cd4433f83440da74657c52447977, type: 3}
+  m_Size: {x: 2.0782595, y: 2.1565192, z: 0.9999998}
+  m_Center: {x: -0.039129727, y: -1.0936175e-14, z: 0.4999999}
+--- !u!65 &6554360
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0782595, y: 2.1565192, z: 0.99999994}
+  m_Center: {x: -0.039129786, y: 0.000000029802312, z: 0.4999999}
 --- !u!95 &9556518
 Animator:
   serializedVersion: 3
