@@ -45,13 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BulletDamage.cs" />
-     <Compile Include="Assets\EnemyHealth.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
      <Compile Include="Assets\Scripts\BubbleController.cs" />
+     <Compile Include="Assets\Scripts\BulletDamage.cs" />
      <Compile Include="Assets\Scripts\DebrisController.cs" />
      <Compile Include="Assets\Scripts\DefaultWeapon.cs" />
      <Compile Include="Assets\Scripts\DestructableObject.cs" />
@@ -59,6 +58,7 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyScan.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
+     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Energy.cs" />
      <Compile Include="Assets\Scripts\Explode.cs" />
      <Compile Include="Assets\Scripts\ExplosionController.cs" />
@@ -77,24 +77,24 @@
      <Compile Include="Assets\Scripts\RotateTankGuns.cs" />
      <Compile Include="Assets\Scripts\RotateTurretWithMouse.cs" />
      <Compile Include="Assets\Scripts\SearchObjectPool.cs" />
+     <Compile Include="Assets\Scripts\SmokeDisableEnableTest.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\UI\InGameUI.cs" />
      <Compile Include="Assets\Scripts\UI\ManageUIClicks.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\droneDeath.cs" />
      <Compile Include="Assets\Scripts\drop.cs" />
+     <Compile Include="Assets\Scripts\dropshipController.cs" />
+     <Compile Include="Assets\Scripts\dropshipMaker.cs" />
+     <Compile Include="Assets\Scripts\dropshipManager.cs" />
      <Compile Include="Assets\Scripts\exploder.cs" />
      <Compile Include="Assets\Scripts\frontRightEngine.cs" />
+     <Compile Include="Assets\Scripts\loadBadGuys.cs" />
+     <Compile Include="Assets\Scripts\mechDrop.cs" />
      <Compile Include="Assets\Scripts\moveTo.cs" />
      <Compile Include="Assets\Scripts\rearEngines.cs" />
      <Compile Include="Assets\Scripts\releaseTheDrones.cs" />
      <Compile Include="Assets\Scripts\tankDeath.cs" />
-     <Compile Include="Assets\dropdfsafdsafds.cs" />
-     <Compile Include="Assets\dropshipController.cs" />
-     <Compile Include="Assets\dropshipMaker.cs" />
-     <Compile Include="Assets\dropshipManager.cs" />
-     <Compile Include="Assets\loadBadGuys.cs" />
-     <Compile Include="Assets\mechDrop.cs" />
      <None Include="Assets\Materials\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
