@@ -24,6 +24,7 @@ public class BubbleController : MonoBehaviour {
     public bool key2Toggled;
     public bool key3Toggled;
 
+	private float baseMaxDamage;
     void Start() {
         //Get our player's energy script
         playerEnergy = GetComponentInParent<Energy>();
@@ -40,6 +41,7 @@ public class BubbleController : MonoBehaviour {
 		col.enabled = false;
 
 		expScript = explosionPrefab.GetComponent<ExplosionDamage> ();
+		baseMaxDamage = expScript.maxDamage;
     }
 
     void Update() {
@@ -66,13 +68,27 @@ public class BubbleController : MonoBehaviour {
             {
                 playControl.speed = currentSpeed;
             }
-            if (key3Toggled)
+            if (key3Toggled) // this logic yields infinite damage if they are able to press the 3 key before maxDamage goes to 0
             {
 				expScript.maxDamage = expScript.maxDamage * 2;
             }
-			else 
+			else // this logic yields 0 damage if player doesn't press 3 key at start
 			{
+				/*delete this -> */print ("WesleyScript: I am going to divide a public variable every frame when I don't need to.\nWesley.getRekt() returned true");
+
+				if (expScript.maxDamage == 0)
+					print ("WesleyScript: lim (dam / 2) as dam -> 0 = 0");
+
 				expScript.maxDamage = expScript.maxDamage / 2;
+
+				/*end delete this*/
+
+
+				/*uncomment this beaut
+				expScript.maxDamage = baseMaxDamage;
+				 * 
+				 * 
+				 */
 			}
         }
     }
