@@ -86,6 +86,7 @@ NavMeshSettings:
     manualCellSize: 0
   m_NavMeshData: {fileID: 23800000, guid: 67cad663359a51448bea4bddb87b722c, type: 2}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &47219270
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +244,8 @@ MonoBehaviour:
   startCounting: 0
 =======
 >>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
+=======
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
 --- !u!1001 &223293453
 Prefab:
   m_ObjectHideFlags: 0
@@ -289,10 +292,13 @@ Prefab:
     - target: {fileID: 6431664, guid: 27200de2df63a5047a650a24113018c4, type: 2}
       propertyPath: m_IsTrigger
       value: 0
+<<<<<<< HEAD
       objectReference: {fileID: 0}
     - target: {fileID: 114472, guid: 27200de2df63a5047a650a24113018c4, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+=======
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27200de2df63a5047a650a24113018c4, type: 2}
@@ -661,8 +667,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 1
 =======
+=======
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
   m_RootOrder: 8
 --- !u!82 &859574249
 AudioSource:
@@ -968,7 +977,11 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 63a8a7459837a3241818d33baa098e41, type: 2}
   m_IsPrefabParent: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &1398450461
+=======
+--- !u!1001 &1794106122
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
 =======
 --- !u!1001 &1794106122
 >>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
@@ -978,6 +991,7 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
 <<<<<<< HEAD
     - target: {fileID: 488164, guid: d333ec3aec8b3cf4d9d4a4cdbe5fc2d3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1117,6 +1131,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
 =======
+=======
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
     - target: {fileID: 469728, guid: 255212dcfa9af9a4f9d3067e60c1bbce, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.278257
@@ -1152,4 +1168,7 @@ Transform:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 255212dcfa9af9a4f9d3067e60c1bbce, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
+=======
 >>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa

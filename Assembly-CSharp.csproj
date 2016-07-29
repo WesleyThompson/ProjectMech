@@ -38,10 +38,17 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
+<<<<<<< HEAD
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+=======
+      <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>G:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +102,7 @@
      <Compile Include="Assets\Scripts\rearEngines.cs" />
      <Compile Include="Assets\Scripts\releaseTheDrones.cs" />
      <Compile Include="Assets\Scripts\tankDeath.cs" />
+     <Compile Include="Assets\SmokeDisableEnableTest.cs" />
      <None Include="Assets\Materials\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
@@ -117,6 +125,7 @@
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\ProCore\ProBuilder\About\Credits.txt" />
  <Reference Include="UnityEngine.UI">
+<<<<<<< HEAD
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
@@ -133,6 +142,24 @@
  </Reference>
  <Reference Include="Triangle">
  <HintPath>C:/Users/spiderz31/Desktop/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
+=======
+ <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>G:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderCore-Unity5">
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderMeshOps-Unity5">
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="KDTree">
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
+ </Reference>
+ <Reference Include="Triangle">
+ <HintPath>H:/Homer/Documents/UnityProjects/ProjectMech/Assets/ProCore/ProBuilder/Classes/ClassesLib/Triangle.dll</HintPath>
+>>>>>>> f2397de6496a48a727d1c468ae8c0a85fb90b5fa
  </Reference>
   </ItemGroup>
   <ItemGroup>
