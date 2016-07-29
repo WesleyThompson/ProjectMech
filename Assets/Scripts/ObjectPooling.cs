@@ -28,38 +28,52 @@ namespace Common
             GenerateCollection(numberOfPooledObjects);
         }
 
-        public void ReturnObject(GameObject returnObj)
+		public IEnumerator ReturnObject(GameObject returnObj)
         {
+			Rigidbody rb = returnObj.GetComponent<Rigidbody> (); // this could be sped up by having a list of static rigid body objects or have a map of objects where the key is the object and the value is the rigid body
+			if (rb != null) {
+				rb.isKinematic = true;
+			}
+
             returnObj.transform.position = spawnLocation;
+
+			/* only doing this because the smoke affect will go away instantly on hit for player projectile otherwise
+			 * should change to use pooling and just separate smoke object when projectile hits, then return smoke to pool and attach to whoever needs smoke (doesn't have to go back to the same parent)
+			 * ---
+			 * do the same thing for explosion object
+			 */
+			yield return new WaitForSeconds (1.5F);
+
+			returnObj.SetActive (false);
             collectionOfObjs.Push(returnObj);
         }
 
         public GameObject GetNextObject()
         {
-            GameObject nextObj;
             if (collectionOfObjs.Peek() != null)
             {
-                nextObj = collectionOfObjs.Pop();
-                nextObj.SetActive(true);
-                return nextObj;
+				return PopObj ();
             }
             else
             {
-                GenerateCollection(regenerateMoreObjs);
+				GenerateCollection(regenerateMoreObjs);
+				return PopObj ();
             }
-
-            if (collectionOfObjs.Peek() != null)
-            {
-                nextObj = collectionOfObjs.Pop();
-                nextObj.SetActive(true);
-                return nextObj;
-            }
-            else
-            {
-                print("Error: Cannot get another GameObject");
-                return null;
-            }
+			/*
+            print("Error: Cannot get another GameObject");
+            return null;
+            */
         }
+
+		private GameObject PopObj() {
+			GameObject nextObj = collectionOfObjs.Pop();
+			Rigidbody rb = nextObj.GetComponent<Rigidbody> (); // this could be sped up by having a list of static rigid body objects or have a map of objects where the key is the object and the value is the rigid body
+			if (rb != null) {
+				rb.isKinematic = false;
+			}
+			nextObj.SetActive(true);
+			return nextObj;
+		}
 
         private void GenerateCollection(int length)
         {

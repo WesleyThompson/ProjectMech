@@ -7,7 +7,7 @@ namespace Player
 {
     public class Health : GameBehavior
     {
-        private float maxHealth = 100;
+        public float maxHealth = 100;
         private float health;
         private PlayerUI playerUIScript;
 
