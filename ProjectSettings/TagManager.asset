@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Fire
   - Destructor
+  - dropzone
+  - exit
   layers:
   - Default
   - TransparentFX
