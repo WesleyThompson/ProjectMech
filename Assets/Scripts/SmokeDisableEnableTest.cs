@@ -65,6 +65,7 @@ public class SmokeDisableEnableTest : MonoBehaviour {
 	/*---tests---*/
 	IEnumerator TestSetActive(string thisFunctionsName) {
 		print (thisFunctionsName + ": applying force in " + forceDelayTime + " seconds");
+		yield return new WaitForSeconds (forceDelayTime);
 		rb.velocity = testObject.transform.forward;
 		yield return new WaitForSeconds (2);
 		onOff ();
@@ -77,6 +78,7 @@ public class SmokeDisableEnableTest : MonoBehaviour {
 
 	IEnumerator TestSetActiveAndRigidbody(string thisFunctionsName) {
 		print (thisFunctionsName + ": applying force in " + forceDelayTime + " seconds");
+		yield return new WaitForSeconds (forceDelayTime);
 		rb.velocity = testObject.transform.forward;
 		yield return new WaitForSeconds (2);
 		onOffRigidbody ();

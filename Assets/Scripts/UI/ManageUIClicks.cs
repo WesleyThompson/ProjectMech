@@ -14,13 +14,14 @@ namespace Common
 
         void Start()
         {
-            DontDestroyOnLoad(transform.gameObject);
+            //DontDestroyOnLoad(transform.gameObject);
             SetIsUIFocusedEvent();
 
             newGameBtn.onClick.AddListener(() =>
             {
                 //Function call to start game
-                SceneManager.LoadScene("Main_Scene");
+				SceneManager.UnloadScene("Splash_Screen");
+				SceneManager.LoadScene("Main_Scene");
                 print("TODO: Add functionality to start game.");
             });
 

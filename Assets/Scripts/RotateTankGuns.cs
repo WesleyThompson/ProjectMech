@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
 
 public class RotateTankGuns : MonoBehaviour {
 	
@@ -11,14 +12,16 @@ public class RotateTankGuns : MonoBehaviour {
 	private float minAngle = -3.0F;
 
 	void Update () {
-		float rotDegrees = Input.GetAxis ("Mouse Y");
+		if (!ManageGameState.isPaused) {
+			float rotDegrees = Input.GetAxis ("Mouse Y");
 
-		if ((currAngle >= maxAngle && rotDegrees > 0) || (currAngle <= minAngle && rotDegrees < 0)) {
-			rotDegrees = 0;
-		} else {
-			currAngle += rotDegrees;
+			if ((currAngle >= maxAngle && rotDegrees > 0) || (currAngle <= minAngle && rotDegrees < 0)) {
+				rotDegrees = 0;
+			} else {
+				currAngle += rotDegrees;
+			}
+			transform.Rotate (rotDegrees * -mouseSensitivity, 0, 0);
 		}
-		transform.Rotate(rotDegrees * -mouseSensitivity, 0, 0);
 	}
 	void OnGUI()
 	{
