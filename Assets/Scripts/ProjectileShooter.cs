@@ -26,8 +26,7 @@ public class ProjectileShooter : MonoBehaviour {
 	private ObjectPooling poolScript;
 
 	void Start () {
-        Screen.lockCursor = true;
-        Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Locked;
 		poolScript = GameObject.Find ("TankShellPooler").GetComponent<ObjectPooling> ();
 
 		muzzleFlash.enabled = false;
@@ -37,7 +36,7 @@ public class ProjectileShooter : MonoBehaviour {
     }
 
 	void Update () {
-		if (canShoot) {
+		if (canShoot && !ManageGameState.isPaused) {
 			if (Input.GetMouseButton (0)) {
 				Ray ray = new Ray ();
 				ray.origin = transform.position;

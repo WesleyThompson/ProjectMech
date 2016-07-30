@@ -17,6 +17,8 @@ namespace Player
 
 		private AudioSource bulletHitSound;
 
+		public Texture2D gameOverImage;
+
         void Awake()
         {
             if (GameObject.Find(GlobalVariables.PlayerUI))
@@ -82,8 +84,17 @@ namespace Player
         private void Dead()
         {
             print("You are dead");
-            //Restart
+			StartCoroutine(ManageGameState.GameOver ());
         }
+			
+		void OnGUI() {
+			if (health <= 0) {
+				print ("draw gameover");
+				GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), gameOverImage, ScaleMode.StretchToFill);
+			} else {
+				//print ("Still alive");
+			}
+		}
 
         public float GetHealth()
         {

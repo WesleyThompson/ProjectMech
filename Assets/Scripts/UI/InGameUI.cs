@@ -7,10 +7,6 @@ namespace Common
 {
     public class InGameUI : MonoBehaviour
     {
-        [Header("Player")]
-        public Button takeDamageBtn;
-        public Button useEnergyBtn;
-
         [Space(10)]
         [Header("Player Pause UI")]
         public GameObject inGameMenuPanel;

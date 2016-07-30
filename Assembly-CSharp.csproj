@@ -79,6 +79,7 @@
      <Compile Include="Assets\Scripts\RotateTankGuns.cs" />
      <Compile Include="Assets\Scripts\RotateTurretWithMouse.cs" />
      <Compile Include="Assets\Scripts\SearchObjectPool.cs" />
+     <Compile Include="Assets\Scripts\SmokeDisableEnableTest.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\UI\InGameUI.cs" />
      <Compile Include="Assets\Scripts\UI\ManageUIClicks.cs" />
@@ -93,7 +94,6 @@
      <Compile Include="Assets\Scripts\rearEngines.cs" />
      <Compile Include="Assets\Scripts\releaseTheDrones.cs" />
      <Compile Include="Assets\Scripts\tankDeath.cs" />
-     <Compile Include="Assets\SmokeDisableEnableTest.cs" />
      <None Include="Assets\Materials\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />

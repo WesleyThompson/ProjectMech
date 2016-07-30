@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  rotationSpeed: 25
   tankTurret: {fileID: 0}
 --- !u!65 &132251864
 BoxCollider:
@@ -1615,6 +1616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  rotationSpeed: 25
   tankTurret: {fileID: 0}
 --- !u!54 &1055496939
 Rigidbody:
@@ -1941,7 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c8dd279d25c14ea4aeeb25258dfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 132251861}
+  mouseSensitivity: 1
 --- !u!64 &1367527535
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2467,7 +2469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Potatoes
+  m_Text: A+ Team
 --- !u!222 &1577891351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2485,7 +2487,7 @@ GameObject:
   - 4: {fileID: 1594890398}
   - 114: {fileID: 1594890397}
   m_Layer: 0
-  m_Name: World
+  m_Name: SplashWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
