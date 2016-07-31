@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Common;
+
 public class moveTo : MonoBehaviour
 {
 	public int health;
@@ -12,9 +14,17 @@ public class moveTo : MonoBehaviour
 	private float timeDead = 0;
 	private float timeAtDrop = 0;
 
+	private GameObject enemyMechDrop;
+	private GameObject enemyMechAttach;
+	private ObjectPooling mechPoolScript;
+
 	void Start()
 	{
 		curDest = waypoint;
+
+		enemyMechDrop = transform.FindChild ("EnemyMech").gameObject;
+		mechPoolScript = GameObject.Find ("EnemyMechPooler").GetComponent<ObjectPooling> ();
+		enemyMechAttach = GameObject.Find("EnemyMech_Dropship_Spawn");
 	}
 
 
@@ -38,7 +48,7 @@ public class moveTo : MonoBehaviour
 				Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
 				Debug.DrawRay (transform.position, newDir, Color.red);
 				transform.rotation = Quaternion.LookRotation (newDir);
-
+				print ("DROP");
 			}
 			if (atDropzone == 1)
 			{
@@ -46,6 +56,7 @@ public class moveTo : MonoBehaviour
 					float step = 10 * Time.deltaTime;
 					transform.position = Vector3.MoveTowards (transform.position, (curDest.transform.position + (new Vector3 (0f, -30f, 0f))), step);
 					timeAtDrop += Time.deltaTime;
+					//print ("dropping the payload");
 				}
 				else 
 				{
@@ -55,12 +66,21 @@ public class moveTo : MonoBehaviour
 					if (transform.position == curDest.transform.position) 
 					{
 						atDropzone = 0;
-						curDest = exitPoint
-							;
+						curDest = exitPoint;
 					}
 				}
 			}
 
+			if (timeAtDrop > 4) {
+				print ("you know our motto, we deliva!");
+				enemyMechDrop.transform.parent = null;
+				enemyMechDrop.GetComponent<NavMeshAgent> ().enabled = true;
+				timeToReloadEnemies = false;
+			}
+
+			if (transform.position == exitPoint.transform.position) {
+				reset ();
+			}
 		}
 		else 
 		{
@@ -77,8 +97,30 @@ public class moveTo : MonoBehaviour
 			
 	}
 
+	public void AttachEnemies() {
+		print ("attach");
+		enemyMechDrop = mechPoolScript.GetNextObject ();
+		enemyMechDrop.transform.parent = gameObject.transform;
+		enemyMechDrop.transform.position = enemyMechAttach.transform.position;
+		enemyMechDrop.transform.rotation = enemyMechAttach.transform.rotation;
+		timeAtDrop = 0;
+	}
+
+
+	private bool timeToReloadEnemies = false;
 	public void reset()
 	{
+		if (!timeToReloadEnemies)
+		{
+			timeToReloadEnemies = true;
+			AttachEnemies ();
+		}
+		else
+		{
+			timeToReloadEnemies = true;
+			print ("you're calling me to many times brah! :(");
+		}
+			
 		atDropzone = 0;
 		curDest = waypoint;
 		health = 150;
