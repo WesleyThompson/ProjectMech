@@ -5,7 +5,7 @@ namespace Explosion{
 public class ExplosionDamage : MonoBehaviour {
 
 	public float radius;
-	public float maxDamage;
+	public float maxDamage = 35F;
 
 	private bool didOnce = false;
 	private ArrayList parents = new ArrayList();
