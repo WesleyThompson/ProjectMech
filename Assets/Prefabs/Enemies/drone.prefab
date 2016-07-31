@@ -1070,9 +1070,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 0.1
   damage: 1
+  overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 415380}
-  objectPooler: {fileID: 190794, guid: b05200928342c1849982b5bdeaaba11e, type: 2}
   bulletSpeed: 600
   chamberTime: 0
 --- !u!114 &11433520

@@ -7176,9 +7176,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 1
   damage: 1
+  overrideDamage: 0
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 417030}
-  objectPooler: {fileID: 0}
   bulletSpeed: 0
   chamberTime: 0
 --- !u!114 &11405962
@@ -7221,9 +7221,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 1
   damage: 1
+  overrideDamage: 0
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 444586}
-  objectPooler: {fileID: 0}
   bulletSpeed: 0
   chamberTime: 0
 --- !u!114 &11413928
@@ -7344,9 +7344,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 0.1
   damage: 1
+  overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 400032}
-  objectPooler: {fileID: 0}
   bulletSpeed: 600
   chamberTime: 0
 --- !u!114 &11430158
@@ -7521,9 +7521,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 0.1
   damage: 1
+  overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 453030}
-  objectPooler: {fileID: 0}
   bulletSpeed: 600
   chamberTime: 0
 --- !u!114 &11449366
@@ -7603,9 +7603,9 @@ MonoBehaviour:
   shouldDebug: 1
   fireRate: 1
   damage: 1
+  overrideDamage: 0
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 462068}
-  objectPooler: {fileID: 0}
   bulletSpeed: 600
   chamberTime: 0.5
 --- !u!114 &11462198
@@ -7700,9 +7700,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 0.1
   damage: 1
+  overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 430484}
-  objectPooler: {fileID: 0}
   bulletSpeed: 600
   chamberTime: 0
 --- !u!114 &11475878
@@ -7842,9 +7842,9 @@ MonoBehaviour:
   shouldDebug: 0
   fireRate: 0.1
   damage: 1
+  overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 448674}
-  objectPooler: {fileID: 0}
   bulletSpeed: 600
   chamberTime: 0
 --- !u!114 &11487078
