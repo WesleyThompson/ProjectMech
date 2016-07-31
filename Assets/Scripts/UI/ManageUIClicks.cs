@@ -12,6 +12,8 @@ namespace Common
         public Button continueGameBtn;
         public Button optionsBtn;
 
+		public GameObject optionsImage;
+
         void Start()
         {
             //DontDestroyOnLoad(transform.gameObject);
@@ -34,7 +36,7 @@ namespace Common
             optionsBtn.onClick.AddListener(() =>
             {
                 //Function call to options
-                print("TODO: Add functionality to options.");
+				showOptions();
             });
         }
 
@@ -43,5 +45,10 @@ namespace Common
             //This is an example of how to call Focusable
             //Focusable(panel);
         }
+
+		private bool displayOptions = false;
+		public void showOptions() {
+			optionsImage.SetActive (displayOptions = !displayOptions);
+		}
     }
 }

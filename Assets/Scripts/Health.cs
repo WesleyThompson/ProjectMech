@@ -34,7 +34,7 @@ namespace Player
 
         void Start()
         {
-            SetHealth(60);
+			SetHealth(maxHealth);
             lastTargetHealth = targetHealth = health;
 
 			bulletHitSound = GetComponent<AudioSource> ();
