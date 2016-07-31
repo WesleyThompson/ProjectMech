@@ -12,6 +12,8 @@ namespace Common
         public Button continueGameBtn;
         public Button optionsBtn;
 
+		public GameObject optionsImage;
+
         void Start()
         {
             //DontDestroyOnLoad(transform.gameObject);
@@ -34,7 +36,7 @@ namespace Common
             optionsBtn.onClick.AddListener(() =>
             {
                 //Function call to options
-                print("TODO: Add functionality to options.");
+				showOptions();
             });
         }
 
@@ -43,5 +45,19 @@ namespace Common
             //This is an example of how to call Focusable
             //Focusable(panel);
         }
+
+		private bool displayOptions = false;
+		public void showOptions() {
+			optionsImage.SetActive (displayOptions = !displayOptions);
+		}
+
+		public void RageQuit() {
+			/*
+			 * Quit is ignored in the editor. IMPORTANT: In most cases termination of application under iOS 
+			 * should be left at the user discretion. Consult Apple Technical Page qa1561 for further details.
+			 */
+			print ("Quit if running as application.");
+			Application.Quit ();
+		}
     }
 }

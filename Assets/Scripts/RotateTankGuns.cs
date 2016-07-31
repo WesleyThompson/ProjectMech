@@ -11,6 +11,14 @@ public class RotateTankGuns : MonoBehaviour {
 	private float maxAngle = 50.0F;
 	private float minAngle = -3.0F;
 
+	private float xMin;
+	private float yMin;
+
+	void Start () {
+		xMin = (Screen.width / 2) - (crosshairImage.width / 2);
+		yMin = (Screen.height / 2) - (crosshairImage.height / 2);
+	}
+
 	void Update () {
 		if (!ManageGameState.isPaused) {
 			float rotDegrees = Input.GetAxis ("Mouse Y");
@@ -25,8 +33,8 @@ public class RotateTankGuns : MonoBehaviour {
 	}
 	void OnGUI()
 	{
-		float xMin = (Screen.width / 2) - (crosshairImage.width / 2);
-		float yMin = (Screen.height / 2) - (crosshairImage.height / 2);
-		GUI.DrawTexture (new Rect (xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
+		if (!ManageGameState.isPaused) {
+			GUI.DrawTexture (new Rect (xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
+		}
 	}
 }
