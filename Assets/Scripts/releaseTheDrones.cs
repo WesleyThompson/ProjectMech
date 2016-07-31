@@ -9,6 +9,7 @@ public class releaseTheDrones : MonoBehaviour {
 	public droneDeath death;
 	public MonoBehaviour[] scripts;
 	private AudioSource deathExp;
+	private BoxCollider col;
 	public moveTo pScripts;
 	// Use this for initialization
 	void Start()
@@ -17,6 +18,7 @@ public class releaseTheDrones : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent>();
 		scripts = GetComponents<MonoBehaviour> ();
 		deathExp = GetComponent<AudioSource> ();
+		col = GetComponent<BoxCollider> ();
 	}
 	// Update is called once per frame
 	void Update () {
@@ -28,14 +30,14 @@ public class releaseTheDrones : MonoBehaviour {
 				script.enabled = true;
 			}
 			agent.enabled = true;
-
-
+			col.enabled = true;
 		}
 		if(death.getHealth() <= 0)
 		{
 			timeToFly = 0;
 
 			agent.enabled = false;
+			col.enabled = false;
 		}
 	}
 

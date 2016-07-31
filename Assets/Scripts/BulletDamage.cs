@@ -9,11 +9,12 @@ namespace Player
 		public float damage;
 		
 		private Rigidbody rb;
+		public GameObject objectPooler;
 		private ObjectPooling poolScript;
 		// Use this for initialization
 		void Start () {
 			rb = GetComponent<Rigidbody> ();
-			poolScript = GameObject.Find ("BulletPooler").GetComponent<ObjectPooling> ();
+			poolScript = objectPooler.GetComponent<ObjectPooling> ();
 		}
 
 		// need to change this to use Alex's pooling stuff

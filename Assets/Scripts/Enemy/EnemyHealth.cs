@@ -17,6 +17,7 @@ namespace Enemy
         public void TakeDamage(float dmg)
         {
             currHealth -= dmg;
+			print (gameObject.name + ": health at " + currHealth);
             if (currHealth <= 0)
             {
                 Death();
