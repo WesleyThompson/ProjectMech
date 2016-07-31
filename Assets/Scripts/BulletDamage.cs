@@ -9,12 +9,11 @@ namespace Player
 		public float damage;
 		
 		private Rigidbody rb;
-		public GameObject objectPooler;
 		private ObjectPooling poolScript;
 		// Use this for initialization
 		void Start () {
 			rb = GetComponent<Rigidbody> ();
-			poolScript = objectPooler.GetComponent<ObjectPooling> ();
+			poolScript = GameObject.Find("BulletPooler").GetComponent<ObjectPooling> ();
 		}
 
 		// need to change this to use Alex's pooling stuff
@@ -26,7 +25,7 @@ namespace Player
 				Health script = rootObjectOfCollision.GetComponent<Health> ();
 				script.TakeDamage ("bullet", damage);
 			}
-			poolScript.ReturnObject (gameObject); // return to object pooler
+			StartCoroutine(poolScript.ReturnObject (gameObject)); // return to object pooler
 		}
 	}
 }

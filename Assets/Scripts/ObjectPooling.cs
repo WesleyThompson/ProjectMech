@@ -46,6 +46,7 @@ namespace Common
 
 			returnObj.SetActive (false);
             collectionOfObjs.Push(returnObj);
+			print (returnObj.name + " is swimming in object pool");
         }
 
         public GameObject GetNextObject()

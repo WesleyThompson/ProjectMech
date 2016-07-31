@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Common;
+using Player;
 
 namespace Enemy
 {
@@ -9,6 +10,7 @@ namespace Enemy
 		public bool shouldDebug = false;
 		public float fireRate = 1;
 		public float damage = 1;
+		public bool overrideDamage = false;
 		public float possibleBulletLocationRadius = 1;
 		private float lastTimeShot;
 		private bool canShoot;
@@ -40,7 +42,6 @@ namespace Enemy
 		private const float DISTANCE_X_PROPORTION_SCALE = 2;
 		private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
-		public GameObject objectPooler;
 		private ObjectPooling poolScript;
 		public float bulletSpeed;
 		public float chamberTime;
@@ -50,7 +51,7 @@ namespace Enemy
 		void Start()
 		{
 			shootingSound = GetComponent<AudioSource> ();
-			poolScript = objectPooler.GetComponent<ObjectPooling> ();
+			poolScript = GameObject.Find("BulletPooler").GetComponent<ObjectPooling> ();
 		}
 
 		void Awake()
@@ -144,6 +145,10 @@ namespace Enemy
 
 		public void shoot() {
 			GameObject projectile = poolScript.GetNextObject ();
+
+			if (overrideDamage) {
+				projectile.GetComponent<BulletDamage> ().damage = damage;
+			}
 			projectile.transform.position = shotPos;
 			projectile.transform.LookAt(shotDir);
 
