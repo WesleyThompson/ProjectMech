@@ -330,6 +330,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22427092, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -422,6 +426,42 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 204636856}
+    - target: {fileID: 116268, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162974, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22479916, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.349984
+      objectReference: {fileID: 0}
+    - target: {fileID: 22479916, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -39.700035
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 859574246}
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RageQuit
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457738, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5957774b8d91f43bcf544ca9aadd3e, type: 2}
   m_IsPrefabParent: 0

@@ -50,5 +50,14 @@ namespace Common
 		public void showOptions() {
 			optionsImage.SetActive (displayOptions = !displayOptions);
 		}
+
+		public void RageQuit() {
+			/*
+			 * Quit is ignored in the editor. IMPORTANT: In most cases termination of application under iOS 
+			 * should be left at the user discretion. Consult Apple Technical Page qa1561 for further details.
+			 */
+			print ("Quit if running as application.");
+			Application.Quit ();
+		}
     }
 }
