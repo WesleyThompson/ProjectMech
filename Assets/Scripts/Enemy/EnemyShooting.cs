@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using Common;
 
@@ -40,6 +40,7 @@ namespace Enemy
 		private const float DISTANCE_X_PROPORTION_SCALE = 2;
 		private const float DISTANCE_Y_PROPORTION_SCALE = 1;
 
+		public GameObject objectPooler;
 		private ObjectPooling poolScript;
 		public float bulletSpeed;
 		public float chamberTime;
@@ -49,7 +50,7 @@ namespace Enemy
 		void Start()
 		{
 			shootingSound = GetComponent<AudioSource> ();
-			poolScript = GameObject.Find ("BulletPooler").GetComponent<ObjectPooling> ();
+			poolScript = objectPooler.GetComponent<ObjectPooling> ();
 		}
 
 		void Awake()
@@ -148,8 +149,10 @@ namespace Enemy
 
 			Rigidbody rb = projectile.GetComponent<Rigidbody> ();
 			rb.velocity = projectile.transform.forward * bulletSpeed;
-			Debug.DrawRay (shotPos, shotDir * 10000F, Color.yellow, 5F);
-			print ("pew pew pew");
+			if (shouldDebug) {
+				Debug.DrawRay (shotPos, shotDir * 10000F, Color.yellow, 5F);
+				//print ("pew pew pew");
+			}
 			StartCoroutine (chamberShot());
 		}
 
@@ -162,8 +165,11 @@ namespace Enemy
 		}
 
 		void shootSound() {
-			shootingSound.Play ();
-			print ("sound");
+			// without this if statement, if an audio component does not exist on the object, the shooting function only works once
+			if (shootingSound != null) {
+				shootingSound.Play ();
+				print ("sound");
+			}
 		}
 	}
 }
