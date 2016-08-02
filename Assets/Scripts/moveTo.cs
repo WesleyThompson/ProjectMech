@@ -18,6 +18,10 @@ public class moveTo : MonoBehaviour
 	private GameObject enemyMechAttach;
 	private ObjectPooling mechPoolScript;
 
+	private GameObject[] droneDrops = new GameObject[4];
+	private GameObject[] droneAttaches = new GameObject[4];
+	private ObjectPooling dronePoolScript;
+
 	void Start()
 	{
 		curDest = waypoint;
@@ -25,6 +29,19 @@ public class moveTo : MonoBehaviour
 		enemyMechDrop = transform.FindChild ("EnemyMech").gameObject;
 		mechPoolScript = GameObject.Find ("EnemyMechPooler").GetComponent<ObjectPooling> ();
 		enemyMechAttach = GameObject.Find("EnemyMech_Dropship_Spawn");
+
+
+		droneDrops [0] = transform.FindChild ("drone1").gameObject;
+		droneDrops [1] = transform.FindChild ("drone2").gameObject;
+		droneDrops [2] = transform.FindChild ("drone3").gameObject;
+		droneDrops [3] = transform.FindChild ("drone4").gameObject;
+
+		dronePoolScript = GameObject.Find ("DronePooler").GetComponent<ObjectPooling> ();
+
+		droneAttaches [0] = GameObject.Find ("drone_spawn1");
+		droneAttaches [1] = GameObject.Find ("drone_spawn2");
+		droneAttaches [2] = GameObject.Find ("drone_spawn3");
+		droneAttaches [3] = GameObject.Find ("drone_spawn4");
 	}
 
 
@@ -75,6 +92,16 @@ public class moveTo : MonoBehaviour
 				print ("you know our motto, we deliva!");
 				enemyMechDrop.transform.parent = null;
 				enemyMechDrop.GetComponent<NavMeshAgent> ().enabled = true;
+
+				foreach (GameObject drone in droneDrops) {
+					drone.transform.parent = null;
+					MonoBehaviour[] droneScripts = drone.GetComponents<MonoBehaviour> ();
+					foreach (MonoBehaviour script in droneScripts) {
+						script.enabled = true;
+					}
+					drone.GetComponent<NavMeshAgent> ().enabled = true;
+					drone.GetComponent<BoxCollider> ().enabled = true;
+				}
 				timeToReloadEnemies = false;
 			}
 
@@ -103,6 +130,15 @@ public class moveTo : MonoBehaviour
 		enemyMechDrop.transform.parent = gameObject.transform;
 		enemyMechDrop.transform.position = enemyMechAttach.transform.position;
 		enemyMechDrop.transform.rotation = enemyMechAttach.transform.rotation;
+
+		for (int i = 0; i < droneAttaches.Length; i++) {
+			GameObject drone = dronePoolScript.GetNextObject ();
+			GameObject attachPoint = droneAttaches [i];
+			drone.transform.parent = gameObject.transform;
+			drone.transform.position = attachPoint.transform.position;
+			drone.transform.rotation = attachPoint.transform.rotation;
+			droneDrops [i] = drone;
+		}
 		timeAtDrop = 0;
 	}
 
