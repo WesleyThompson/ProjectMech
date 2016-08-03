@@ -10,9 +10,12 @@ namespace Common
         public GameObject inGameMenu;
         private static InGameUI inGameUIScript;
 		private static AudioSource backgroundMusic;
+	//	public static int numEnemiesOnMap;
+	//	public static int maxEnemiesPossibleOnMap;
 
         void Awake()
         {
+			//numEnemiesOnMap = 0;
             inGameUIScript = GameObject.Find(GlobalVariables.World).GetComponent<InGameUI>();
             isPaused = inGameMenu.activeSelf;
 
