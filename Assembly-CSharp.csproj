@@ -59,7 +59,6 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyScan.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
-     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Energy.cs" />
      <Compile Include="Assets\Scripts\Explode.cs" />
      <Compile Include="Assets\Scripts\ExplosionController.cs" />

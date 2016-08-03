@@ -2,31 +2,38 @@
 using System.Collections;
 using Common;
 
-namespace Enemy
-{
-    public class EnemyHealth : GameBehavior
-    {
-        public float maxHealth;
-        private float currHealth;
+public class EnemyHealth : MonoBehaviour {
 
-        void Awake()
-        {
-            currHealth = maxHealth;
-        }
+	public float health;
 
-        public void TakeDamage(float dmg)
-        {
-            currHealth -= dmg;
-			print (gameObject.name + ": health at " + currHealth);
-            if (currHealth <= 0)
-            {
-                Death();
-            }
-        }
+	private Renderer[] allRenders;
+	private Color originalColor;
+	void Start() {
+		allRenders = gameObject.GetComponentsInChildren<Renderer> ();
+		originalColor = allRenders[0].material.color;
+	}
 
-        private void Death()
-        {
-            //TODO: Kill This
-        }
-    }
+	void FixedUpdate () {
+		if (health <= 0) {
+			print ("Player killed me!!!!!!!!");
+			ManageGameState.numEnemiesOnMap--;
+			Destroy (gameObject);
+		}
+	}
+
+	public void TakeDamage(float dam) {
+		health -= dam;
+		print ("Enemy health: " + health);
+		StartCoroutine (FlashRed ());
+	}
+
+	IEnumerator FlashRed() {
+		foreach (Renderer r in allRenders) {
+			r.material.color = Color.red;
+		}
+		yield return new WaitForSeconds(0.2F);
+		foreach (Renderer r in allRenders) {
+			r.material.color = originalColor;
+		}
+	}
 }
