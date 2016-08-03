@@ -119,21 +119,24 @@ public class moveTo : MonoBehaviour
 			
 	}
 
-	public void DropEnemies() {
+	private void DropEnemies() {
 		print ("you know our motto, we deliva!");
-		foreach (GameObject mech in enemyMechDrops) {
-			mech.transform.parent = null;
-			mech.GetComponent<NavMeshAgent> ().enabled = true;
-		}
+		DropEnemyOfType (enemyMechDrops);
+		DropEnemyOfType (droneDrops);
+	}
 
-		foreach (GameObject drone in droneDrops) {
-			drone.transform.parent = null;
-			MonoBehaviour[] droneScripts = drone.GetComponents<MonoBehaviour> ();
-			foreach (MonoBehaviour script in droneScripts) {
+	private void DropEnemyOfType(GameObject[] enemies) {
+		foreach (GameObject enemy in enemies) {
+			enemy.transform.parent = null;
+			MonoBehaviour[] scripts = enemy.GetComponents<MonoBehaviour> ();
+			foreach (MonoBehaviour script in scripts) {
 				script.enabled = true;
 			}
-			drone.GetComponent<NavMeshAgent> ().enabled = true;
-			drone.GetComponent<BoxCollider> ().enabled = true;
+			enemy.GetComponent<NavMeshAgent> ().enabled = true;
+			Collider col = enemy.GetComponent<BoxCollider> ();
+			if (col != null) {
+				col.enabled = true;
+			}
 		}
 	}
 

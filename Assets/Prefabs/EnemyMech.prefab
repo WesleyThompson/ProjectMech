@@ -394,7 +394,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38423ae8c0ac3b94f912891fc65ece5b, type: 3}
   m_Name: 
@@ -402,9 +402,9 @@ MonoBehaviour:
   shouldDebug: 1
   fireRate: 1
   damage: 1
+  overrideDamage: 0
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 469418}
-  objectPooler: {fileID: 113638, guid: 602aa14290449864e95d353c0bcecabf, type: 2}
   bulletSpeed: 600
   chamberTime: 0.5
 --- !u!114 &11490210
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47b0b576264092c40b66be77e2ddf0d5, type: 3}
   m_Name: 
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7c31538bebd9464b9f5eb9135f3ec9b, type: 3}
   m_Name: 
