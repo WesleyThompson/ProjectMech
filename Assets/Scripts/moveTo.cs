@@ -18,39 +18,34 @@ public class moveTo : MonoBehaviour
 	private GameObject[] enemyMechAttaches = new GameObject[4];
 	private ObjectPooling mechPoolScript;
 
-	private GameObject[] droneDrops = new GameObject[4];
-	private GameObject[] droneAttaches = new GameObject[4];
+	private GameObject[] droneDrops = new GameObject[6];
+	private GameObject[] droneAttaches = new GameObject[6];
 	private ObjectPooling dronePoolScript;
 
 	void Start()
 	{
 		curDest = waypoint;
 
-		enemyMechDrops [0] = transform.FindChild ("EnemyMech1").gameObject;
-		enemyMechDrops [1] = transform.FindChild ("EnemyMech2").gameObject;
-		enemyMechDrops [2] = transform.FindChild ("EnemyMech3").gameObject;
-		enemyMechDrops [3] = transform.FindChild ("EnemyMech4").gameObject;
-
-		enemyMechAttaches [0] = transform.FindChild ("EnemyMech_Dropship_Spawn1").gameObject;
-		enemyMechAttaches [1] = transform.FindChild ("EnemyMech_Dropship_Spawn2").gameObject;
-		enemyMechAttaches [2] = transform.FindChild ("EnemyMech_Dropship_Spawn3").gameObject;
-		enemyMechAttaches [3] = transform.FindChild ("EnemyMech_Dropship_Spawn4").gameObject;
-
 		mechPoolScript = GameObject.Find ("EnemyMechPooler").GetComponent<ObjectPooling> ();
-
-		droneDrops [0] = transform.FindChild ("drone1").gameObject;
-		droneDrops [1] = transform.FindChild ("drone2").gameObject;
-		droneDrops [2] = transform.FindChild ("drone3").gameObject;
-		droneDrops [3] = transform.FindChild ("drone4").gameObject;
-
-		droneAttaches [0] = transform.FindChild ("drone_spawn1").gameObject;
-		droneAttaches [1] = transform.FindChild ("drone_spawn2").gameObject;
-		droneAttaches [2] = transform.FindChild ("drone_spawn3").gameObject;
-		droneAttaches [3] = transform.FindChild ("drone_spawn4").gameObject;
-
 		dronePoolScript = GameObject.Find ("DronePooler").GetComponent<ObjectPooling> ();
-	}
 
+		findAttachPoints ("enemyMech", enemyMechAttaches);
+		findAttachPoints ("drone", droneAttaches);
+
+		AttachEnemies ();
+	}
+	
+	private void findAttachPoints(string enemyName, GameObject[] attachPoints) {
+		for (int i = 0; i < attachPoints.Length; i++) {
+			string name = enemyName + "_spawn" + i;
+			print (name);
+			GameObject attachPoint = transform.FindChild (name).gameObject;
+			if (attachPoint != null) {
+				attachPoints [i] = attachPoint;
+			} else
+				print (name + " is null");
+		}
+	}
 
 	void Update(){
 		if (health > 0) 
@@ -96,8 +91,10 @@ public class moveTo : MonoBehaviour
 			}
 
 			if (timeAtDrop > 4) {
-				DropEnemies ();
-				timeToReloadEnemies = false;
+				if (hasEnemiesToDrop) {
+					DropEnemies ();
+					timeToReloadEnemies = true;
+				}
 			}
 
 			if (transform.position == exitPoint.transform.position) {
@@ -119,10 +116,14 @@ public class moveTo : MonoBehaviour
 			
 	}
 
+	private bool hasEnemiesToDrop = false;
 	private void DropEnemies() {
-		print ("you know our motto, we deliva!");
-		DropEnemyOfType (enemyMechDrops);
-		DropEnemyOfType (droneDrops);
+		if (hasEnemiesToDrop) {
+			print ("you know our motto, we deliva!");
+			DropEnemyOfType (enemyMechDrops);
+			DropEnemyOfType (droneDrops);
+			hasEnemiesToDrop = false;
+		}
 	}
 
 	private void DropEnemyOfType(GameObject[] enemies) {
@@ -145,12 +146,16 @@ public class moveTo : MonoBehaviour
 		attachEnemiesOfType (mechPoolScript, enemyMechAttaches, enemyMechDrops);
 		attachEnemiesOfType (dronePoolScript, droneAttaches, droneDrops);
 		timeAtDrop = 0;
+		hasEnemiesToDrop = true;
 	}
 
 	private void attachEnemiesOfType(ObjectPooling poolScript, GameObject[] attaches, GameObject[] enemies) {
 		for (int i = 0; i < attaches.Length; i++) {
 			GameObject enemy = poolScript.GetNextObject ();
+			if (enemy == null)
+				print ("broken");
 			GameObject attachPoint = attaches [i];
+			print (attachPoint);
 			enemy.transform.parent = gameObject.transform;
 			enemy.transform.position = attachPoint.transform.position;
 			enemy.transform.rotation = attachPoint.transform.rotation;
@@ -158,17 +163,16 @@ public class moveTo : MonoBehaviour
 		}
 	}
 
-	private bool timeToReloadEnemies = false;
+	private bool timeToReloadEnemies = true;
 	public void reset()
 	{
-		if (!timeToReloadEnemies)
+		if (timeToReloadEnemies)
 		{
-			timeToReloadEnemies = true;
+			timeToReloadEnemies = false;
 			AttachEnemies ();
 		}
 		else
 		{
-			timeToReloadEnemies = true;
 			print ("you're calling me to many times brah! :(");
 		}
 			

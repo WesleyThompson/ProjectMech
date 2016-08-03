@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3d531ad97b3754cacb364b36e9f588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObject: {fileID: 112830, guid: 1097c2ba974dc3b4088406db231a97c6, type: 2}
+  poolObject: {fileID: 121380, guid: 1097c2ba974dc3b4088406db231a97c6, type: 2}
   objectName: Drone
   numberOfPooledObjects: 1000
   regenerateMoreObjs: 500

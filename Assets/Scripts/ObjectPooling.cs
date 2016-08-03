@@ -17,15 +17,16 @@ namespace Common
         public int regenerateMoreObjs;
 
         public Vector3 spawnLocation = new Vector3(0, -100, 0);
-        private Stack<GameObject> collectionOfObjs;
+		private Stack<GameObject> collectionOfObjs;
         private GameObject poolGroup;
 
-        void Start()
+        void Awake()
         {
             collectionOfObjs = new Stack<GameObject>();
             poolGroup = new GameObject();
             poolGroup.name = objectName + " Pool";
             GenerateCollection(numberOfPooledObjects);
+			print (gameObject.name + ": pool generated");
         }
 
 		public IEnumerator ReturnObject(GameObject returnObj)
@@ -51,6 +52,8 @@ namespace Common
 
         public GameObject GetNextObject()
         {
+			if (collectionOfObjs == null)
+				print ("null stack!");
             if (collectionOfObjs.Peek() != null)
             {
 				return PopObj ();
