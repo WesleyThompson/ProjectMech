@@ -10,7 +10,6 @@ public class moveTo : MonoBehaviour
 	public GameObject waypoint;
 	public GameObject exitPoint;
 	public int atDropzone = 0;
-	private float isFacing = 0;
 	private float timeDead = 0;
 	private float timeAtDrop = 0;
 
@@ -22,8 +21,11 @@ public class moveTo : MonoBehaviour
 	private GameObject[] droneAttaches = new GameObject[6];
 	private ObjectPooling dronePoolScript;
 
+	private Vector3 startingPos;
+
 	void Start()
 	{
+		startingPos = transform.position;
 		curDest = waypoint;
 
 		mechPoolScript = GameObject.Find ("EnemyMechPooler").GetComponent<ObjectPooling> ();
@@ -48,14 +50,18 @@ public class moveTo : MonoBehaviour
 	}
 
 	IEnumerator waitUntilNeeded() {
-		yield return new WaitUntil (() => ManageGameState.needMoreEnemies ());
+		yield return new WaitUntil (() => ManageGameState.needMoreEnemies () && transform.position == startingPos);
+		AttachEnemies ();
 	}
 
+
 	void Update(){
-		if (!hasEnemiesToDrop && !ManageGameState.needMoreEnemies ()) {
-			StartCoroutine(waitUntilNeeded ());
+		if (!ManageGameState.needMoreEnemies ()) {
+			StartCoroutine (waitUntilNeeded ());
 		}
-		if (health > 0) {
+
+		if (hasEnemiesToDrop || transform.position != startingPos) {
+			if (health > 0) {
 				if (Vector3.Dot (transform.forward, (curDest.transform.position - transform.position).normalized) > .99f && atDropzone == 0) {
 					float step = 30 * Time.deltaTime;
 					transform.position = Vector3.MoveTowards (transform.position, curDest.transform.position, step);
@@ -109,6 +115,7 @@ public class moveTo : MonoBehaviour
 					timeDead += Time.deltaTime;
 				}
 			}
+		}
 	}
 
 	private bool hasEnemiesToDrop = false;
@@ -136,15 +143,14 @@ public class moveTo : MonoBehaviour
 		}
 	}
 
-	private bool approachMap = false;
 	private void AttachEnemies() {
 		if (ManageGameState.needMoreEnemies ()) {
+			timeToReloadEnemies = false;
 			print ("attach");
 			attachEnemiesOfType (mechPoolScript, enemyMechAttaches, enemyMechDrops);
 			attachEnemiesOfType (dronePoolScript, droneAttaches, droneDrops);
 			timeAtDrop = 0;
 			hasEnemiesToDrop = true;
-			approachMap = true;
 		}
 	}
 
@@ -168,7 +174,6 @@ public class moveTo : MonoBehaviour
 	{
 		if (ManageGameState.needMoreEnemies()) {
 			if (timeToReloadEnemies) {
-				timeToReloadEnemies = false;
 				AttachEnemies ();
 			} else {
 				print ("you're calling me to many times brah! :(");
