@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankGunA: {fileID: 143604}
   tankGunB: {fileID: 153008}
-  projectileSpeed: 600
+  projectileSpeed: 1000
   timeBetweenShots: 1
   muzzleFlashPrefab: {fileID: 191826}
   muzzleFlash: {fileID: 2343162}

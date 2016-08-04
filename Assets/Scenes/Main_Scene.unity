@@ -112,7 +112,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
 --- !u!1001 &185698507
 Prefab:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 437388, guid: a83a8a4290ee7d645bc3cc0c9eec7a6a, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11402494, guid: a83a8a4290ee7d645bc3cc0c9eec7a6a, type: 2}
       propertyPath: waypoint
@@ -364,7 +364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 437388, guid: a83a8a4290ee7d645bc3cc0c9eec7a6a, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11402494, guid: a83a8a4290ee7d645bc3cc0c9eec7a6a, type: 2}
       propertyPath: waypoint
@@ -592,7 +592,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 460452, guid: 563727ac78080554092c5439ea556de7, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11455360, guid: 563727ac78080554092c5439ea556de7, type: 2}
       propertyPath: numberOfPooledObjects
@@ -1012,7 +1012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477060, guid: 27200de2df63a5047a650a24113018c4, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27200de2df63a5047a650a24113018c4, type: 2}
