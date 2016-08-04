@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  maxDamage: 3500
+  maxDamage: 35
 --- !u!198 &19814608
 ParticleSystem:
   m_ObjectHideFlags: 1

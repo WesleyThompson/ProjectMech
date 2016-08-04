@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38423ae8c0ac3b94f912891fc65ece5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldDebug: 1
+  shouldDebug: 0
   fireRate: 1
   damage: 1
   overrideDamage: 0

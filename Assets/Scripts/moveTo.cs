@@ -174,7 +174,8 @@ public class moveTo : MonoBehaviour
 	{
 		if (ManageGameState.needMoreEnemies()) {
 			if (timeToReloadEnemies) {
-				AttachEnemies ();
+				if (transform.position == exitPoint.transform.position)
+					AttachEnemies ();
 			} else {
 				print ("you're calling me to many times brah! :(");
 			}
