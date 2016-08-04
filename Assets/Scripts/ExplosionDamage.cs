@@ -9,6 +9,7 @@ public class ExplosionDamage : MonoBehaviour {
 
 	private bool didOnce = false;
 	private ArrayList parents = new ArrayList();
+
 	void FixedUpdate () {
 		if (!didOnce) {
 			Collider[] hitColliders = Physics.OverlapSphere (transform.position, radius, 1 << 11); 

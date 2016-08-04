@@ -1093,8 +1093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldDebug: 0
-  fireRate: 0.1
-  damage: 1
+  fireRate: 0.45
+  damage: 0.73
   overrideDamage: 1
   possibleBulletLocationRadius: 1
   topTransform: {fileID: 478852}

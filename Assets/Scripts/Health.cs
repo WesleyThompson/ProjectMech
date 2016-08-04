@@ -56,6 +56,12 @@ namespace Player
                 health = 0;
                 Dead();
             }
+			/* for testing enemy damage
+			if (health < 95) {
+				print ("TIME");
+				ManageGameState.TogglePause ();
+			}
+			*/
         }
 
 		public void TakeDamage(float damage)
